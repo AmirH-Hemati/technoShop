@@ -3,10 +3,10 @@ import SwiperSlider from "../../ui/SwiperSlider.js";
 import Review from "./Review.js";
 import Spinner from "../../ui/Spinner.js";
 import { Verify } from "iconsax-reactjs";
-import type { Product } from "../products/types/product.js";
+import type { ProductType } from "../products/types/product.js";
 import { useGetProductReviews } from "./useGetProductReviews.js";
 
-function ProductReviews({ product }: { product: Product }) {
+function ProductReviews({ product }: { product: ProductType }) {
   const { reviews, isLoading } = useGetProductReviews(product._id);
 
   if (isLoading) return <Spinner />;

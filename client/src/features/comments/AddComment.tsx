@@ -1,13 +1,24 @@
 import { ArrowRight } from "iconsax-reactjs";
-import Textarea from "../../ui/Textarea";
-import Button from "../../ui/Button";
-import { BASE_URL } from "../../services/axiosInstance";
-import { useAddComment } from "./useAddComment";
-import { useState } from "react";
 
-function AddComment({ onCloseModal, item }) {
+import Textarea from "../../ui/Textarea.js";
+import Button from "../../ui/Button.js";
+
+import { useState } from "react";
+import { useAddComment } from "./useAddComment.js";
+
+type Props<T> = {
+  item: T;
+  onCloseModal?: () => void;
+};
+
+type ItemWithImage = {
+  _id: string;
+  imageCover: string;
+  name: string;
+};
+function AddComment<T extends ItemWithImage>({ onCloseModal, item }: Props<T>) {
   const [comment, setComment] = useState("");
-  const { addComment, isCreateing } = useAddComment(useAddComment);
+  const { addComment, isCreateing } = useAddComment();
 
   function handelAddComment() {
     if (!comment) return;
@@ -21,7 +32,7 @@ function AddComment({ onCloseModal, item }) {
       </div>
       <div className="border-grey-200 flex items-start gap-3 border-b px-10 py-6">
         <img
-          src={`${BASE_URL}img/products/${item.imageCover}`}
+          src={item.imageCover}
           alt={item.name}
           className="h-12 object-cover object-center"
         />

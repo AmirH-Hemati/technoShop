@@ -1,27 +1,30 @@
 import { SwiperSlide } from "swiper/react";
 import SwiperSlider from "../../ui/SwiperSlider.js";
-import Product from "./Product.jsx";
-import { useRelatedProducts } from "./useRelatedProducts.js";
+import Product from "./Product.js";
 
 import Heading from "../../ui/Heading.js";
-import Spinner from "../../ui/Spinner.js";
+import type { ProductType } from "./types/product.js";
+import { useRelatedProducts } from "./useRelatedProducts.js";
+import DataStateHandler from "@/ui/DataStateHandler.js";
 
-function RelatedProducts({ product }) {
-  const { products, isLoading } = useRelatedProducts(product.category.value);
-
-  if (isLoading) return <Spinner />;
-
+type Props = { product: ProductType };
+function RelatedProducts({ product }: Props) {
+  const { products, isLoading, error } = useRelatedProducts(
+    product.category.value,
+  );
   return (
     <div className="border-primary space-y-4 border-t py-5">
       <Heading type="h3">کالای های مشابه</Heading>
-      <SwiperSlider
-        data={products}
-        render={(product) => (
-          <SwiperSlide key={product._id} className="">
-            <Product product={product} />
-          </SwiperSlide>
-        )}
-      />
+      <DataStateHandler<ProductType> data={products} isLoading={isLoading}>
+        <SwiperSlider<ProductType>
+          data={products}
+          render={(product: ProductType) => (
+            <SwiperSlide key={product._id} className="">
+              <Product product={product} />
+            </SwiperSlide>
+          )}
+        />
+      </DataStateHandler>
     </div>
   );
 }

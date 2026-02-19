@@ -1,20 +1,20 @@
-import { ArrowLeft2 } from "iconsax-reactjs";
-import { useRef } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper } from "swiper/react";
 
-function SwiperSlider({ render, data, bg }) {
-  const swiperRef = useRef(null);
-
+type Props<T> = {
+  data: T[];
+  render: (item: T, index: number) => React.ReactNode;
+  bg?: boolean;
+};
+function SwiperSlider<T>({ render, data, bg }: Props<T>) {
   return (
     <Swiper
       navigation={true}
-      onSwiper={(swiper) => (swiperRef.current = swiper)}
       modules={[Pagination, Navigation]}
-      className={`${bg ? "bg-primary rounded-md" : "bg-grey-50"} w-full`}
+      className={`${bg ? "bg-primary rounded-md" : ""} w-full`}
       breakpoints={{
         0: {
           slidesPerView: 1.6,

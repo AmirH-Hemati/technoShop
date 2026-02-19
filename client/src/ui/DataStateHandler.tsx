@@ -5,9 +5,9 @@ import type { AppError } from "@/types/AppError.type.js";
 
 type Props<T> = PropsWithChildren & {
   isLoading: boolean;
-  error: AppError | null;
+  error?: AppError | null;
   data: T[];
-  onRetry: () => void;
+  onRetry?: () => void;
   emptyMessage?: string;
 };
 

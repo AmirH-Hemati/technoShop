@@ -1,6 +1,6 @@
 import type { Category } from "@/features/categories/types/category.js";
 
-export interface Product {
+export interface ProductType {
   _id: string;
   name: string;
   category: Category;

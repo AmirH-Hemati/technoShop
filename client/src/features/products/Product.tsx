@@ -1,10 +1,12 @@
 import { MedalStar, TruckTime } from "iconsax-reactjs";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../services/axiosInstance";
-import Button from "../../ui/Button";
-import { formatToman } from "../../utils/helper";
-import AddProductToFavoriet from "../favoriets/AddProductToFavoriet";
-function Product({ product }) {
+import Button from "../../ui/Button.js";
+import { formatToman } from "../../utils/helper.js";
+import AddProductToFavoriet from "../favoriets/AddProductToFavoriet.js";
+import type { ProductType } from "./types/product.js";
+
+type Props = { product: ProductType };
+function Product({ product }: Props) {
   const percentDiscount = Math.round(
     (product.priceDiscount / product.price) * 100,
   );
