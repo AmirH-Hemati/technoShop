@@ -5,7 +5,7 @@ function Review({ review }) {
   const rating = review?.rating || 0;
 
   return (
-    <div className="border-grey-300 space-y-3 rounded-lg border-t border-b p-4 lg:py-6">
+    <div className="border-grey-200 space-y-3 border-t p-4 lg:py-6">
       <div className="flex flex-col gap-2 space-y-1 md:flex-row md:items-center md:justify-between">
         <div className="space-y-1">
           <p className="text-grey-700 text-sm font-normal">

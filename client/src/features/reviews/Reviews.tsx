@@ -1,62 +1,36 @@
-import { Layer } from "iconsax-reactjs";
-import Heading from "../../ui/Heading.js";
-import Button from "../../ui/Button.js";
-import Comment from "./Comment";
-import SwiperSlider from "../../ui/SwiperSlider.js";
 import { SwiperSlide } from "swiper/react";
-import Modal from "../../ui/Modal.js";
-import AddComment from "./AddComment";
-import { useGetProductComments } from "./useGetProductComments";
-import Spinner from "../../ui/Spinner.js";
 
-function Comments({ item }) {
-  const { comments, isLoading } = useGetProductComments(item._id);
-  if (isLoading) return <Spinner />;
+import { useGetProductReviews } from "./useGetProductReviews.js";
+
+import Review from "./Review.js";
+import SwiperSlider from "@/ui/SwiperSlider.js";
+import DataStateHandler from "@/ui/DataStateHandler.js";
+
+function Reviews({ item }) {
+  const { reviews, isLoading } = useGetProductReviews(item._id);
+
   return (
-    <div className="border-primary flex flex-col gap-3 border-t py-5">
-      <Heading type="h3"> نظرات کاربران</Heading>
+    <div className="flex flex-col gap-3 py-5">
+      <DataStateHandler data={reviews} isLoading={isLoading}>
+        <ul className="hidden space-y-4 p-3 md:block">
+          {reviews.map((comment) => (
+            <Review review={comment} />
+          ))}
+        </ul>
 
-      <div className="order-1 flex items-center justify-between md:order-none lg:p-3">
-        <div className="text-grey-700 hidden items-center gap-7 text-lg font-medium lg:flex">
-          <p className="flex items-center gap-1 text-black">
-            <Layer size={24} />
-            <span> مرتب سازی :</span>
-          </p>
-
-          <p>جدیدترین</p>
-          <p>قدیمی ترین</p>
-          <p>بیشترین امتیاز</p>
-          <p>کمترین امتیاز</p>
+        <div className="md:hidden">
+          <SwiperSlider
+            data={reviews}
+            render={(comment) => (
+              <SwiperSlide>
+                <Review review={comment} />
+              </SwiperSlide>
+            )}
+          />
         </div>
-
-        <Modal>
-          <Modal.Open open="addComment">
-            <Button>نظر خود ر ا ثبت کنید</Button>
-          </Modal.Open>
-          <Modal.Window name="addComment">
-            <AddComment item={item} />
-          </Modal.Window>
-        </Modal>
-      </div>
-
-      <ul className="hidden space-y-4 p-3 md:block">
-        {comments.map((comment) => (
-          <Comment comment={comment} />
-        ))}
-      </ul>
-
-      <div className="md:hidden">
-        <SwiperSlider
-          data={comments}
-          render={(comment) => (
-            <SwiperSlide>
-              <Comment comment={comment} />
-            </SwiperSlide>
-          )}
-        />
-      </div>
+      </DataStateHandler>
     </div>
   );
 }
 
-export default Comments;
+export default Reviews;

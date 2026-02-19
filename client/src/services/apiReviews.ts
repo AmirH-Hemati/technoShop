@@ -6,7 +6,11 @@ export async function getReviews() {
   return data.data;
 }
 
-export async function createReview(review, rating, productId) {
+export async function createReview(
+  review: string,
+  rating: number,
+  productId: string,
+) {
   const { data } = await axiosInstance.post("/reviews", {
     review,
     product: productId,

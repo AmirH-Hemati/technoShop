@@ -1,12 +1,19 @@
+import { createReview } from "@/services/apiReviews.js";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { createReview } from "../../services/apiReviews";
 
 export function useAddReview() {
   const queryClient = useQueryClient();
-  const { mutate: addReview, isPending: isCreateing } = useMutation({
-    mutationFn: ({ review, rating, productId }) =>
-      createReview(review, rating, productId),
+  const { mutate: addReview, isPending: isCreating } = useMutation({
+    mutationFn: ({
+      review,
+      rating,
+      productId,
+    }: {
+      review: string;
+      rating: number;
+      productId: string;
+    }) => createReview(review, rating, productId),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["reviews"],
@@ -16,5 +23,5 @@ export function useAddReview() {
     onError: (err) => toast.error(err.response.data.message),
   });
 
-  return { addReview, isCreateing };
+  return { addReview, isCreating };
 }

@@ -1,5 +1,7 @@
 import { Dislike, Like1, Star1 } from "iconsax-reactjs";
-import { formatDate } from "../../utils/helper.js";
+
+import { formatDate } from "@/utils/helper.js";
+
 import type { CommentType } from "./types/comment.js";
 
 type Props = { comment: CommentType };

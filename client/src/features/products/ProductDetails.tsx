@@ -1,10 +1,12 @@
-import RelatedProducts from "./RelatedProducts.js";
 import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
 
 import { useProduct } from "./useProduct.js";
-import ImageSlider from "@/ui/ImageSlider.js";
+
+import RelatedProducts from "./RelatedProducts.js";
 import Features from "./Features.js";
 import ProductInfo from "./ProductInfo.js";
+
+import ImageSlider from "@/ui/ImageSlider.js";
 import Heading from "@/ui/Heading.js";
 import Spinner from "@/ui/Spinner.js";
 import {
@@ -14,6 +16,7 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs.js";
 import Comments from "../comments/Comments.js";
+import Reviews from "../reviews/Reviews.js";
 
 function ProductDetails() {
   const { product, isLoading } = useProduct();
@@ -54,6 +57,12 @@ function ProductDetails() {
           >
             نظرات کاربران
           </TabsTrigger>
+          <TabsTrigger
+            className="data-[state=active]:text-primary data-[state=active]:border-b-primary text-grey-800 text-200 flex-0 rounded-none border-b-4 border-transparent data-[state=active]:border-b-4 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
+            value="reviews"
+          >
+            نظرات خریداران
+          </TabsTrigger>
         </TabsList>
 
         <TabsContent value="specs" className="space-y-6">
@@ -74,6 +83,12 @@ function ProductDetails() {
           <div className="md:px-6">
             <Heading type="h3">نظرات کاربران</Heading>
             <Comments product={product} />
+          </div>
+        </TabsContent>
+        <TabsContent value="reviews">
+          <div className="md:px-6">
+            <Heading type="h3">نظرات خریداران</Heading>
+            <Reviews item={product} />
           </div>
         </TabsContent>
       </Tabs>

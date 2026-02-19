@@ -56,5 +56,3 @@ function Comments({ product }: Props) {
 }
 
 export default Comments;
-
-//     {activeTab === "reviews" && <ProductReviews product={product} />}

@@ -17,7 +17,7 @@ function AddressStep() {
           </p>
         )}
 
-        <Addresses />
+        <Addresses checkBox />
       </div>
 
       <Modal>
