@@ -4,4 +4,5 @@ export type FilterType = {
   categories?: string[];
   minPrice?: number;
   maxPrice?: number;
+  sort?: string;
 };

@@ -1,24 +1,24 @@
-import Spinner from "./Spinner.jsx";
-import Button from "./Button.jsx";
+import Spinner from "./Spinner.js";
+import Button from "./Button.js";
 import type { PropsWithChildren } from "react";
-import type { AxiosError } from "axios";
+import type { AppError } from "@/types/AppError.type.js";
 
-type Props = PropsWithChildren & {
+type Props<T> = PropsWithChildren & {
   isLoading: boolean;
-  error: AxiosError;
-  data: object[];
+  error: AppError | null;
+  data: T[];
   onRetry: () => void;
-  emptyMessage: string;
+  emptyMessage?: string;
 };
 
-function DataStateHandler({
+function DataStateHandler<T>({
   isLoading,
   error,
   data,
   onRetry,
   emptyMessage = "داده‌ای برای نمایش وجود ندارد",
   children,
-}: Props) {
+}: Props<T>) {
   if (isLoading) {
     return <Spinner />;
   }
@@ -31,11 +31,7 @@ function DataStateHandler({
       <div className="flex flex-col items-center gap-4 text-center">
         <p className="text-sm text-gray-600">{message}</p>
 
-        {onRetry && (
-          <Button variation="ghost" onClick={onRetry}>
-            دوباره تلاش کن
-          </Button>
-        )}
+        {onRetry && <Button onClick={onRetry}>دوباره تلاش کن</Button>}
       </div>
     );
   }

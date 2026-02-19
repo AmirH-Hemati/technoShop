@@ -4,7 +4,7 @@ import Questions from "../../features/contact/Questions";
 
 export default function ContactUs() {
   return (
-    <div className="my-12 flex flex-col items-center justify-center gap-12">
+    <div className="mt-6 flex flex-col items-center justify-center gap-12">
       <div className="flex flex-col items-center justify-center gap-6">
         <h1 className="text-2xl font-bold text-black lg:text-4xl">تماس با ما</h1>
         <p className="text-grey-800 text-center md:text-right">

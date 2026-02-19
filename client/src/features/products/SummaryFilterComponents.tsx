@@ -5,7 +5,10 @@ import useProductFilter from "../../hooks/useFiltersProducts.js";
 import { useMemo } from "react";
 
 function SummaryFilterComponents(): ReactElement | null {
-  const { filters } = useProductFilter();
+  const { filters, setFilters } = useProductFilter();
+  // function handleDeleteFilter(type, value) {
+  //   setFilters({[type] : filters[type]})
+  // }
 
   const isEmpty: boolean = useMemo(() => {
     return (

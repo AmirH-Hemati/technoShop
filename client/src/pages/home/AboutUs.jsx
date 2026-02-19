@@ -6,7 +6,7 @@ import Timeline from "../../features/aboutUs/Timeline";
 import { motion } from "motion/react";
 function AboutUs() {
   return (
-    <section className="relative flex flex-col gap-24 py-24">
+    <section className="relative mt-6 flex flex-col gap-14">
       <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-4 text-center">
         <motion.h1
           initial={{ y: 80, opacity: 0.5 }}

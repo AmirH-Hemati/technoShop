@@ -11,6 +11,7 @@ const parsers = {
   categories: parseAsArrayOf(parseAsString).withDefault([]),
   minPrice: parseAsInteger,
   maxPrice: parseAsInteger,
+  sort: parseAsString,
 };
 
 export default function useProductFilter() {

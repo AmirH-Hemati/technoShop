@@ -1,16 +1,16 @@
 import { MedalStar, TruckTime } from "iconsax-reactjs";
 import { Link } from "react-router-dom";
-import Button from "../../ui/Button.jsx";
+import Button from "../../ui/Button.js";
 import { formatToman } from "../../utils/helper.js";
+import type { Product } from "./types/product.js";
 
-
-function ProductItem({ product }) {
+function ProductItem({ product }: { product: Product }) {
   const percentDiscount = Math.round(
     (product.priceDiscount / product.price) * 100,
   );
   return (
     <Link to={`/products/${product.slug}`}>
-      <div className="bg-grey-0 shadow-2 relative flex max-h-80 flex-row gap-2 rounded-xl p-2 hover:scale-105 md:flex-col md:items-center md:justify-between md:p-4">
+      <div className="bg-grey-0 relative flex max-h-72 flex-row gap-2 rounded-xl p-2 shadow-md hover:scale-105 md:flex-col md:items-center md:justify-between md:p-4">
         <div className="hidden w-full md:flex md:items-center md:justify-between">
           {percentDiscount > 0 && (
             <span className="rounded-full bg-red-500 px-2 py-0.5 text-[10px] font-bold text-white">
@@ -19,7 +19,11 @@ function ProductItem({ product }) {
           )}
         </div>
 
-        <img src={product.imageCover} alt={product.name} />
+        <img
+          src={product.imageCover}
+          alt={product.name}
+          className="w-20 object-cover md:w-auto"
+        />
 
         <div className="flex w-full flex-1 flex-col gap-1">
           <p className="text-grey-900 line-clamp-2 text-right text-xs leading-normal font-normal md:text-center md:text-sm md:font-bold">

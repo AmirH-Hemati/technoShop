@@ -36,7 +36,6 @@ export async function getProducts({
   // if (search) {
   //   query += `${query ? "&" : ""}search=${search}`;
   // }
-  console.log(filters);
   const { data } = await axiosInstance.get(`/products?${query}`);
   return data.data;
 }
