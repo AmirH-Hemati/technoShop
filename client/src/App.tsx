@@ -10,7 +10,7 @@ import ProductsAdmin from "./pages/admin/ProductsAdmin.jsx";
 import Categories from "./pages/admin/Categories.jsx";
 import { ToastContainer } from "react-toastify";
 import Product from "./pages/home/Product.jsx";
-import AccountLayout from "./pages/account/AccountLayout.jsx";
+import AccountLayout from "./pages/account/AccountLayout.js";
 import Profile from "./pages/account/Profile.jsx";
 import MyFavoriets from "./pages/account/MyFavoriets.jsx";
 import Users from "./pages/admin/Users.jsx";

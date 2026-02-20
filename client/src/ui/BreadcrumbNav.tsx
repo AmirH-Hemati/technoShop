@@ -16,8 +16,11 @@ const routeLabels: Record<string, string> = {
   "/products": "محصولات",
   "/cart": "سبد خرید",
   "/checkout": "پرداخت",
-  "/profile": "پروفایل",
-  "/profile/orders": "سفارش‌ها",
+  "/account": "پروفایل",
+  "/account/orders": "سفارش‌ها",
+  "/account/profile": "پروفایل",
+  "/account/personalInfo": "اطلاعات حساب کاربری",
+  "/account/myFavoriets": "محصولات مورد علاقه",
   "/dashboard": "داشبورد",
   "/aboutUs": "درباره ما",
   "/ContactUs": "ارتباط با ما",
@@ -54,12 +57,12 @@ export default function BreadcrumbNav() {
           {crumbs.map((crumb) => (
             <React.Fragment key={crumb.path}>
               <BreadcrumbSeparator>
-                <ChevronLeft className="text-primary" />
+                <ChevronLeft />
               </BreadcrumbSeparator>
 
               <BreadcrumbItem>
                 {crumb.isLast ? (
-                  <BreadcrumbPage className="font-medium">
+                  <BreadcrumbPage className="text-primary font-medium">
                     {crumb.label}
                   </BreadcrumbPage>
                 ) : (
