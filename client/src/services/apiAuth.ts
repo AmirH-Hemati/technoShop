@@ -25,7 +25,7 @@ export async function getCurrentUser() {
 
   return data.data;
 }
-export async function updateCurrentUser(formdata) {
+export async function updateCurrentUser(formdata: FormData) {
   const { data } = await axiosInstance.patch("/users/updateMe", formdata, {
     headers: { "Content-Type": "multipart/form-data" },
   });

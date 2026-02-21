@@ -1,9 +1,12 @@
-export type UserInfo = {
+type UserRole = "admin" | "user";
+
+export interface UserInfo {
   _id: string;
   name: string;
   email: string;
   phone: string;
-  role: String;
+  nationalCode: string;
+  role: UserRole;
   createdAt: string;
   updatedAt: string;
-};
+}

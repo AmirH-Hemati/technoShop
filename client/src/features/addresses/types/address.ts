@@ -1,4 +1,4 @@
-import type { UserInfo } from "@/features/users/types/user.js";
+import type { UserInfo } from "@/features/users/schema/user.js";
 
 export type Address = {
   _id: string;

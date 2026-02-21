@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@tailwindcss/vite": "^4.1.14",
     "@tanstack/react-query": "^5.90.2",
     "@tanstack/react-query-devtools": "^5.90.2",
@@ -27,13 +28,14 @@
     "react-dom": "^19.1.1",
     "react-error-boundary": "^6.0.1",
     "react-froala-wysiwyg": "^4.6.2",
-    "react-hook-form": "^7.64.0",
+    "react-hook-form": "^7.71.2",
     "react-router-dom": "^7.9.3",
     "react-select": "^5.10.2",
     "react-toastify": "^11.0.5",
     "swiper": "^12.0.2",
     "tailwind-merge": "^3.4.0",
-    "tailwindcss": "^4.1.14"
+    "tailwindcss": "^4.1.14",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

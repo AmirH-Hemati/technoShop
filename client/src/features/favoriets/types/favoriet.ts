@@ -1,5 +1,5 @@
 import type { Product } from "@/features/products/types/product.js";
-import type { UserInfo } from "@/features/users/types/user.js";
+import type { UserInfo } from "@/features/users/schema/user.js";
 
 export interface Favoriet {
   _id: string;
