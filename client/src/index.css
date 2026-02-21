@@ -55,7 +55,7 @@
 :root,
 :root.light {
   --fz-100: clamp(0.5rem, 0.58rem + 0.2vw, 0.75rem);
-  --fz-200: clamp(0.625rem, 0.3929rem + 0.4762vw, 0.75rem);
+  --fz-200: clamp(0.65rem, 0.4929rem + 0.4762vw, 0.85rem);
   --fz-300: clamp(0.75rem, 0.6429rem + 0.4762vw, 1rem);
   --fz-400: clamp(1rem, 0.8929rem + 0.4762vw, 1.25rem);
   --fz-500: clamp(1.25rem, 1.1429rem + 0.4762vw, 1.5rem);

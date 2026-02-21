@@ -1,8 +1,7 @@
 import { DocumentText1 } from "iconsax-reactjs";
-import Spinner from "../../ui/Spinner";
-import OrderItem from "./OrderItem";
-import { useMyOrders } from "./useMyOrders";
-import DataStateHandler from "../../ui/DataStateHandler";
+import OrderItem from "./OrderItem.js";
+import { useMyOrders } from "./useMyOrders.js";
+import DataStateHandler from "../../ui/DataStateHandler.js";
 
 function OrderList() {
   const { orders, isLoading, error, refetch } = useMyOrders();
@@ -14,7 +13,7 @@ function OrderList() {
       error={error}
       onRetry={refetch}
     >
-      <ul className="border-grey-300 bg-grey-0 shadow-2 mt-4 h-[400px] overflow-y-auto rounded-xl border p-4">
+      <ul className="bg-grey-0 px-2">
         {orders.length === 0 && (
           <div className="flex h-full w-full flex-col items-center justify-center gap-4">
             <DocumentText1 size="50" />
