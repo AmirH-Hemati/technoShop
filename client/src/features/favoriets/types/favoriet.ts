@@ -1,9 +1,9 @@
-import type { Product } from "@/features/products/types/product.js";
-import type { UserInfo } from "@/features/users/schema/user.js";
+import type { ProductType } from "@/features/products/types/product.js";
+import type { UserInfo } from "@/features/users/types/user.js";
 
-export interface Favoriet {
+export interface FavorietType {
   _id: string;
-  product: Product;
+  product: ProductType;
   user: UserInfo;
   createdAt: string;
   updatedAt: string;

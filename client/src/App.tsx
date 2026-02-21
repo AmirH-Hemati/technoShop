@@ -12,7 +12,7 @@ import { ToastContainer } from "react-toastify";
 import Product from "./pages/home/Product.jsx";
 import AccountLayout from "./pages/account/AccountLayout.js";
 import Profile from "./pages/account/Profile.jsx";
-import MyFavoriets from "./pages/account/MyFavoriets.jsx";
+import MyFavoriets from "./pages/account/MyFavoriets.js";
 import Users from "./pages/admin/Users.jsx";
 import { ShopingCartProvider } from "./context/ShopingCartContext.js";
 import Cart from "./pages/home/Cart.jsx";

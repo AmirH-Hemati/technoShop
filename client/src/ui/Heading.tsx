@@ -19,14 +19,7 @@ function Heading({ type = "h1", children }: Props) {
   const baseClasses = "font-medium";
   const sizeClass = sizeClasses[type];
 
-  const dotStyles =
-    type === "h2" || type === "h3"
-      ? "relative pr-3 before:content-[''] before:absolute before:right-0 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:bg-black before:rounded-full"
-      : "";
-
-  return (
-    <Tag className={`${baseClasses} ${sizeClass} ${dotStyles}`}>{children}</Tag>
-  );
+  return <Tag className={`${baseClasses} ${sizeClass}`}>{children}</Tag>;
 }
 
 export default Heading;

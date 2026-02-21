@@ -31,7 +31,7 @@ function Product({ product }: Props) {
           {product.name}
         </p>
         <div className="text-100 flex w-full flex-wrap items-center justify-between">
-          <div className="bg-grey-200 flex items-center gap-1 rounded-full px-2 py-0.5 leading-[180%]">
+          <div className="bg-grey-200 flex items-center gap-1 rounded-full px-2 py-0.5 ">
             <TruckTime size={18} color="#ED2E2E" />
             <span className="text-grey-800">ارسال رایگان</span>
           </div>

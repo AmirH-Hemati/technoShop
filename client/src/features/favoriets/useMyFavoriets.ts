@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { getMyFavoriets } from "../../services/apiFavoriets.js";
+
+import { getMyFavoriets } from "@/services/apiFavoriets.js";
+import type { FavorietType } from "./types/favoriet.js";
 
 export function useMyFavoriets() {
   const {
@@ -7,10 +9,10 @@ export function useMyFavoriets() {
     isLoading,
     error,
     refetch,
-  } = useQuery({
+  } = useQuery<FavorietType[]>({
     queryKey: ["favoriets"],
     queryFn: getMyFavoriets,
   });
 
-  return { favoriets, isLoading, error, refetch };
+  return { favoriets: favoriets || [], isLoading, error, refetch };
 }
