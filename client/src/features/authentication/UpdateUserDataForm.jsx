@@ -32,7 +32,7 @@ function UpdateUserDataForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-grey-0 shadow-2 mb-20 flex h-full flex-col gap-8 rounded-xl border border-gray-300 px-4 py-8 md:mb-0 lg:p-4"
+      className="bg-grey-0 shadow-2 mb-20 flex  flex-col gap-8 rounded-xl border border-gray-300 px-4 py-8 md:mb-0 lg:p-4"
     >
       <FormRow label="شماره تلفن">
         <Input id="email" type="text" value={phone} disabled />
