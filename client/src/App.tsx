@@ -20,7 +20,7 @@ import Orders from "./pages/account/Orders.jsx";
 import OrdersAdmin from "./pages/admin/OrdersAdmin.jsx";
 import Verify from "./pages/home/Verify.jsx";
 import PersonalInfo from "./pages/account/PersonalInfo.js";
-import AddressesPage from "./pages/account/AddressesPage.jsx";
+import AddressesPage from "./pages/account/AddressesPage.js";
 import ContactUs from "./pages/home/ContactUs.js";
 import AboutUs from "./pages/home/AboutUs.jsx";
 import ProtectedRoute from "./ui/ProtectedRoute.jsx";

@@ -70,18 +70,18 @@ function Window({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
       <div
         ref={ref}
-        className="shadow-2 relative w-full max-w-lg scale-95 rounded-xl bg-white p-3 transition-all duration-300"
+        className="relative max-h-[85vh] w-full max-w-2xl overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300"
       >
         {closeButton && (
           <button
             onClick={close}
-            className="absolute top-4 right-6 rounded-md p-2 transition hover:bg-gray-100"
+            className="absolute top-10 left-6 rounded-md p-2 transition hover:bg-gray-100"
           >
             <CloseSquare size={26} />
           </button>
         )}
 
-        <div className="flex w-full items-center justify-center pt-7">
+        <div className="flex h-full flex-col">
           {cloneElement(children, { onCloseModal: close })}
         </div>
       </div>
