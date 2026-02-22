@@ -12,14 +12,14 @@ import { useGeolocation } from "@/hooks/useGeolocation.js";
 import { Button } from "@/components/ui/button.js";
 import "leaflet/dist/leaflet.css";
 
-type Position = { lat: number; lng: number };
+type Position = { lat: number; lng: number } | null;
 type SetPosition = Dispatch<SetStateAction<Position>>;
 
 type Props = {
   position: Position;
   setPosition: SetPosition;
   onNext: () => void;
-  onCloseModal: () => void;
+  onCloseModal?: () => void;
 };
 
 export default function MapStep({
@@ -48,7 +48,7 @@ export default function MapStep({
         <p className="text-200 font-medium">
           موقعیت مکانی مورد نظر خود را روی نقشه پیدا کنید
         </p>
-        <Button variant="ghost" size="icon-sm" onClick={onCloseModal}>
+        <Button variant="ghost" size="icon-sm" onClick={() => onCloseModal?.()}>
           <X />
         </Button>
       </div>

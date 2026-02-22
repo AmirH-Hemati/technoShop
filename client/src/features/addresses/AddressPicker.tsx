@@ -2,9 +2,12 @@ import { useState } from "react";
 import MapStep from "./MapStep.js";
 import AddressForm from "./AddressForm.js";
 
-export default function AddressPicker({ onCloseModal }) {
+type Props = { onCloseModal?: () => void };
+export default function AddressPicker({ onCloseModal }: Props) {
   const [step, setStep] = useState(1);
-  const [position, setPosition] = useState(null);
+  const [position, setPosition] = useState<{ lat: number; lng: number } | null>(
+    null,
+  );
 
   return (
     <div className="h-full w-full">
@@ -12,7 +15,7 @@ export default function AddressPicker({ onCloseModal }) {
         <MapStep
           setPosition={setPosition}
           position={position}
-          onCloseModal={onCloseModal}
+          onCloseModal={onCloseModal ?? (() => {})}
           onNext={() => setStep(2)}
         />
       )}
