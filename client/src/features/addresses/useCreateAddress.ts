@@ -1,12 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { createEditAddress } from "../../services/apiAddresses.js";
-import type { Address } from "./types/address.js";
+import type { CreateAddressType } from "./types/address.js";
 
 export function useCreateAddress() {
   const queryClient = useQueryClient();
   const { mutate: createAddress, isPending: isCreateing } = useMutation({
-    mutationFn: (newAddress: Address) => createEditAddress(newAddress),
+    mutationFn: (newAddress: CreateAddressType) =>
+      createEditAddress(newAddress),
     onSuccess: () => {
       toast.success(" آدرس  با موفقیت ساخته شد ");
       queryClient.invalidateQueries({

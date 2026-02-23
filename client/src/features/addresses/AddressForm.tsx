@@ -30,12 +30,14 @@ import {
   addressSchema,
   type AddressSchemaType,
 } from "./schema/addressSchema.js";
+import { useCreateAddress } from "./useCreateAddress.js";
 
 type Props = {
   position: { lat: number; lng: number } | null;
   onBack: () => void;
 };
 export default function AddressForm({ position, onBack }: Props) {
+  const { createAddress, isCreateing } = useCreateAddress();
   const form = useForm({
     resolver: zodResolver(addressSchema),
     defaultValues: {
@@ -45,8 +47,8 @@ export default function AddressForm({ position, onBack }: Props) {
       plate: "",
       unit: "",
       postalCode: "",
-      fullName: "",
-      phone: "",
+      recipientName: "",
+      recipientPhone: "",
     },
   });
 
@@ -72,8 +74,9 @@ export default function AddressForm({ position, onBack }: Props) {
     fetchAddress();
   }, [position, setValue]);
 
-  const onSubmit = (data: AddressSchemaType) => {
-    console.log("Submitted data:", data);
+  const onSubmit = (values: AddressSchemaType) => {
+    if (!position) return;
+    createAddress({ ...values, lat: position?.lat, lng: position?.lng });
   };
 
   const selectedProvince = watch("province") || "";
@@ -231,7 +234,7 @@ export default function AddressForm({ position, onBack }: Props) {
             <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={control}
-                name="fullName"
+                name="recipientName"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="">نام</FormLabel>
@@ -245,7 +248,7 @@ export default function AddressForm({ position, onBack }: Props) {
 
               <FormField
                 control={control}
-                name="phone"
+                name="recipientPhone"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>شماره تلفن</FormLabel>
