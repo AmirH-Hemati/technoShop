@@ -1,12 +1,20 @@
 import { Add } from "iconsax-reactjs";
-import CreateAddressForm from "../../features/addresses/CreateAddressForm.js";
-import Heading from "../../ui/Heading.js";
-import Modal from "../../ui/Modal.js";
-import Addresses from "../../features/addresses/Addresses.js";
-import BackButton from "../../ui/BackButton.js";
+
 import { CheckoutProvider } from "@/context/CheckoutCartContext.js";
 import { Button } from "@/components/ui/button.js";
 import AddressPicker from "@/features/addresses/AddressPicker.js";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog.js";
+import BackButton from "@/ui/BackButton.js";
+import Heading from "@/ui/Heading.js";
+import Addresses from "@/features/addresses/Addresses.js";
 
 function AddressesPage() {
   return (
@@ -17,22 +25,24 @@ function AddressesPage() {
             <BackButton />
             <Heading type="h2">آدرس ها</Heading>
           </div>
-          <Modal>
-            <Modal.Open open="addressForm">
+
+          <Dialog>
+            <DialogTrigger>
               <Button variant="outline">
                 <Add />
                 <span>افزودن آدرس جدید</span>
               </Button>
-            </Modal.Open>
-
-            <Modal.Window name="addressForm">
+            </DialogTrigger>
+            <DialogContent
+              showCloseButton={false}
+              className="!w-full overflow-auto sm:!max-h-[85vh] sm:!max-w-2xl"
+              style={{ scrollbarWidth: "thin" }}
+            >
               <AddressPicker />
-            </Modal.Window>
-          </Modal>
+            </DialogContent>
+          </Dialog>
         </div>
-        <div className="bg-grey-0 shadow-2 h-full space-y-6 rounded-xl border border-gray-300 p-6">
-          <div className="flex items-center justify-between"></div>
-
+        <div className="bg-grey-0 h-full space-y-6 rounded-xl border border-gray-300 p-6 shadow-md">
           <Addresses checkBox={false} />
         </div>
       </div>

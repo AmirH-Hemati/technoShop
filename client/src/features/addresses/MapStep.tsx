@@ -7,9 +7,11 @@ import {
   useMap,
 } from "react-leaflet";
 import { Check, X } from "lucide-react";
+import { DialogClose } from "@/components/ui/dialog.js";
 
 import { useGeolocation } from "@/hooks/useGeolocation.js";
 import { Button } from "@/components/ui/button.js";
+
 import "leaflet/dist/leaflet.css";
 
 type Position = { lat: number; lng: number } | null;
@@ -19,15 +21,9 @@ type Props = {
   position: Position;
   setPosition: SetPosition;
   onNext: () => void;
-  onCloseModal?: () => void;
 };
 
-export default function MapStep({
-  setPosition,
-  position,
-  onNext,
-  onCloseModal,
-}: Props) {
+export default function MapStep({ setPosition, position, onNext }: Props) {
   const {
     position: geolocationPosition,
     isLoading: isLoadingPosition,
@@ -44,13 +40,15 @@ export default function MapStep({
 
   return (
     <div className="relative flex h-full flex-col gap-4">
-      <div className="flex items-center justify-between px-4 pt-4">
+      <div className="flex items-center justify-between">
         <p className="text-200 font-medium">
           موقعیت مکانی مورد نظر خود را روی نقشه پیدا کنید
         </p>
-        <Button variant="ghost" size="icon-sm" onClick={() => onCloseModal?.()}>
-          <X />
-        </Button>
+        <DialogClose>
+          <Button variant="ghost" size="icon-sm">
+            <X />
+          </Button>
+        </DialogClose>
       </div>
       <div className="relative h-[600px] w-full overflow-hidden">
         <Button
