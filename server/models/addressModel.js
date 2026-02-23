@@ -7,9 +7,9 @@ const addressSchema = new mongoose.Schema(
       ref: "User",
       required: [true, "فیلد حساب کاربری الزامی است"],
     },
-    title: {
+    province: {
       type: String,
-      required: [true, "عنوان آدرس الزامی است"],
+      required: [true, "استان الزامی است"],
       trim: true,
     },
     city: {
@@ -22,19 +22,46 @@ const addressSchema = new mongoose.Schema(
       required: [true, "کد پستی الزامی است"],
       trim: true,
     },
-    addressLine: {
+    plate: {
+      type: String,
+      required: [true, "پلاک الزامی است"],
+      trim: true,
+    },
+    unit: {
+      type: String,
+      required: [true, "واحد الزامی است"],
+      trim: true,
+    },
+
+    fullAddress: {
       type: String,
       required: [true, "آدرس کامل الزامی است"],
       trim: true,
     },
-    isDefault: {
-      type: Boolean,
-      default: false,
+    lat: {
+      type: Number,
+      required: [true, "مختصات جغرافیایی الزامی است"],
+    },
+
+    lng: {
+      type: Number,
+      required: [true, "مختصات جغرافیایی الزامی است"],
+    },
+    recipientName: {
+      type: String,
+      required: [true, "نام تحویل گیرنده الزامی است"],
+      trim: true,
+    },
+
+    recipientPhone: {
+      type: String,
+      required: [true, "شماره تحویل گیرنده الزامی است"],
+      trim: true,
     },
   },
   {
     timestamps: true,
-  }
+  },
 );
 addressSchema.pre(/^find/, function (next) {
   this.populate("user", "phone  name");
