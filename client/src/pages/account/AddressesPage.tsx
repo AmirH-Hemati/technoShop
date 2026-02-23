@@ -42,9 +42,8 @@ function AddressesPage() {
             </DialogContent>
           </Dialog>
         </div>
-        <div className="bg-grey-0 h-full space-y-6 rounded-xl border border-gray-300 p-6 shadow-md">
-          <Addresses checkBox={false} />
-        </div>
+
+        <Addresses checkBox={false} />
       </div>
     </CheckoutProvider>
   );

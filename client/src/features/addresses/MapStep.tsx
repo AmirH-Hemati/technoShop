@@ -61,7 +61,7 @@ export default function MapStep({ setPosition, position, onNext }: Props) {
         <MapContainer
           center={[35.6892, 51.389]}
           zoom={13}
-          className="h-full w-full"
+          className="h-full w-full z-[9999]"
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <ChangeView position={position} />

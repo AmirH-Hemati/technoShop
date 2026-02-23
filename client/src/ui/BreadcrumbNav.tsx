@@ -21,6 +21,7 @@ const routeLabels: Record<string, string> = {
   "/account/profile": "پروفایل",
   "/account/personalInfo": "اطلاعات حساب کاربری",
   "/account/myFavoriets": "محصولات مورد علاقه",
+  "/account/addresses": "آدرس ها",
   "/dashboard": "داشبورد",
   "/aboutUs": "درباره ما",
   "/ContactUs": "ارتباط با ما",

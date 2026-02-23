@@ -13,8 +13,8 @@ function Addresses({ checkBox = false }: Props) {
       onRetry={refetch}
     >
       <ul className="w-full space-y-5">
-        {addresses?.map((address) => (
-          <Address key={address?._id} address={address} checkBox={checkBox} />
+        {addresses?.map((address , index) => (
+          <Address index={index} key={address?._id} address={address} checkBox={checkBox} />
         ))}
       </ul>
     </DataStateHandler>
