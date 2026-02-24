@@ -76,7 +76,7 @@ exports.handelSmsAuth = catchAsync(async (req, res, next) => {
   const cookieOption = {
     httpOnly: true,
     expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000,
     ),
     sameSite: "lax",
     secure: false,
@@ -117,13 +117,12 @@ exports.protected = catchAsync(async (req, res, next) => {
     return next(
       new AppError(
         "شما لاگین نکرده اید . برای دسترسی وارد حساب کاربری شوید",
-        400
-      )
+        400,
+      ),
     );
   }
 
   const decode = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-
   const currentUser = await User.findById(decode.id);
   if (!currentUser) {
     return next(new AppError("حساب کاربری مطابق با توکن پیدا نشد", 401));
