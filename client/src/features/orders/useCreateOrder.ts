@@ -1,6 +1,6 @@
+import { createOrder as createOrderApi } from "@/services/apiOrders.js";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { createOrder as createOrderApi } from "../../services/apiOrders";
 
 export function useCreateOrder() {
   const queryClient = useQueryClient();

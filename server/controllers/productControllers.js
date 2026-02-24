@@ -50,7 +50,7 @@ exports.resizeProductImage = catchAsync(async (req, res, next) => {
         (error, result) => {
           if (result) resolve(result);
           else reject(error);
-        }
+        },
       );
 
       streamifier.createReadStream(imageBuffer).pipe(stream);
@@ -94,6 +94,7 @@ exports.getProductWithSlug = catchAsync(async (req, res, next) => {
     data: product,
   });
 });
+
 exports.getProducts = getAll(Product);
 exports.getProduct = getOne(Product);
 exports.createProduct = createOne(Product);

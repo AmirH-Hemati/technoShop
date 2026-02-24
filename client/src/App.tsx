@@ -15,7 +15,7 @@ import Profile from "./pages/account/Profile.jsx";
 import MyFavoriets from "./pages/account/MyFavoriets.js";
 import Users from "./pages/admin/Users.jsx";
 import { ShopingCartProvider } from "./context/ShopingCartContext.js";
-import Cart from "./pages/home/Cart.jsx";
+import Cart from "./pages/home/Cart.js";
 import Orders from "./pages/account/Orders.jsx";
 import OrdersAdmin from "./pages/admin/OrdersAdmin.jsx";
 import Verify from "./pages/home/Verify.jsx";

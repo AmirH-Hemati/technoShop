@@ -27,7 +27,14 @@ function Address({ index, address, checkBox = true }: Props) {
   ];
 
   return (
-    <li className="border-grey-200 bg-grey-0 flex flex-col gap-4 rounded-lg border p-4 md:flex-row md:items-center">
+    <li
+      onClick={() => onSelectAddress(address)}
+      className={`cursor-pointer rounded-lg border p-4 transition-all select-none ${
+        selectedAddress?._id === address?._id
+          ? "border-primary/50 bg-grey-50"
+          : "border-grey-200 bg-grey-0 hover:border-primary/50"
+      } flex flex-col gap-4 md:flex-row md:items-center`}
+    >
       <div className="h-55 w-full overflow-hidden rounded-lg md:w-64">
         <MapContainer
           center={position}
@@ -42,12 +49,29 @@ function Address({ index, address, checkBox = true }: Props) {
           <Marker position={position} />
         </MapContainer>
       </div>
-
       <div className="text-200 text-grey-600 flex-1 space-y-3 font-medium">
-        <div className="flex items-start justify-between">
-          <h3 className="text-400 text-grey-900">آدرس {index + 1}</h3>
-          <CloseSquare className="text-grey-500 cursor-pointer" />
-        </div>
+        {checkBox ? (
+          <div className="flex items-start justify-between">
+            <h3 className="text-400 text-grey-900">آدرس {index + 1}</h3>
+
+            <div
+              className={`flex h-5 w-5 items-center justify-center rounded-full border ${
+                selectedAddress?._id === address?._id
+                  ? "border-primary"
+                  : "border-grey-400"
+              } `}
+            >
+              {selectedAddress?._id === address?._id && (
+                <div className="bg-primary h-2 w-2 rounded-full" />
+              )}
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-start justify-between">
+            <h3 className="text-400 text-grey-900">آدرس {index + 1}</h3>
+            <CloseSquare className="text-grey-500 cursor-pointer" />
+          </div>
+        )}
 
         <div className="flex items-start gap-1">
           <Location size="20" className="text-red-500" />

@@ -17,6 +17,7 @@ const router = express.Router();
 
 router.use("/:productId/comments", commentRoutes);
 router.use("/:productId/reviews", reviewRoutes);
+
 router.post("/by-ids", getProductByIds);
 router
   .route("/")

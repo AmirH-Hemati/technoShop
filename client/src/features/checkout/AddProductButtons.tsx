@@ -13,33 +13,22 @@ function AddProductButtons({ id }: Props) {
   const productQty = getProductQty(id);
 
   return (
-    <div className="border-grey-400 flex items-center gap-3 rounded-lg border p-1 px-0.5">
+    <div className="border-grey-400 flex items-center gap-3 rounded-sm border px-2 py-1">
       <button
         onClick={() => handleIncreaseProductQty(id)}
-        className="hover:bg-grey-100 cursor-pointer p-0.5"
+        className="cursor-pointer"
       >
-        <Add className="text-grey-600" />
+        <Add size={20} className="text-grey-600" />
       </button>
-      <span className="text-grey-800 text-300 flex items-center justify-center p-0.5">
+      <span className="text-grey-900 text-100 flex items-center justify-center leading-none">
         {productQty}
       </span>
       <button
         onClick={() => handleDecreaseProductQty(id)}
-        className="hover:bg-grey-100 cursor-pointer p-0.5"
+        className="cursor-pointer"
       >
-        {productQty > 1 ? (
-          <Minus className="text-grey-600" />
-        ) : (
-          <Trash className="text-grey-600" />
-        )}
+        <Minus size={20} className="text-grey-600" />
       </button>
-
-      {productQty > 1 && (
-        <Trash
-          onClick={() => handleRemoveProduct(id)}
-          className="hover:bg-grey-100 cursor-pointer text-red-600"
-        />
-      )}
     </div>
   );
 }

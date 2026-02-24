@@ -1,7 +1,6 @@
-import Spinner from "../../ui/Spinner";
-import CartItem from "./CartItem";
-
-import { useCheckout } from "../../context/CheckoutCartContext";
+import { useCheckout } from "@/context/CheckoutCartContext.js";
+import { Spinner } from "@/components/ui/spinner.js";
+import CartItem from "./CartItem.js";
 
 function CartStep() {
   const { products, isPending } = useCheckout();
@@ -15,7 +14,7 @@ function CartStep() {
       </p>
     );
   return (
-    <ul className="space-y-2">
+    <ul className="space-y-2 divide-y-2 divide-grey-100 md:divide-y-0">
       {products.map((product) => (
         <CartItem product={product} key={product._id} />
       ))}
