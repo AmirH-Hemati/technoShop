@@ -66,7 +66,7 @@ export default function AddressForm({ position, onBack }: Props) {
         );
 
         const str: string = res.data?.display_name;
-        setValue("fullAddress", str.substring(0, 150));
+        setValue("fullAddress", str.substring(0, 100));
       } catch (err) {
         console.log(err);
       }

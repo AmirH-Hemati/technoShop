@@ -1,0 +1,11 @@
+.address-area {
+  display: grid;
+  grid-template-areas: "title title" "fullAddress fullAddress" "map province" "map postcode" "map name" "map phone";
+}
+@media only screen and (min-width: 768px) {
+  .address-area {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "map title" "map fullAddress" "map province" "map postcode" "map name" "map phone";
+  }
+}

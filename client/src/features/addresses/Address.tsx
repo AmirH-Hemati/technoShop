@@ -1,5 +1,4 @@
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
-
 import {
   Call,
   CloseSquare,
@@ -11,6 +10,9 @@ import {
 
 import type { AddressType } from "./types/address.js";
 import { useCheckout } from "@/context/CheckoutCartContext.js";
+
+import styles from "./address.module.css";
+import { cn } from "@/lib/utils.js";
 
 type Props = {
   index: number;
@@ -28,19 +30,17 @@ function Address({ index, address, checkBox = true }: Props) {
 
   return (
     <li
-      onClick={() => onSelectAddress(address)}
-      className={`cursor-pointer rounded-lg border p-4 transition-all select-none ${
-        selectedAddress?._id === address?._id
-          ? "border-primary/50 bg-grey-50"
-          : "border-grey-200 bg-grey-0 hover:border-primary/50"
-      } flex flex-col gap-4 md:flex-row md:items-center`}
+      className={cn(
+        styles["address-area"],
+        "text-200 gap-2 rounded-md border p-3 md:p-4",
+      )}
     >
-      <div className="h-55 w-full overflow-hidden rounded-lg md:w-64">
+      <div className="h-full w-32 overflow-hidden rounded-lg [grid-area:map] md:w-64">
         <MapContainer
           center={position}
           zoom={13}
           scrollWheelZoom={false}
-          className="z-10 h-full w-full"
+          className="h-full w-full"
         >
           <TileLayer
             attribution="&copy; OpenStreetMap"
@@ -49,69 +49,42 @@ function Address({ index, address, checkBox = true }: Props) {
           <Marker position={position} />
         </MapContainer>
       </div>
-      <div className="text-200 text-grey-600 flex-1 space-y-3 font-medium">
-        {checkBox ? (
-          <div className="flex items-start justify-between">
-            <h3 className="text-400 text-grey-900">آدرس {index + 1}</h3>
 
-            <div
-              className={`flex h-5 w-5 items-center justify-center rounded-full border ${
-                selectedAddress?._id === address?._id
-                  ? "border-primary"
-                  : "border-grey-400"
-              } `}
-            >
-              {selectedAddress?._id === address?._id && (
-                <div className="bg-primary h-2 w-2 rounded-full" />
-              )}
-            </div>
-          </div>
-        ) : (
-          <div className="flex items-start justify-between">
-            <h3 className="text-400 text-grey-900">آدرس {index + 1}</h3>
-            <CloseSquare className="text-grey-500 cursor-pointer" />
-          </div>
-        )}
+      <div className="flex items-start justify-between [grid-area:title]">
+        <h3 className="text-300 text-grey-900 flex-1 font-semibold">
+          آدرس {index + 1}
+        </h3>
+        <CloseSquare size={18} />
+      </div>
 
-        <div className="flex items-start gap-1">
-          <Location size="20" className="text-red-500" />
-          <p className="flex-1">{address?.fullAddress}</p>
-        </div>
-        <div className="flex items-start gap-1">
-          <Global size="20" className="text-red-500" />
-          <p>
-            {address?.province}، {address?.city}
-          </p>
-        </div>
+      <div className="flex items-start gap-1 [grid-area:fullAddress]">
+        <Location size="20" className="shrink-0 text-red-500" />
+        <span className="font-medium">{address.fullAddress}</span>
+      </div>
 
-        <div className="flex items-start gap-1">
-          <SmsEdit size="20" className="text-red-500" />
-          <p>{address?.postalCode}</p>
-        </div>
+      <div className="flex items-center gap-1 [grid-area:province]">
+        <Global size="18" className="text-red-500" />
+        <span>
+          {address.province}, {address.city}
+        </span>
+      </div>
 
-        <div className="flex items-start gap-1">
-          <Call size="20" className="text-red-500" />
-          <p> {address?.recipientName}</p>
-        </div>
+      <div className="flex items-center gap-1 [grid-area:postcode]">
+        <SmsEdit size="18" className="text-red-500" />
+        <span>{address.postalCode}</span>
+      </div>
 
-        <div className="flex items-start gap-1">
-          <User size="18" className="text-red-500" />
-          <p> {address?.recipientPhone}</p>
-        </div>
+      <div className="flex items-center gap-1 [grid-area:name]">
+        <Call size="18" className="text-red-500" />
+        <span>{address.recipientName}</span>
+      </div>
+
+      <div className="flex items-center gap-1 [grid-area:phone]">
+        <User size="18" className="text-red-500" />
+        <span>{address.recipientPhone}</span>
       </div>
     </li>
   );
 }
 
 export default Address;
-
-// <div>
-//   {checkBox ? (
-//     <CheckBox
-//       checked={selectedAddress?._id === address?._id}
-//       onChange={() => onSelectAddress(address)}
-//     />
-//   ) : (
-//     <Location className="text-primary" />
-//   )}
-// </div>
