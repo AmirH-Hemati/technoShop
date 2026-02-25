@@ -1,5 +1,6 @@
 import { getCategories } from "@/services/apiCategories.js";
 import { useQuery } from "@tanstack/react-query";
+import type { CategoryType } from "./types/category.js";
 
 export function useCategories() {
   const {
@@ -7,10 +8,10 @@ export function useCategories() {
     isLoading,
     error,
     refetch,
-  } = useQuery({
+  } = useQuery<CategoryType[]>({
     queryKey: ["categories"],
     queryFn: getCategories,
   });
 
-  return { categories, isLoading, error, refetch };
+  return { categories: categories || [], isLoading, error, refetch };
 }

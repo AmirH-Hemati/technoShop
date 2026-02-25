@@ -1,8 +1,10 @@
-import DataStateHandler from "../../ui/DataStateHandler";
-import Spinner from "../../ui/Spinner";
-import Category from "./Category";
-import { useCategories } from "./useCategories";
+import DataStateHandler from "@/ui/DataStateHandler.js";
+
+import { useCategories } from "./useCategories.js";
 import { motion } from "motion/react";
+
+import Category from "./Category.js";
+
 function Categories() {
   const { categories, isLoading, error, refetch } = useCategories();
   return (
@@ -16,9 +18,9 @@ function Categories() {
         initial={{ opacity: 0.5, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="overflow-x-auto overflow-y-hidden"
+        className="overflow-x-auto"
       >
-        <ul className="flex justify-between gap-3 p-3">
+        <ul className="flex justify-between gap-3">
           {categories?.map((category, index) => (
             <motion.div
               initial={{ opacity: 0, y: 50 }}

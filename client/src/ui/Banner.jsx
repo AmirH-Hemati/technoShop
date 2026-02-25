@@ -14,10 +14,10 @@ function Banner() {
         className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-gradient-to-r from-[#1975B9] via-[#49D1E8] to-[#3CD7A8] px-4 py-4 shadow-xl sm:w-2/3 sm:flex-row sm:justify-start md:px-10"
       >
         <div className="w-full space-y-3 sm:w-1/2 md:space-y-6">
-          <h3 className="text-600  leading-[140%] font-medium">
+          <h3 className="text-600 leading-[140%] font-medium">
             آیفون های سری ۱۵
           </h3>
-          <p className="text-300 mb-10 max-w-[60ch] font-semibold ">
+          <p className="text-300 mb-10 max-w-[60ch] font-semibold">
             برای آینده گوشی های هوشمند آماده شوید. نوآوری را مانند قبل تجربه
             کنید. منتظر پیش فروش بزرگ آیفون ۱۵ باشید.
           </p>
@@ -56,13 +56,13 @@ function Banner() {
         />
 
         <div className="relative z-50 space-y-6 px-5 py-4">
-          <h4 className="text-600leading-[150%] font-bold max-w-[10ch]">
+          <h4 className="text-600leading-[150%] max-w-[10ch] font-bold">
             لوازم جانبی لپتاپ
           </h4>
 
           <Button size="small" variation="secondary">
             خرید
-            <ArrowLeft size={18}/>
+            <ArrowLeft size={18} />
           </Button>
         </div>
       </motion.div>
