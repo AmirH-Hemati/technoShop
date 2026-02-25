@@ -23,17 +23,31 @@ const productSchema = new mongoose.Schema(
       type: Number,
       validate: {
         validator: function (val) {
-          return this.isnNew ? val < this.price : true;
+          return this.isNew ? val < this.price : true;
         },
         message: "  تخفیف {{VALUE}} باید کمتر از قیمت اصلی باشد",
       },
     },
     brand: {
-      type: String,
-      required: [true, "انتخاب برند محصول الزامی است"],
+      type: {
+        value: { type: String, required: true },
+        label: { type: String, required: true },
+      },
+      required: true,
     },
-    colors: [String],
-    features: [{ key: String, value: String }],
+    colors: [
+      {
+        value: { type: String },
+        label: { type: String },
+        hex: { type: String },
+      },
+    ],
+    features: [
+      {
+        value: { type: String },
+        label: { type: String },
+      },
+    ],
     description: {
       type: String,
       trim: true,
@@ -45,7 +59,7 @@ const productSchema = new mongoose.Schema(
     },
     images: [String],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 productSchema.pre("save", function (next) {
