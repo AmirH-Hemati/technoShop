@@ -10,6 +10,7 @@ const {
   findCategoryIdByValue,
   getProductByIds,
   getProductWithSlug,
+  convertStringToParse,
 } = require("../controllers/productControllers");
 const commentRoutes = require("./commentRoutes");
 const reviewRoutes = require("./reviewRoutes");
@@ -19,10 +20,16 @@ router.use("/:productId/comments", commentRoutes);
 router.use("/:productId/reviews", reviewRoutes);
 
 router.post("/by-ids", getProductByIds);
+
 router
   .route("/")
   .get(findCategoryIdByValue, getProducts)
-  .post(uploadProductImage, resizeProductImage, createProduct);
+  .post(
+    uploadProductImage,
+    resizeProductImage,
+    convertStringToParse,
+    createProduct,
+  );
 
 router.get("/:slug", getProductWithSlug);
 

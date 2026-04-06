@@ -1,5 +1,5 @@
 function sendErrorDev(err, req, res) {
-  console.log(err.message);
+  console.log(err);
   return res.status(err.statusCode).json({
     success: err.status,
     message: err.message,

@@ -6,8 +6,6 @@ const Category = require("../models/categoryModel");
 const AppError = require("../utils/AppError");
 const catchAsync = require("../utils/catchAsync");
 
-const streamifier = require("streamifier");
-const cloudinary = require("../utils/cloudinary");
 const {
   getAll,
   createOne,
@@ -34,30 +32,14 @@ exports.uploadCategoryImage = upload.single("image");
 exports.resizeCategoryImage = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
 
-  const imageBuffer = await sharp(req.file.buffer)
+  const fileName = `category-${Date.now()}.png`;
+  await sharp(req.file.buffer)
     .resize(2000, 1333)
     .toFormat("png")
     .png({ quality: 90 })
-    .toBuffer();
+    .toFile(`public/img/categories/${fileName}`);
 
-  const uploadFromBuffer = () =>
-    new Promise((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream(
-        {
-          folder: "categories",
-          format: "png",
-        },
-        (error, result) => {
-          if (result) resolve(result);
-          else reject(error);
-        }
-      );
-
-      streamifier.createReadStream(imageBuffer).pipe(stream);
-    });
-
-  const result = await uploadFromBuffer();
-  req.body.image = result.secure_url;
+  req.body.image = `${req.protocol}://${req.get("host")}/img/categories/${fileName}`;
   next();
 });
 
@@ -66,5 +48,3 @@ exports.getCategory = getOne(Category);
 exports.createCategory = createOne(Category);
 exports.updateCategory = updateOne(Category);
 exports.deleteCategory = deleteOne(Category);
-
-

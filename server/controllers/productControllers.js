@@ -6,9 +6,7 @@ const catchAsync = require("../utils/catchAsync");
 
 const Product = require("../models/productModel");
 const Category = require("../models/categoryModel");
-const streamifier = require("streamifier");
 
-const cloudinary = require("../utils/cloudinary");
 const {
   getAll,
   createOne,
@@ -27,37 +25,46 @@ const multerFilter = (req, file, cb) => {
   }
 };
 const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
-exports.uploadProductImage = upload.single("imageCover");
+
+exports.uploadProductImage = upload.fields([
+  { name: "imageCover", maxCount: 1 },
+  { name: "images", maxCount: 3 },
+]);
+
+exports.convertStringToParse = (req, res, next) => {
+  req.body.brand = JSON.parse(req.body.brand);
+  req.body.colors = JSON.parse(req.body.colors);
+  req.body.features = JSON.parse(req.body.features);
+  next();
+};
 
 exports.resizeProductImage = catchAsync(async (req, res, next) => {
-  if (!req.file) return next();
+  if (!req.files.imageCover || !req.files.images) return next();
 
-  req.body.imageCover = `product-${Date.now()}-cover.png`;
+  const fileName = `product-${Date.now()}-cover.png`;
+  req.body.imageCover = `${req.protocol}://${req.get("host")}/img/products/${fileName}`;
 
-  const imageBuffer = await sharp(req.file.buffer)
+  await sharp(req.files.imageCover[0].buffer)
     .resize(2000, 1333)
     .toFormat("png")
     .png({ quality: 90 })
-    .toBuffer();
+    .toFile(`public/img/products/${fileName}`);
 
-  const uploadFromBuffer = () =>
-    new Promise((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream(
-        {
-          folder: "products",
-          format: "png",
-        },
-        (error, result) => {
-          if (result) resolve(result);
-          else reject(error);
-        },
+  req.body.images = [];
+
+  await Promise.all(
+    req.files.images.map(async (file, index) => {
+      const fileName = `product-${Date.now()}-${index + 1}.png`;
+      await sharp(file.buffer)
+        .resize(2000, 1333)
+        .toFormat("png")
+        .png({ quality: 90 })
+        .toFile(`public/img/products/${fileName}`);
+      req.body.images.push(
+        `${req.protocol}://${req.get("host")}/img/products/${fileName}`,
       );
-
-      streamifier.createReadStream(imageBuffer).pipe(stream);
-    });
-
-  const result = await uploadFromBuffer();
-  req.body.imageCover = result.secure_url;
+    }),
+  );
   next();
 });
 

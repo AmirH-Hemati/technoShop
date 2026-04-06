@@ -1,4 +1,5 @@
 const express = require("express");
+
 const {
   getCategories,
   createCategory,
@@ -8,7 +9,9 @@ const {
   uploadCategoryImage,
   resizeCategoryImage,
 } = require("../controllers/categoryControllers");
+
 const router = express.Router();
+
 router
   .route("/")
   .get(getCategories)
