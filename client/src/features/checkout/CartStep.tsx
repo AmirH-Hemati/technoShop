@@ -6,6 +6,7 @@ function CartStep() {
   const { products, isPending } = useCheckout();
 
   if (isPending) return <Spinner />;
+  
   if (!products)
     return (
       <p className="text-md mt-2 font-medium">

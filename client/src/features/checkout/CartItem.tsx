@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils.js";
 import AddProductButtons from "./AddProductButtons.js";
 import type { ProductType } from "../products/types/product.js";
 
-import styles from "./cartItem.module.css";
+import Styles from "./cartItem.module.css";
 
 function CartItem({ product }: { product: ProductType }) {
   const {
@@ -23,7 +23,7 @@ function CartItem({ product }: { product: ProductType }) {
   return (
     <li
       className={cn(
-        styles["cartItem-area"],
+        Styles["cartItem-area"],
         "bg-grey-0 md:border-grey-200 w-full py-1 md:space-y-1 md:rounded-md md:border md:p-3",
       )}
     >
@@ -50,15 +50,20 @@ function CartItem({ product }: { product: ProductType }) {
         {formatToman(price - priceDiscount)}
       </p>
 
-      <div className="text-200 text-grey-600 space-y-1 [grid-area:options]">
+      <div className="text-200 text-grey-600 space-y-2 [grid-area:options]">
         <div className="flex items-center gap-0.5">
           <Tag size={18} />
-          <span>برند : {brand} </span>
+          <span>برند : {brand.label}</span>
         </div>
 
         <div className="flex items-center gap-0.5">
           <Colorfilter size={18} />
-          <span>رنگ : {colors}</span>
+          {colors.map((color) => (
+            <span
+              className="h-4 w-4 rounded-md border border-gray-300"
+              style={{ backgroundColor: color.hex }}
+            />
+          ))}{" "}
         </div>
       </div>
 
