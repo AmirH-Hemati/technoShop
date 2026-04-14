@@ -36,7 +36,6 @@ const filterChips = [
 export default function MobileFilter({ className }: { className?: string }) {
   const { categories, isLoading } = useCategories();
 
-  // برای هر چیپ یک state جداگانه برای باز/بسته بودن Sheet
   const [openSheet, setOpenSheet] = React.useState<string | null>(null);
 
   const handleOpen = (id: string) => {

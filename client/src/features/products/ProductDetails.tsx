@@ -26,14 +26,7 @@ function ProductDetails() {
   return (
     <div className="mt-6 space-y-8">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <ImageSlider
-          images={[
-            product.imageCover,
-            "/download1.png",
-            "/download2.png",
-            "/download2.png",
-          ]}
-        />
+        <ImageSlider images={[product.imageCover, ...product.images]} />
         <ProductInfo product={product} />
       </div>
 
@@ -45,18 +38,21 @@ function ProductDetails() {
           >
             مشخصات فنی
           </TabsTrigger>
+
           <TabsTrigger
             className="data-[state=active]:text-primary data-[state=active]:border-b-primary text-grey-800 text-200 flex-0 rounded-none border-b-4 border-transparent data-[state=active]:border-b-4 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
             value="review"
           >
             نقد و بررسی
           </TabsTrigger>
+
           <TabsTrigger
             className="data-[state=active]:text-primary data-[state=active]:border-b-primary text-grey-800 text-200 flex-0 rounded-none border-b-4 border-transparent data-[state=active]:border-b-4 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
             value="comments"
           >
             نظرات کاربران
           </TabsTrigger>
+
           <TabsTrigger
             className="data-[state=active]:text-primary data-[state=active]:border-b-primary text-grey-800 text-200 flex-0 rounded-none border-b-4 border-transparent data-[state=active]:border-b-4 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
             value="reviews"
@@ -85,6 +81,7 @@ function ProductDetails() {
             <Comments product={product} />
           </div>
         </TabsContent>
+
         <TabsContent value="reviews">
           <div className="md:px-6">
             <Heading type="h3">نظرات خریداران</Heading>

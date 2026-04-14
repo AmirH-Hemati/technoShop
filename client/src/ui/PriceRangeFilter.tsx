@@ -11,7 +11,7 @@ const STEP = 1000;
 
 export default function PriceRangeFilter({
   className,
-}: {
+}: {  
   className?: string;
 }) {
   const { filters, setFilters } = useProductFilter();

@@ -13,7 +13,6 @@ function MainLayout() {
         <BreadcrumbNav />
         <Outlet />
       </main>
-
       <Footer />
     </>
   );

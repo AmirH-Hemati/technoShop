@@ -22,9 +22,11 @@ const options: SelectOptionType[] = [
 
 export default function SortSelect() {
   const { filters, setFilters } = useProductFilter();
+  
   function handleChangeSort(value: string) {
     setFilters({ sort: value });
   }
+
   return (
     <Select value={filters.sort ?? ""} onValueChange={handleChangeSort}>
       <SelectTrigger className={cn("hidden w-[200px] md:flex md:w-[240px]")}>

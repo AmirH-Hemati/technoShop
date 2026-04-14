@@ -1,11 +1,10 @@
 import { ArrowLeft2, ArrowRight2 } from "iconsax-reactjs";
-import { BASE_URL } from "../services/axiosInstance.js";
 import { useState, type ReactElement } from "react";
 
 type Props = { images: string[] };
+
 function ImageSlider({ images }: Props): ReactElement {
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const selectImage = images[currentIndex];
 
   function nextImage() {
@@ -25,7 +24,7 @@ function ImageSlider({ images }: Props): ReactElement {
       <div className="relative flex w-full items-center justify-center">
         <button
           onClick={prevImage}
-          className="absolute left-0 z-10 rounded-md bg-gray-200 p-2 shadow-md hover:bg-gray-100"
+          className="absolute left-0 z-10 cursor-pointer rounded-md bg-gray-200 p-2 shadow-md hover:bg-gray-100"
         >
           <ArrowLeft2 size={22} />
         </button>
@@ -38,7 +37,7 @@ function ImageSlider({ images }: Props): ReactElement {
 
         <button
           onClick={nextImage}
-          className="absolute right-0 z-10 rounded-md bg-gray-200 p-2 shadow-md hover:bg-gray-100"
+          className="absolute right-0 z-10 cursor-pointer rounded-md bg-gray-200 p-2 shadow-md hover:bg-gray-100"
         >
           <ArrowRight2 size={22} />
         </button>
@@ -49,7 +48,7 @@ function ImageSlider({ images }: Props): ReactElement {
           <img
             key={index}
             onClick={() => goTo(index)}
-            src={`${BASE_URL}img/products/${image}`}
+            src={image}
             className={`h-18 w-18 cursor-pointer rounded-xl border object-cover shadow-sm transition-all duration-200 hover:opacity-80 ${
               index === currentIndex
                 ? "border-primary border-4"
@@ -61,7 +60,7 @@ function ImageSlider({ images }: Props): ReactElement {
       </div>
 
       <div className="my-2 mr-auto flex items-center gap-3 md:hidden">
-        {images.map((image, index) => (
+        {images.map((_, index) => (
           <div
             key={index}
             className={`h-2.5 w-2.5 rounded-full ${index === currentIndex ? "bg-gray-600" : "bg-gray-300"}`}
