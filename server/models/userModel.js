@@ -21,8 +21,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "default.png",
     },
-
-    photoPublicId: String,
+    nationalId: {
+      type: String,
+      unique: true,
+    },
     role: {
       type: String,
       enum: ["user", "admin"],
@@ -32,7 +34,7 @@ const userSchema = new mongoose.Schema(
     verificationCode: String,
     verificationCodeExpires: Date,
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 userSchema.methods.createVerificationCode = function () {

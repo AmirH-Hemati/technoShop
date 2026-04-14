@@ -4,9 +4,6 @@ const User = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const { getOne, getAll, updateOne, deleteOne } = require("./handlerFactory");
 
-const streamifier = require("streamifier");
-const cloudinary = require("../utils/cloudinary");
-
 const multerStorage = multer.memoryStorage();
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image")) {
@@ -41,9 +38,9 @@ exports.getMe = (req, res, next) => {
 };
 
 exports.updateMe = catchAsync(async (req, res, next) => {
-  const { name, email } = req.body;
+  const { name, email, nationalId } = req.body;
 
-  const updateUser = { name, email };
+  const updateUser = { name, email, nationalId };
   if (req.body.photo) updateUser.photo = req.body.photo;
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id, updateUser, {

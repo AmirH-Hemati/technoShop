@@ -6,7 +6,7 @@ export const updateUserSchema = z.object({
     .nonempty("نام نمی تواند خالی باشد")
     .min(3, "نام باید حداقل ۳ کاراکتر باشد"),
   email: z.email("ایمیل معتبر نیست"),
-  nationalCode: z.coerce
+  nationalId: z.coerce
     .number("کد ملی نمیتواند شامل حروف باشد")
     .min(10, "کد ملی نمیتواند کمتر از  ۱۰ رقم باشد"),
   photo: z.any().optional(),

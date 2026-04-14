@@ -32,7 +32,7 @@ export default function UpdateUserDataForm() {
     defaultValues: {
       name: user?.name || "",
       email: user?.email || "",
-      nationalCode: user?.nationalCode || "",
+      nationalId: user?.nationalId || "",
     },
   });
 
@@ -40,6 +40,7 @@ export default function UpdateUserDataForm() {
 
   function onSubmit(values: UpdateUser) {
     const formData = new FormData();
+    console.log(values);
     Object.entries(values).forEach(([key, value]) => {
       formData.append(key, value as string);
     });
@@ -106,7 +107,7 @@ export default function UpdateUserDataForm() {
 
           <FormField
             control={form.control}
-            name="nationalCode"
+            name="nationalId"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>کد ملی</FormLabel>
