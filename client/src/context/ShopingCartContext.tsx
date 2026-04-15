@@ -1,3 +1,4 @@
+import type { Color } from "@/data/colors.js";
 import { useLocalStorageState } from "@/hooks/useLocalStorageState.js";
 import {
   createContext,
@@ -9,10 +10,11 @@ import {
 type CartItem = {
   id: string;
   qty: number;
+  color: Color;
 };
 
 type ShoppingCartContextValue = {
-  handleIncreaseProductQty: (id: string) => void;
+  handleIncreaseProductQty: (id: string, color: Color) => void;
   handleDecreaseProductQty: (id: string) => void;
   handleRemoveProduct: (id: string) => void;
   getProductQty: (id: string) => number;
@@ -31,14 +33,15 @@ function ShopingCartProvider({ children }: Props): ReactElement {
     "shopingCart",
   );
 
-  function handleIncreaseProductQty(id: string) {
+  console.log(cartItems);
+  function handleIncreaseProductQty(id: string, color: Color) {
     setCartItems((currentItems) => {
       if (currentItems.find((item) => item?.id === id)) {
         return currentItems.map((item) =>
           item.id === id ? { ...item, qty: item.qty + 1 } : item,
         );
       } else {
-        return [...currentItems, { id, qty: 1 }];
+        return [...currentItems, { id, color, qty: 1 }];
       }
     });
   }
@@ -58,7 +61,7 @@ function ShopingCartProvider({ children }: Props): ReactElement {
   function getProductQty(id: string): number {
     return cartItems.find((item) => item.id === id)?.qty || 0;
   }
-  
+
   function handleRemoveProduct(id: string) {
     setCartItems((currentItems) => {
       return currentItems.filter((item) => item.id !== id);

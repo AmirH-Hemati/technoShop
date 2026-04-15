@@ -13,6 +13,11 @@ const orderSchema = new mongoose.Schema(
           required: true,
           min: [1, "حداقل تعداد باید ۱ باشد."],
         },
+        color: {
+          value: { type: String },
+          label: { type: String },
+          hex: { type: String },
+        },
       },
     ],
     user: {

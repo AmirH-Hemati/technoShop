@@ -1,7 +1,6 @@
 import { useCheckout } from "@/context/CheckoutCartContext.js";
 import Address from "../addresses/Address.js";
 import { formatToman } from "@/utils/helper.js";
-import { Category, Colorfilter, Tag } from "iconsax-reactjs";
 
 function PaymentStep() {
   const { selectedAddress, products } = useCheckout();
@@ -36,12 +35,10 @@ function PaymentStep() {
                   <span>{item.brand.label}</span>
 
                   <div className="flex items-center gap-1">
-                    {item.colors.map((color) => (
-                      <span
-                        className="h-6 w-6 rounded-md border border-gray-300"
-                        style={{ backgroundColor: color.hex }}
-                      />
-                    ))}
+                    <span
+                      className="h-4 w-4 rounded-md border border-gray-300"
+                      style={{ backgroundColor: item.color.hex }}
+                    />
                   </div>
 
                   <span className="text-grey-600">{item.qty} عدد</span>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import axiosInstance, { BASE_URL } from "../../services/axiosInstance";
+import axiosInstance  from "../../services/axiosInstance";
 import { toast } from "react-toastify";
 import Spinner from "../../ui/Spinner";
 import Confetti from "react-confetti";
@@ -89,7 +89,7 @@ function Verify() {
             >
               <div className="flex items-center gap-4">
                 <img
-                  src={`${BASE_URL}img/products/${item.product.imageCover}`}
+                  src={item.product.imageCover}
                   alt={item.product.name}
                   className="h-20 w-20 rounded object-cover"
                 />
@@ -105,7 +105,7 @@ function Verify() {
                   {(
                     (item.product.price - item.product.priceDiscount) *
                     item.quantity
-                  ).toLocaleString()}{" "}
+                  ).toLocaleString()}
                   تومان
                 </p>
                 <p className="text-sm text-gray-500">تعداد: {item.quantity}</p>

@@ -64,7 +64,9 @@ function CheckoutProvider({ children }: PropsWithChildren) {
   );
 }
 
-function useCheckout() {
+function 
+
+useCheckout() {
   const context = useContext(CheckoutContext);
 
   if (context === undefined) {

@@ -17,7 +17,7 @@ function CartItem({ product }: { product: ProductType }) {
     _id: id,
     brand,
     category,
-    colors,
+    color,
   } = product;
 
   return (
@@ -52,18 +52,20 @@ function CartItem({ product }: { product: ProductType }) {
 
       <div className="text-200 text-grey-600 space-y-2 [grid-area:options]">
         <div className="flex items-center gap-0.5">
-          <Tag size={18} />
+          <Tag size={19} />
           <span>برند : {brand.label}</span>
         </div>
 
         <div className="flex items-center gap-0.5">
-          <Colorfilter size={18} />
-          {colors.map((color) => (
+          <Colorfilter size={19} />
+          <div className="flex items-center">
+            <span>رنگ : {color.label}</span>
+
             <span
               className="h-4 w-4 rounded-md border border-gray-300"
               style={{ backgroundColor: color.hex }}
             />
-          ))}{" "}
+          </div>
         </div>
       </div>
 

@@ -1,10 +1,11 @@
 import { useShopingCart } from "@/context/ShopingCartContext.js";
+import type { Color } from "@/data/colors.js";
 import { cn } from "@/lib/utils.js";
 import { Add, Minus, Trash } from "iconsax-reactjs";
 
-type Props = { id: string; className: string };
+type Props = { id: string; className?: string; color: Color };
 
-function AddProductButtons({ id, className }: Props) {
+function AddProductButtons({ id, className, color }: Props) {
   const {
     handleIncreaseProductQty,
     handleDecreaseProductQty,
@@ -21,12 +22,12 @@ function AddProductButtons({ id, className }: Props) {
       )}
     >
       <button
-        onClick={() => handleIncreaseProductQty(id)}
+        onClick={() => handleIncreaseProductQty(id, color)}
         className="cursor-pointer"
       >
         <Add size={22} className="text-grey-600" />
       </button>
-      <span className="text-grey-900 text-200 font-medium flex items-center justify-center leading-none">
+      <span className="text-grey-900 text-200 flex items-center justify-center leading-none font-medium">
         {productQty}
       </span>
       <button

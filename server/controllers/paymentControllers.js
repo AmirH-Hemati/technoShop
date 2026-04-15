@@ -18,7 +18,7 @@ const createSession = async (totalAmount, paymentId, req) => {
   try {
     const { data } = await axios.post(
       `${process.env.ZARINPAL_URL}/v4/payment/request.json`,
-      params
+      params,
     );
     return data;
   } catch (error) {
@@ -62,6 +62,7 @@ exports.createPaymentSession = catchAsync(async (req, res, next) => {
   const newOrders = orders.map((order) => ({
     product: order.id,
     quantity: order.qty,
+    color: order.color,
   }));
 
   const newOrder = await Order.create({
@@ -90,7 +91,7 @@ exports.createPaymentSession = catchAsync(async (req, res, next) => {
   }
 
   return next(
-    new AppError("عملیات پرداخت ناموفق بود . لطفا بعدا دوباره تلاش کنید", 400)
+    new AppError("عملیات پرداخت ناموفق بود . لطفا بعدا دوباره تلاش کنید", 400),
   );
 });
 
@@ -127,7 +128,7 @@ exports.verifyPayment = catchAsync(async (req, res, next) => {
 
   const { data } = await axios.post(
     `${process.env.ZARINPAL_URL}/v4/payment/verify.json`,
-    params
+    params,
   );
 
   if (data.data.code === 100 || data.data.code === 101) {

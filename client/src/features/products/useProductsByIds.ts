@@ -1,12 +1,9 @@
-import {
-  useMutation,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
 import { getProductsByIds } from "../../services/apiProducts.js";
 import { useShopingCart } from "../../context/ShopingCartContext.js";
-import type { Product } from "./types/product.js";
+import type { ProductType } from "./types/product.js";
 
 export function useProductsByIds() {
   const { cartItems } = useShopingCart();
@@ -25,9 +22,9 @@ export function useProductsByIds() {
     onError: (error) => toast.error(error.response.data.message),
   });
 
-  const products = data?.map((product: Product) => {
+  const products = data?.map((product: ProductType) => {
     const item = cartItems?.find((item) => item.id === product._id);
-    return { ...product, qty: item?.qty || 1 };
+    return { ...product, qty: item?.qty || 1, color: item?.color };
   });
   return { fetchProducts, products, isPending };
 }

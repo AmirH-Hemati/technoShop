@@ -1,10 +1,21 @@
-import { ChartSquare, ShoppingCart, Star1, Verify } from "iconsax-reactjs";
+import {
+  ChartSquare,
+  Check,
+  ShoppingCart,
+  Star1,
+  TickSquare,
+  Verify,
+} from "iconsax-reactjs";
 import { formatToman } from "@/utils/helper.js";
 import Button from "@/ui/Button.js";
 import { useShopingCart } from "@/context/ShopingCartContext.js";
 import AddProductToFavoriet from "../favoriets/AddProductToFavoriet.js";
 import AddProductButtons from "../checkout/AddProductButtons.js";
 import type { ProductType } from "./types/product.js";
+import { useState } from "react";
+import { cn } from "@/lib/utils.js";
+import type { Color } from "@/data/colors.js";
+import { CheckCheck, CheckIcon } from "lucide-react";
 
 type Props = { product: ProductType };
 
@@ -12,12 +23,18 @@ function ProductInfo({ product }: Props) {
   const { name, slug, _id: id, price, colors } = product;
   const { handleIncreaseProductQty, getProductQty } = useShopingCart();
 
+  const [selectedColor, setSelectedColor] = useState<Color>(
+    product.colors[0] as Color,
+  );
+
   const productQty = getProductQty(id);
 
   return (
     <div className="mt-4 space-y-2 px-1 md:mt-0 md:px-3 lg:px-6">
       <div className="flex items-start justify-between">
-        <h1 className="text-500 leading-relaxed font-bold text-grey-900">{name}</h1>
+        <h1 className="text-500 text-grey-900 leading-relaxed font-bold">
+          {name}
+        </h1>
 
         <AddProductToFavoriet productId={product?._id} />
       </div>
@@ -43,9 +60,19 @@ function ProductInfo({ product }: Props) {
         <div className="flex items-center gap-1">
           {colors.map((color) => (
             <span
-              className="h-6 w-6 rounded-md border border-gray-300"
+              className={cn(
+                "flex h-7 w-7 cursor-pointer items-center justify-center rounded-md border-4 border-gray-300",
+                selectedColor?.hex === color.hex && "border-primary border-4",
+              )}
               style={{ backgroundColor: color.hex }}
-            />
+              onClick={() => setSelectedColor(color)}
+            >
+              {selectedColor?.hex === color.hex && (
+                <CheckIcon
+                  className={cn(color.hex === "#000000" && "text-grey-0")}
+                />
+              )}
+            </span>
           ))}
         </div>
       </div>
@@ -63,16 +90,16 @@ function ProductInfo({ product }: Props) {
         </div>
       </div>
 
-      <p className="text-500 font-medium text-grey-900">{formatToman(price)}</p>
+      <p className="text-500 text-grey-900 font-medium">{formatToman(price)}</p>
 
       <div className="mt-2 flex gap-3">
         {productQty > 0 ? (
-          <AddProductButtons id={id} />
+          <AddProductButtons id={id} color={selectedColor} />
         ) : (
           <Button
             full
             size="large"
-            onClick={() => handleIncreaseProductQty(id)}
+            onClick={() => handleIncreaseProductQty(id, selectedColor)}
           >
             <span>افزودن به سبد خرید</span>
             <ShoppingCart />
