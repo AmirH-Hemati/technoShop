@@ -19,8 +19,8 @@ exports.uploadUserImage = upload.single("photo");
 
 exports.resizeUserImage = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
-  const fileName = `user-${Date.now()}.jpeg`;
 
+  const fileName = `user-${Date.now()}.jpeg`;
   await sharp(req.file.buffer)
     .resize(500, 500)
     .toFormat("jpeg")
@@ -41,7 +41,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   const { name, email, nationalId } = req.body;
 
   const updateUser = { name, email, nationalId };
-  if (req.body.photo) updateUser.photo = req.body.photo;
+  if (req.body.photo && req.file) updateUser.photo = req.body.photo;
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id, updateUser, {
     new: true,

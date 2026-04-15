@@ -33,15 +33,22 @@ function PaymentStep() {
                 </h3>
 
                 <div className="text-grey-600 text-100 md:text-200 flex flex-col gap-0.5 md:flex-row md:gap-4">
-                  <span>{item.brand} </span>
+                  <span>{item.brand.label}</span>
 
-                  <span> {item.colors}</span>
+                  <div className="flex items-center gap-1">
+                    {item.colors.map((color) => (
+                      <span
+                        className="h-6 w-6 rounded-md border border-gray-300"
+                        style={{ backgroundColor: color.hex }}
+                      />
+                    ))}
+                  </div>
 
                   <span className="text-grey-600">{item.qty} عدد</span>
                 </div>
               </div>
 
-              <div className="text-200 self-end text-grey-900 font-medium">
+              <div className="text-200 text-grey-900 self-end font-medium">
                 {formatToman(item.price - item.priceDiscount)}
               </div>
             </li>

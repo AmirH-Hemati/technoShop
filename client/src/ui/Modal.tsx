@@ -71,7 +71,7 @@ function Window({
       <div
         ref={ref}
         style={{ scrollbarWidth: "thin" }}
-        className="relative max-h-[85vh] w-full max-w-2xl overflow-auto rounded-xl bg-white shadow-md transition-all duration-300"
+        className="relative  overflow-auto rounded-xl bg-white shadow-md transition-all duration-300"
       >
         {closeButton && (
           <button

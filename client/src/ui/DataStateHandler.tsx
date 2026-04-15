@@ -29,7 +29,7 @@ function DataStateHandler<T>({
 
     return (
       <div className="flex flex-col items-center gap-4 text-center">
-        <p className="text-sm text-gray-600">{message}</p>
+        <p className="text-sm text-gray-600 my-4">{message}</p>
 
         {onRetry && <Button onClick={onRetry}>دوباره تلاش کن</Button>}
       </div>

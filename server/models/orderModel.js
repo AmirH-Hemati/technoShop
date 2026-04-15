@@ -29,7 +29,7 @@ const orderSchema = new mongoose.Schema(
         type: String,
         required: [true, " سفارش  باید  شهر را داشته  باشد."],
       },
-      addressLine: {
+      fullAddress: {
         type: String,
         required: [true, " سفارش  باید  آدرس را داشته  باشد."],
       },
@@ -48,7 +48,7 @@ const orderSchema = new mongoose.Schema(
       default: "processing",
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 orderSchema.pre(/^find/, function (next) {

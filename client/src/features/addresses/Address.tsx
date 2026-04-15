@@ -32,10 +32,13 @@ function Address({ index, address, checkBox = true }: Props) {
     <li
       className={cn(
         styles["address-area"],
-        "text-200 gap-2 rounded-md border p-3 md:p-4",
+        "text-200 cursor-pointer gap-2 rounded-md border p-3 md:p-4",
+        selectedAddress?._id === address._id &&
+          "bg-grey-50 border-primary border",
       )}
+      onClick={() => onSelectAddress(address)}
     >
-      <div className="h-full w-32 overflow-hidden rounded-lg [grid-area:map] md:w-64">
+      <div className="z-10 h-full bg-red-500 w-32 overflow-hidden rounded-lg [grid-area:map] md:w-64">
         <MapContainer
           center={position}
           zoom={13}

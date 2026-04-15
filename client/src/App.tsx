@@ -21,7 +21,7 @@ import ProtectedRoute from "./ui/ProtectedRoute.jsx";
 import { NuqsAdapter } from "nuqs/adapters/react";
 
 const queryClient = new QueryClient({
-  defaultOption: {
+  defaultOptions: {
     queries: {
       staleTime: 0,
     },
