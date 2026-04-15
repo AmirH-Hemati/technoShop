@@ -19,6 +19,7 @@ type ShoppingCartContextValue = {
   handleRemoveProduct: (id: string) => void;
   getProductQty: (id: string) => number;
   cartQty: () => number;
+  onClearCart: () => void;
   cartItems: CartItem[] | [];
 };
 
@@ -33,7 +34,6 @@ function ShopingCartProvider({ children }: Props): ReactElement {
     "shopingCart",
   );
 
-  console.log(cartItems);
   function handleIncreaseProductQty(id: string, color: Color) {
     setCartItems((currentItems) => {
       if (currentItems.find((item) => item?.id === id)) {
@@ -70,6 +70,10 @@ function ShopingCartProvider({ children }: Props): ReactElement {
   function cartQty(): number {
     return cartItems.reduce((totalQty, item) => totalQty + item.qty, 0);
   }
+
+  function handleClearCart() {
+    setCartItems([]);
+  }
   return (
     <ShopingCartContext.Provider
       value={{
@@ -79,6 +83,7 @@ function ShopingCartProvider({ children }: Props): ReactElement {
         getProductQty,
         cartQty,
         cartItems,
+        onClearCart: handleClearCart,
       }}
     >
       {children}

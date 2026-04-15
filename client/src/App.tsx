@@ -14,7 +14,7 @@ import ContactUs from "./pages/home/ContactUs.js";
 import Home from "./pages/home/Home.jsx";
 import Product from "./pages/home/Product.jsx";
 import Products from "./pages/home/Products.js";
-import Verify from "./pages/home/Verify.jsx";
+import Verify from "./pages/home/Verify.js";
 import MainLayout from "./ui/MainLayout.jsx";
 import ProtectedRoute from "./ui/ProtectedRoute.jsx";
 
