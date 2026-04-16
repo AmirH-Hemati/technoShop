@@ -11,7 +11,7 @@ function Comment({ comment }: Props) {
     <li className="border-grey-200 grid min-h-44 space-y-3 md:border-t md:p-3">
       <div className="flex items-start justify-between gap-4">
         <div className="flex flex-col space-y-1">
-          <p className="text-grey-700 text-300 font-medium">
+          <p className="text-grey-900 text-300 font-medium">
             {comment?.user?.name || "کاربر ناشناس"}
           </p>
 
@@ -44,7 +44,7 @@ function Comment({ comment }: Props) {
         </button>
       </div>
 
-      <p className="text-grey-800 text-300 block leading-relaxed md:hidden">
+      <p className="text-grey-800 text-300 block leading-relaxed">
         {comment?.comment}
       </p>
 

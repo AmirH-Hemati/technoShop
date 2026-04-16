@@ -1,12 +1,19 @@
+import { useState } from "react";
 import { Layer } from "iconsax-reactjs";
 
-import Modal from "@/ui/Modal.js";
+import type { SelectOptionType } from "@/types/select-option-types.js";
 import Button from "@/ui/Button.js";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog.js";
 
 import AddComment from "./AddComment.js";
 import CommentsList from "./CommentsList.js";
-
-import type { SelectOptionType } from "@/types/select-option-types.js";
 import type { ProductType } from "../products/types/product.js";
 
 export const tabs: SelectOptionType[] = [
@@ -18,6 +25,10 @@ export const tabs: SelectOptionType[] = [
 
 type Props = { product: ProductType };
 function Comments({ product }: Props) {
+  const [openDialog, setOpenDialog] = useState(false);
+  function handlecloseDialog() {
+    setOpenDialog(false);
+  }
   return (
     <div className="mt-6">
       <div className="flex flex-row items-center md:justify-between">
@@ -40,14 +51,21 @@ function Comments({ product }: Props) {
         </div>
 
         <div className="hidden md:block">
-          <Modal>
-            <Modal.Open open="addComment">
+          <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+            <DialogTrigger>
               <Button>نظر خود را ثبت کنید</Button>
-            </Modal.Open>
-            <Modal.Window name="addComment">
-              <AddComment<ProductType> item={product} />
-            </Modal.Window>
-          </Modal>
+            </DialogTrigger>
+            <DialogContent
+              showCloseButton={false}
+              className="sm:!max-w-1xl !w-full overflow-auto sm:!max-h-[85vh]"
+              style={{ scrollbarWidth: "thin" }}
+            >
+              <AddComment<ProductType>
+                item={product}
+                onCloseDialog={handlecloseDialog}
+              />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
       <CommentsList product={product} />
