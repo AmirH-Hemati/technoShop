@@ -6,8 +6,8 @@ import Textarea from "@/ui/Textarea.js";
 import Button from "@/ui/Button.js";
 
 type Props<T> = {
-  onCloseModal?: () => void;
   item: T;
+  onCloseDialog?: () => void;
 };
 type ItemWithImage = {
   _id: string;
@@ -15,7 +15,7 @@ type ItemWithImage = {
   name: string;
 };
 
-function AddReview<T extends ItemWithImage>({ onCloseModal, item }: Props<T>) {
+function AddReview<T extends ItemWithImage>({ onCloseDialog, item }: Props<T>) {
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
 
@@ -32,7 +32,7 @@ function AddReview<T extends ItemWithImage>({ onCloseModal, item }: Props<T>) {
       },
       {
         onSuccess: () => {
-          onCloseModal?.();
+          onCloseDialog?.();
         },
       },
     );
@@ -41,21 +41,21 @@ function AddReview<T extends ItemWithImage>({ onCloseModal, item }: Props<T>) {
   return (
     <div className="flex flex-col gap-3">
       <div className="border-grey-200 flex items-center gap-3 border-b py-4">
-        <ArrowRight className="cursor-pointer" onClick={onCloseModal} />
-        <span className="text-sm">ثبت امتیاز و نظر</span>
+        <ArrowRight className="cursor-pointer" onClick={onCloseDialog} />
+        <span className="text-400 font-semibold">ثبت امتیاز و نظر</span>
       </div>
 
-      <div className="border-grey-200 flex items-start gap-3 border-b px-10 py-4">
+      <div className="border-grey-200 flex items-start gap-3 border-b px-2 py-4">
         <img
           src={item.imageCover}
           alt={item.name}
-          className="h-12 w-12 rounded-md object-cover object-center"
+          className="h-16 w-16 rounded-md object-cover object-center"
         />
-        <p className="text-xs font-medium lg:text-sm">{item.name}</p>
+        <p className="text-300 font-medium">{item.name}</p>
       </div>
 
       <div className="border-grey-200 flex items-center justify-between border-b px-4 py-1">
-        <p className="mb-2 text-xs font-medium">امتیاز شما </p>
+        <p className="mb-2 font-medium text-200">امتیاز شما </p>
         <div className="flex items-center gap-2">
           {[1, 2, 3, 4, 5].map((i) => (
             <Star1
@@ -69,7 +69,7 @@ function AddReview<T extends ItemWithImage>({ onCloseModal, item }: Props<T>) {
         </div>
       </div>
       <div className="px-4">
-        <p className="mb-4 text-xs font-medium"> بازخورد شما </p>
+        <p className="mb-4 text-200 font-medium"> بازخورد شما </p>
         <Textarea
           value={review}
           onChange={(e) => setReview(e.target.value)}
@@ -82,7 +82,7 @@ function AddReview<T extends ItemWithImage>({ onCloseModal, item }: Props<T>) {
         ثبت امتیاز
       </Button>
 
-      <p className="text-center text-[13px]">
+      <p className="text-center text-100">
         ثبت امتیاز به معنی موافقت با قوانین انتشار ما است.
       </p>
     </div>

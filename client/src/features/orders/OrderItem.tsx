@@ -1,14 +1,28 @@
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { ArrowLeft, CalendarCheck, CpuIcon, Truck } from "lucide-react";
 
-import AddReview from "../reviews/AddReview.js";
 import { Button } from "@/components/ui/button.js";
 import { formatToman } from "@/utils/helper.js";
-import Modal from "@/ui/Modal.js";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog.js";
+
+import AddReview from "../reviews/AddReview.js";
 
 function OrderItem({ order }) {
+  const [openDialog, setOpenDialog] = useState(false);
   const [searchParams] = useSearchParams();
   const status = searchParams.get("status") || "processing";
+
+  function handlecloseDialog() {
+    setOpenDialog(false);
+  }
 
   return (
     <li className="border-grey-100 my-3 rounded-md border bg-white shadow-xs">
@@ -83,16 +97,23 @@ function OrderItem({ order }) {
               </div>
             </div>
 
-            <Modal>
-              <Modal.Open open="addComment">
+            <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+              <DialogTrigger>
                 <Button variant="ghost" size="xs">
                   ثبت نظر خریدارن
                 </Button>
-              </Modal.Open>
-              <Modal.Window name="addComment">
-                <AddReview item={productItem.product} />
-              </Modal.Window>
-            </Modal>
+              </DialogTrigger>
+              <DialogContent
+                showCloseButton={false}
+                className="sm:!max-w-1xl !w-full overflow-auto sm:!max-h-[85vh]"
+                style={{ scrollbarWidth: "thin" }}
+              >
+                <AddReview
+                  item={productItem.product}
+                  onCloseDialog={handlecloseDialog}
+                />
+              </DialogContent>
+            </Dialog>
           </li>
         ))}
       </ul>
