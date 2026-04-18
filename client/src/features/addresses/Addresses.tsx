@@ -11,6 +11,7 @@ function Addresses({ checkBox = false }: Props) {
       data={addresses}
       error={error}
       onRetry={refetch}
+      emptyMessage="آدرسی برای نمایش وجود ندارد ، لطفا ابتدا یک آدرس اضافه کنید"
     >
       <ul className="w-full space-y-5">
         {addresses?.map((address , index) => (

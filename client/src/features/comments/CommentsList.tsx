@@ -30,7 +30,7 @@ function CommentsList({ product }: Props) {
 
   return (
     <div className="mt-6 flex flex-col gap-6">
-      <DataStateHandler<CommentType> data={comments} isLoading={isLoading}>
+      <DataStateHandler<CommentType> data={comments} isLoading={isLoading} emptyMessage="هنوز نظری وجود ندارد ، اولین نظر را شما وارد کنید">
         {comments?.length > 0 && (
           <ul className="hidden gap-3 p-3 md:grid">
             {comments.map((comment) => (

@@ -48,13 +48,13 @@ function OrderItem({ order }) {
           )}
         </div>
 
-        <div className="text-grey-600 text-100 flex items-center gap-0.5 md:gap-2">
+        <div className="text-grey-600 text-200 flex items-center gap-0.5 md:gap-2">
           <span>#{order._id.slice(0, 6)}</span>
-          <ArrowLeft size={14} />
+          <ArrowLeft size={18} />
         </div>
       </div>
 
-      <div className="text-100 flex flex-col gap-2 border-b-2 border-dashed px-1 pb-1 md:flex-row md:items-center md:gap-6 md:px-4 md:pb-3">
+      <div className="text-200 flex flex-col gap-2 border-b-2 border-dashed px-1 pb-1 md:flex-row md:items-center md:gap-6 md:px-4 md:pb-3">
         <p>
           <span className="text-grey-600">تاریخ سفارش : </span>
           <span className="text-grey-900">
@@ -64,7 +64,7 @@ function OrderItem({ order }) {
 
         <p>
           <span className="text-grey-600">کد سفارش : </span>
-          <span className="text-grey-900">{order._id.slice(0, 6)}</span>
+          <span className="text-grey-900">{order._id.slice(0, 6)}#</span>
         </p>
 
         <p>

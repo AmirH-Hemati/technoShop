@@ -11,7 +11,7 @@ function Reviews({ item }) {
 
   return (
     <div className="flex flex-col gap-3 py-5">
-      <DataStateHandler data={reviews} isLoading={isLoading}>
+      <DataStateHandler data={reviews} isLoading={isLoading} emptyMessage="خریداران این محصول هنوز نظری برای این محصول ثبت نکرده اند ">
         <ul className="hidden space-y-4 p-3 md:block">
           {reviews.map((comment) => (
             <Review review={comment} />

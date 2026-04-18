@@ -6,9 +6,10 @@ import { useMemo } from "react";
 
 function SummaryFilterComponents(): ReactElement | null {
   const { filters, setFilters } = useProductFilter();
-  // function handleDeleteFilter(type, value) {
-  //   setFilters({[type] : filters[type]})
-  // }
+  function handleDeleteFilter(type, value) {
+    console.log(type, value);
+    setFilters({ [type]: filters[type].filter((filter) => filter !== value) });
+  }
 
   const isEmpty: boolean = useMemo(() => {
     return (
@@ -37,6 +38,7 @@ function SummaryFilterComponents(): ReactElement | null {
             <li
               key={filter}
               className="bg-primary text-grey-0 text-100 flex cursor-pointer items-center gap-1 rounded-md px-3 py-0.5 font-medium"
+              onClick={() => handleDeleteFilter("brands", filter)}
             >
               <span>برند :</span>
               <span className="leading-0">{filter}</span>
@@ -49,6 +51,7 @@ function SummaryFilterComponents(): ReactElement | null {
             <li
               key={filter}
               className="bg-primary text-grey-0 text-100 flex cursor-pointer items-center gap-1 rounded-md px-3 py-0.5 font-medium"
+              onClick={() => handleDeleteFilter("colors", filter)}
             >
               <span>رنگ :</span> <span className="leading-0">{filter}</span>
               <CloseSquare className="text-grey-300" size={18} />
@@ -60,6 +63,7 @@ function SummaryFilterComponents(): ReactElement | null {
             <li
               key={filter}
               className="bg-primary text-grey-0 text-100 flex cursor-pointer items-center gap-1 rounded-md px-3 py-0.5 font-medium"
+              onClick={() => handleDeleteFilter("categories", filter)}
             >
               <span>دسته بندی :</span>{" "}
               <span className="leading-0">{filter}</span>

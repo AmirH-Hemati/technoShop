@@ -13,6 +13,7 @@ import { useCheckout } from "@/context/CheckoutCartContext.js";
 
 import styles from "./address.module.css";
 import { cn } from "@/lib/utils.js";
+import { useDeleteAddress } from "./useDeleteAddress.js";
 
 type Props = {
   index: number;
@@ -22,7 +23,7 @@ type Props = {
 
 function Address({ index, address, checkBox = true }: Props) {
   const { selectedAddress, onSelectAddress } = useCheckout();
-
+  const { deleteAddress, isDeleting } = useDeleteAddress();
   const position: [number, number] = [
     address?.lat || 35.6892,
     address?.lng || 51.389,
@@ -38,7 +39,7 @@ function Address({ index, address, checkBox = true }: Props) {
       )}
       onClick={() => onSelectAddress(address)}
     >
-      <div className="z-10 h-full bg-red-500 w-32 overflow-hidden rounded-lg [grid-area:map] md:w-64">
+      <div className="z-10 h-full w-32 overflow-hidden rounded-lg bg-red-500 [grid-area:map] md:w-64">
         <MapContainer
           center={position}
           zoom={13}
@@ -57,7 +58,7 @@ function Address({ index, address, checkBox = true }: Props) {
         <h3 className="text-300 text-grey-900 flex-1 font-semibold">
           آدرس {index + 1}
         </h3>
-        <CloseSquare size={18} />
+        <CloseSquare onClick={() => deleteAddress(address._id)} />
       </div>
 
       <div className="flex items-start gap-1 [grid-area:fullAddress]">

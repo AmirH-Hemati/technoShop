@@ -15,7 +15,7 @@ function FormContact() {
     >
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-0">
         <FormRow label={"نام و نام خانوادگی"} icon={<User />}>
-          <Input type="text" placeholder="امیر حسین همتی" />
+          <Input type="text" placeholder="علی اصفر واثقی" />
         </FormRow>
         <FormRow label="ایمیل" icon={<Message2 />}>
           <Input type="text" placeholder="example@gmail.com" />

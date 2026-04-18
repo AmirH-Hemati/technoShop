@@ -17,7 +17,7 @@ function Artboards() {
           className="h-full w-full object-cover object-right"
         />
 
-        <div className="absolute top-70 right-12">
+        <div className="absolute top-70 right-16">
           <Button variation="secondary" size="small">
             همین الان بساز
             <ArrowLeft2 size="16" />
@@ -39,10 +39,14 @@ function Artboards() {
             className="h-full w-full object-cover object-left"
           />
 
-          <div className="text-300 absolute inset-0 flex flex-col justify-center px-2">
-            <p className="leading-[180%] font-normal">عین آب خوردن</p>
-            <h3 className="leading-[180%] font-extrabold">کامپیوترت رو بساز</h3>
-            <p className="text-100 max-w-[20ch] leading-[140%] font-medium text-[#77A9FF]">
+          <div className=" absolute inset-0 flex flex-col justify-center gap-1 px-2">
+            <h3 className="text-200 max-w-[10ch] leading-[140%] font-extrabold sm:max-w-[20ch]">
+              عین آب خوردن
+            </h3>
+            <h3 className="text-200 max-w-[13ch] leading-[180%] font-medium sm:max-w-[20ch]">
+              کامپیوترت رو بساز
+            </h3>
+            <p className="text-200 max-w-[13ch] leading-[140%] font-medium text-[#77A9FF] sm:max-w-[20ch]">
               تجهیزات کامل کاستوم تکنوشاپ
             </p>
             <div className="mt-4 hidden md:block">
@@ -58,13 +62,13 @@ function Artboards() {
           <img
             src="Artboard3.png"
             alt=""
-            className="h-full w-full object-cover object-left"
+            className="w-full object-cover object-left sm:h-full"
           />
-          <div className="absolute inset-0 flex h-full flex-col justify-center px-2">
-            <h3 className="text-300 max-w-[20ch] leading-[140%] font-extrabold">
+          <div className="absolute inset-0 flex h-full flex-col justify-center gap-1 px-2 sm:gap-0">
+            <h3 className="text-200 max-w-[10ch] leading-[140%] font-extrabold sm:max-w-[20ch]">
               اینستاگراممون رو از دست نده
             </h3>
-            <p className="text-100 max-w-[20ch] leading-[140%] font-medium text-[#77A9FF]">
+            <p className="text-200 max-w-[15ch] leading-[140%] font-medium text-[#77A9FF] sm:max-w-[20ch]">
               جدیدترین محصولات و تحفیف های ویژه
             </p>
             <div className="mt-5 hidden md:block">

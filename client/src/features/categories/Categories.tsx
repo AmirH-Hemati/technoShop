@@ -20,7 +20,7 @@ function Categories() {
         viewport={{ once: true }}
         className="overflow-x-auto"
       >
-        <ul className="flex justify-between gap-3">
+        <ul className="flex justify-between overflow-x-auto  gap-3">
           {categories?.map((category, index) => (
             <motion.div
               initial={{ opacity: 0, y: 50 }}

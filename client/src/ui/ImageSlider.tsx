@@ -7,6 +7,8 @@ function ImageSlider({ images }: Props): ReactElement {
   const [currentIndex, setCurrentIndex] = useState(0);
   const selectImage = images[currentIndex];
 
+
+  console.log(images)
   function nextImage() {
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }
@@ -32,7 +34,7 @@ function ImageSlider({ images }: Props): ReactElement {
         <img
           src={selectImage}
           alt=""
-          className="max-h-[380px] w-[70%] rounded-xl object-cover shadow-md transition-all duration-300"
+          className="w-[70%] rounded-xl object-cover shadow-md transition-all duration-300"
         />
 
         <button

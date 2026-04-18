@@ -5,13 +5,14 @@ const {
   getMyOrders,
   getOrder,
   test,
+  getRecentOrder,
 } = require("../controllers/orderControllers");
 
 const router = express.Router();
 
 router.use(protected);
 router.get("/myOrders", getMyOrders);
-router.get("/preOrderProduct", test);
+router.get("/recentOrder/:userId", getRecentOrder);
 
 // app.use(restrict("admin")) admin only
 

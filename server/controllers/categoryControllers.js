@@ -34,7 +34,7 @@ exports.resizeCategoryImage = catchAsync(async (req, res, next) => {
 
   const fileName = `category-${Date.now()}.png`;
   await sharp(req.file.buffer)
-    .resize(2000, 1333)
+    .resize(1024, 1024)
     .toFormat("png")
     .png({ quality: 90 })
     .toFile(`public/img/categories/${fileName}`);

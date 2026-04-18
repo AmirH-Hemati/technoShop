@@ -16,8 +16,8 @@ exports.getMyOrders = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.test = catchAsync(async (req, res, next) => {
-  const orders = await Order.find({ user: req.user._id });
+exports.getRecentOrder = catchAsync(async (req, res, next) => {
+  const orders = await Order.find({ user: req.params.userId });
   res.status(200).json({
     status: "success",
     data: orders,

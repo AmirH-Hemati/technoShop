@@ -43,7 +43,7 @@ function Comments({ product }: Props) {
           {tabs.map((tab) => (
             <button
               key={tab.value}
-              className="hover:border-primary hover:text-primary text-grey-600 rounded-lg px-3 py-1.5 text-sm transition md:text-base"
+              className="hover:border-primary cursor-pointer hover:font-medium hover:text-primary text-grey-600 rounded-lg px-3 py-1.5 text-sm transition md:text-base"
             >
               {tab.label}
             </button>

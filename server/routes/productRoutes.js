@@ -36,7 +36,12 @@ router.get("/:slug", getProductWithSlug);
 router
   .route("/:id")
   .get(getProduct)
-  .patch(uploadProductImage, resizeProductImage, updateProduct)
+  .patch(
+    uploadProductImage,
+    resizeProductImage,
+    convertStringToParse,
+    updateProduct,
+  )
   .delete(deleteProduct);
 
 module.exports = router;

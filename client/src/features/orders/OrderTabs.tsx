@@ -20,11 +20,11 @@ function OrderTabs() {
         {tabs.map((tab, index) => (
           <div
             key={index}
-            className={`text-100 flex items-center gap-1 px-3 py-1 font-medium transition-all duration-300 select-none ${status === tab.value ? "rounded-sm bg-blue-100 text-blue-900" : "grayscale"}`}
+            className={`text-200 flex items-center gap-1 px-3 py-1 font-medium transition-all duration-300 select-none ${status === tab.value ? "rounded-sm bg-blue-100 text-blue-900" : "grayscale"}`}
             onClick={() => handelClick(tab.value)}
           >
             <span>{tab.label}</span>
-            <span>{tab.count}</span>
+            {/* <span>{tab.count}</span> */}
           </div>
         ))}
       </div>

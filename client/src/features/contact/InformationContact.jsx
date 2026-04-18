@@ -35,7 +35,7 @@ function InformationContact() {
         </div>
         <div className="space-y-0.5">
           <h3 className="text-sm font-bold">ایمیل</h3>
-          <p className="text-grey-700 text-xs">amirgodofwar30001@cafino.com </p>
+          <p className="text-grey-700 text-xs">tecknoShop@cafino.com </p>
         </div>
       </div>
       <div className="flex items-center gap-2 transition duration-300 hover:translate-x-1">

@@ -20,7 +20,7 @@ import { CheckCheck, CheckIcon } from "lucide-react";
 type Props = { product: ProductType };
 
 function ProductInfo({ product }: Props) {
-  const { name, slug, _id: id, price, colors } = product;
+  const { name, slug, _id: id, price, colors, priceDiscount } = product;
   const { handleIncreaseProductQty, getProductQty } = useShopingCart();
 
   const [selectedColor, setSelectedColor] = useState<Color>(
@@ -32,7 +32,7 @@ function ProductInfo({ product }: Props) {
   return (
     <div className="mt-4 space-y-2 px-1 md:mt-0 md:px-3 lg:px-6">
       <div className="flex items-start justify-between">
-        <h1 className="text-500 text-grey-900 leading-relaxed font-bold">
+        <h1 className="text-500 text-grey-900 w-[90%] leading-relaxed font-bold">
           {name}
         </h1>
 
@@ -90,8 +90,14 @@ function ProductInfo({ product }: Props) {
         </div>
       </div>
 
-      <p className="text-500 text-grey-900 font-medium">{formatToman(price)}</p>
-
+      <div className="flex items-center gap-1">
+        <p className="text-500 text-grey-900 font-medium">
+          {formatToman(price - priceDiscount)}
+        </p>
+        <p className="text-300 text-red-500 font-medium line-through">
+          {formatToman(price )}
+        </p>
+      </div>
       <div className="mt-2 flex gap-3">
         {productQty > 0 ? (
           <AddProductButtons id={id} color={selectedColor} />

@@ -152,7 +152,7 @@
     background-color: #fafafa;
     color: var(--color-grey-800);
     font-family: "Vazirmatn", system-ui;
-    font-size: var(--fz-400);
+    font-size: var(--fz-300);
     @apply bg-background text-foreground;
   }
   #root {

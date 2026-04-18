@@ -11,10 +11,10 @@ function Product({ product }: Props) {
     (product.priceDiscount / product.price) * 100,
   );
   return (
-    <div className="bg-grey-0 relative flex max-h-80 flex-col rounded-xl p-3 shadow-md hover:scale-105">
+    <div className="bg-grey-0 relative flex h-80 flex-col rounded-xl p-3 shadow-md hover:scale-105">
       <div className="flex h-10 w-full items-center justify-between">
         {percentDiscount > 0 && (
-          <span className="flex items-center gap-1 rounded-full bg-red-500 px-3 py-1 text-[12px] font-bold text-white shadow">
+          <span className="flex items-center gap-1 rounded-full bg-red-500 px-3 py-1 text-100 font-bold text-white shadow">
             <span>{percentDiscount}%</span>
             <span className="opacity-80">تخفیف</span>
           </span>
@@ -26,12 +26,12 @@ function Product({ product }: Props) {
         to={`/products/${product.slug}`}
         className="flex flex-1 flex-col items-center justify-between gap-1"
       >
-        <img src={product.imageCover} alt={product.name} />
+        <img src={product.imageCover} alt={product.name} className="h-36 object-cover" />
         <p className="text-grey-900 text-300 line-clamp-2 text-center leading-[140%] font-bold">
           {product.name}
         </p>
         <div className="text-100 flex w-full flex-wrap items-center justify-between">
-          <div className="bg-grey-200 flex items-center gap-1 rounded-full px-2 py-0.5 ">
+          <div className="bg-grey-200 flex items-center gap-1 rounded-full px-2 py-0.5">
             <TruckTime size={18} color="#ED2E2E" />
             <span className="text-grey-800">ارسال رایگان</span>
           </div>
@@ -44,8 +44,15 @@ function Product({ product }: Props) {
           </div>
         </div>
 
-        <div className="mr-auto">
-          <Button size="small">{formatToman(product.price)}</Button>
+        <div className="mr-auto flex flex-col items-center justify-center">
+          <Button size="small">
+            {formatToman(product.price - product.priceDiscount)}
+          </Button>
+          {percentDiscount > 0 && (
+            <span className="text-100 font-bold text-gray-500 line-through">
+              {formatToman(product.price)}
+            </span>
+          )}
         </div>
       </Link>
     </div>

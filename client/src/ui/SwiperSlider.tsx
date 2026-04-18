@@ -17,7 +17,7 @@ function SwiperSlider<T>({ render, data, bg }: Props<T>) {
       className={`${bg ? "bg-primary rounded-md" : ""} w-full`}
       breakpoints={{
         0: {
-          slidesPerView: 1.6,
+          slidesPerView: 1.3,
           spaceBetween: 16,
         },
         480: {

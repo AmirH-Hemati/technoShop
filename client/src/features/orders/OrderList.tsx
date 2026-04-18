@@ -12,6 +12,7 @@ function OrderList() {
       data={orders}
       error={error}
       onRetry={refetch}
+      emptyMessage="تاریخپه ای از اطلاعات سفارش وجود ندارد."
     >
       <ul className="bg-grey-0 px-2">
         {orders.length === 0 && (

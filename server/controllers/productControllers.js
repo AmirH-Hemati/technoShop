@@ -32,6 +32,10 @@ exports.uploadProductImage = upload.fields([
 ]);
 
 exports.convertStringToParse = (req, res, next) => {
+  if (typeof req.body.images === "string") {
+    req.body.images = JSON.parse(req.body.images);
+  }
+
   req.body.brand = JSON.parse(req.body.brand);
   req.body.colors = JSON.parse(req.body.colors);
   req.body.features = JSON.parse(req.body.features);
@@ -39,13 +43,14 @@ exports.convertStringToParse = (req, res, next) => {
 };
 
 exports.resizeProductImage = catchAsync(async (req, res, next) => {
-  if (!req.files.imageCover || !req.files.images) return next();
+  if (!req.files || !req?.files?.imageCover || !req?.files?.images)
+    return next();
 
   const fileName = `product-${Date.now()}-cover.png`;
   req.body.imageCover = `${req.protocol}://${req.get("host")}/img/products/${fileName}`;
 
   await sharp(req.files.imageCover[0].buffer)
-    .resize(2000, 1333)
+    .resize(800, 800)
     .toFormat("png")
     .png({ quality: 90 })
     .toFile(`public/img/products/${fileName}`);
@@ -56,7 +61,7 @@ exports.resizeProductImage = catchAsync(async (req, res, next) => {
     req.files.images.map(async (file, index) => {
       const fileName = `product-${Date.now()}-${index + 1}.png`;
       await sharp(file.buffer)
-        .resize(2000, 1333)
+        .resize(800, 800)
         .toFormat("png")
         .png({ quality: 90 })
         .toFile(`public/img/products/${fileName}`);

@@ -11,8 +11,9 @@ function FavorietsList() {
       data={favoriets}
       error={error}
       onRetry={refetch}
+      emptyMessage="محصول مورد علاقه ای برای نمایش وجود ندارد ، لطفا ابتدا یک محصول اضافه کنید"
     >
-      <ul className="grid mt-4 grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <ul className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {favoriets?.map((favoriet) => (
           <FavorietItem key={favoriet._id} favoriet={favoriet} />
         ))}

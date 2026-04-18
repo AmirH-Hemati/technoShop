@@ -7,14 +7,14 @@ function PaymentStep() {
 
   return (
     <div className="space-y-6">
-      <p className="text-200 border-grey-100 text-grey-800 my-2 border-b py-2 font-medium">
+      <p className="text-300 border-grey-100 text-grey-800 my-2 border-b py-2 font-medium">
         انتخاب نحوه پرداخت
       </p>
-      <p className="text-100 text-grey-800">
+      <p className="text-200 text-grey-800">
         لطفا از درست بودن اطلاعات خود اطمینان حاصل فرمایید
       </p>
       <div>
-        <p className="text-200 border-grey-100 text-grey-800 my-2 border-b py-2 font-medium">
+        <p className="text-300 border-grey-100 text-grey-800 my-2 border-b py-2 font-medium">
           خلاصه محصولات
         </p>
         <ul className="divide-grey-100 space-y-4 divide-y-2">
@@ -23,7 +23,7 @@ function PaymentStep() {
               <img
                 src={item.imageCover}
                 alt={item.name}
-                className="h-16 w-16 rounded-md object-cover"
+                className="h-20 rounded-md object-cover"
               />
 
               <div className="mr-2 flex flex-1 flex-col justify-between">
@@ -54,7 +54,7 @@ function PaymentStep() {
       </div>
 
       <div>
-        <p className="text-200 border-grey-100 text-grey-800 my-2 border-b py-2 font-medium">
+        <p className="text-300 border-grey-100 text-grey-800 my-2 border-b py-2 font-medium">
           آدرس انتخابی شما
         </p>
         <Address address={selectedAddress} index={1} />
