@@ -4,6 +4,29 @@ import Modal from "./Modal.js";
 import Login from "../features/authentication/Login.js";
 import { useUser } from "../features/authentication/useUser.js";
 
+const links = [
+  {
+    href: "/ContactUs",
+    icon: Call,
+    label: "ارتباط با ما",
+  },
+  {
+    href: "/cart",
+    icon: ShoppingCart,
+    label: "سبد خرید",
+  },
+  {
+    href: "/products",
+    icon: Category,
+    label: "محصولات",
+  },
+  {
+    href: "/",
+    icon: Home,
+    label: "خانه",
+  },
+];
+
 function MenuMobile() {
   const { user, isLoading } = useUser();
   return (
@@ -22,14 +45,10 @@ function MenuMobile() {
         ) : (
           <Modal>
             <Modal.Open open="login">
-              <NavLink
-                className={({ isActive }) =>
-                  `text-grey-500 relative flex flex-col items-center gap-1 py-2`
-                }
-              >
+              <div className="text-grey-500 relative flex flex-col items-center gap-1 py-2">
                 <User size={30} />
-                <span className="text-xs font-medium">ورود</span>
-              </NavLink>
+                <span className="text-200 font-medium">ورود</span>
+              </div>
             </Modal.Open>
 
             <Modal.Window name="login">
@@ -38,42 +57,18 @@ function MenuMobile() {
           </Modal>
         )}
 
-        <NavLink
-          to={`/ContactUs`}
-          className={({ isActive }) =>
-            `text-grey-500 relative flex flex-col items-center gap-1 py-2 ${isActive ? "text-primary before:bg-primary before:h-1 before:w-full before:rounded-b-2xl before:transition-all before:duration-300" : "text-black"}`
-          }
-        >
-          <Call size={30} />
-          <span className="text-xs font-medium">ارتباط با ما</span>
-        </NavLink>
-        <NavLink
-          to={`/cart`}
-          className={({ isActive }) =>
-            `text-grey-500 relative flex flex-col items-center gap-1 py-2 ${isActive ? "text-primary before:bg-primary before:h-1 before:w-full before:rounded-b-2xl before:transition-all before:duration-300" : "text-black"}`
-          }
-        >
-          <ShoppingCart size={30} />
-          <span className="text-xs font-medium">سبد خرید</span>
-        </NavLink>
-        <NavLink
-          to={`products`}
-          className={({ isActive }) =>
-            `text-grey-500 relative flex flex-col items-center gap-1 py-2 ${isActive ? "text-primary before:bg-primary before:h-1 before:w-full before:rounded-b-2xl before:transition-all before:duration-300" : "text-black"}`
-          }
-        >
-          <Category size={30} />
-          <span className="text-xs font-medium">دسته بندی</span>
-        </NavLink>
-        <NavLink
-          to={`/`}
-          className={({ isActive }) =>
-            `text-grey-500 relative flex flex-col items-center gap-1 py-2 ${isActive ? "text-primary before:bg-primary before:h-1 before:w-full before:rounded-b-2xl before:transition-all before:duration-300" : "text-black"}`
-          }
-        >
-          <Home size={30} />
-          <span className="text-xs font-medium">خانه</span>
-        </NavLink>
+        {links.map((link) => (
+          <NavLink
+            key={link.href}
+            to={link.href}
+            className={({ isActive }) =>
+              `text-grey-500 relative flex flex-col items-center gap-1 py-2 ${isActive ? "text-primary before:bg-primary before:h-1 before:w-full before:rounded-b-2xl before:transition-all before:duration-300" : "text-black"}`
+            }
+          >
+            <link.icon size={30} />
+            <span className="text-200 font-medium">{link.label}</span>
+          </NavLink>
+        ))}
       </div>
     </div>
   );
