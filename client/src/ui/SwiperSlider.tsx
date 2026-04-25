@@ -9,7 +9,7 @@ type Props<T> = {
   render: (item: T, index: number) => React.ReactNode;
   bg?: boolean;
 };
-function SwiperSlider<T>({ render, data, bg }: Props<T>) {
+const SwiperSlider = function SwiperSlider<T>({ render, data, bg }: Props<T>) {
   return (
     <Swiper
       navigation={true}
@@ -41,6 +41,6 @@ function SwiperSlider<T>({ render, data, bg }: Props<T>) {
       {data?.map(render)}
     </Swiper>
   );
-}
+};
 
 export default SwiperSlider;

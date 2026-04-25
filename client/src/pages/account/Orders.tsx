@@ -1,6 +1,6 @@
 import Heading from "@/ui/Heading.js";
-import OrderList from "@/features/orders/OrderList.js";
-import OrderTabs from "@/features/orders/OrderTabs.js";
+import OrderList from "@/features/orders/components/OrderList.js";
+import OrderTabs from "@/features/orders/components/OrderTabs.js";
 import BackButton from "@/ui/BackButton.js";
 
 function Orders() {

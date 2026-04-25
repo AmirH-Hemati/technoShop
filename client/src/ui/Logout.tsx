@@ -1,9 +1,8 @@
 import { LogoutCurve } from "iconsax-reactjs";
-import { useLogout } from "../features/authentication/useLogout.js";
+import { useLogout } from "../features/authentication/hooks/useLogout.js";
 import SpinnerMini from "./SpinnerMini.js";
 
-type Props = { showLabel: boolean };
-function Logout({ showLabel = false }: Props) {
+function Logout() {
   const { isPending, logout } = useLogout();
   return (
     <div

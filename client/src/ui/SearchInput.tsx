@@ -2,8 +2,8 @@ import { useRef, useState } from "react";
 import { SearchNormal1 } from "iconsax-reactjs";
 import Input from "./Input.js";
 import SearchModal from "./SearchModal.js";
-import { useSearchProducts } from "../features/products/useSearchProducts.js";
-import ProductCard from "../features/products/ProductCard.js";
+import { useSearchProducts } from "../features/products/hooks/useSearchProducts.js";
+import ProductCard from "../features/products/components/ProductCard.js";
 
 function SearchInput() {
   const [query, setQuery] = useState("");

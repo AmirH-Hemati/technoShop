@@ -2,7 +2,7 @@ import { Add } from "iconsax-reactjs";
 
 import { CheckoutProvider } from "@/context/CheckoutCartContext.js";
 import { Button } from "@/components/ui/button.js";
-import AddressPicker from "@/features/addresses/AddressPicker.js";
+import AddressPicker from "@/features/addresses/components/AddressPicker.js";
 
 import {
   Dialog,
@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dialog.js";
 import BackButton from "@/ui/BackButton.js";
 import Heading from "@/ui/Heading.js";
-import Addresses from "@/features/addresses/Addresses.js";
+import Addresses from "@/features/addresses/components/Addresses.js";
 
 function AddressesPage() {
   return (

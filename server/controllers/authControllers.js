@@ -13,6 +13,7 @@ const signToken = (id) => {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
+
 exports.handelSendCode = catchAsync(async function (req, res, next) {
   const { phoneNumber } = req.body;
 

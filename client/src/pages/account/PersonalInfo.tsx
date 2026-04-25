@@ -1,5 +1,5 @@
 import Heading from "@/ui/Heading.js";
-import UpdateUserDataForm from "../../features/authentication/UpdateUserDataForm.js";
+import UpdateUserDataForm from "../../features/authentication/components/UpdateUserDataForm.js";
 import BackButton from "@/ui/BackButton.js";
 
 function PersonalInfo() {

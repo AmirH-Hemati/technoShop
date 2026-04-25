@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 
-type Props = PropsWithChildren & { onClick: () => void; disabled: boolean };
+type Props = PropsWithChildren & { onClick: () => void; disabled?: boolean };
 function ButtonIcon({ children, onClick, disabled }: Props) {
   return (
     <button

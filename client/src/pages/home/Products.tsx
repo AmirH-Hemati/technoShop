@@ -1,7 +1,7 @@
-import ProductFilter from "@/features/products/ProductFilters.js";
-import ProductsList from "@/features/products/ProductsList.js";
-import SummaryFilterComponents from "@/features/products/SummaryFilterComponents.js";
-import { useProducts } from "@/features/products/useProducts.js";
+import ProductFilter from "@/features/products/components/ProductFilters.js";
+import ProductsList from "@/features/products/components/ProductsList.js";
+import SummaryFilterComponents from "@/features/products/components/SummaryFilterComponents.js";
+import { useProducts } from "@/features/products/hooks/useProducts.js";
 import CategoriesIcon from "@/ui/CategoriesIcon.js";
 import MobileFilter from "@/ui/MobileFilter.js";
 import Row from "@/ui/Row.js";

@@ -19,15 +19,15 @@ const productSchema = new mongoose.Schema(
       type: Number,
       required: [true, "A product must have a price"],
     },
-    priceDiscount: {
-      type: Number,
-      validate: {
-        validator: function (val) {
-          return this.isNew ? val < this.price : true;
+      priceDiscount: {
+        type: Number,
+        validate: {
+          validator: function (val) {
+            return this.isNew ? val < this.price : true;
+          },
+          message: "  تخفیف {{VALUE}} باید کمتر از قیمت اصلی باشد",
         },
-        message: "  تخفیف {{VALUE}} باید کمتر از قیمت اصلی باشد",
       },
-    },
     brand: {
       type: {
         value: { type: String, required: true },

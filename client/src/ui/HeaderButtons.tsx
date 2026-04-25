@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowDown2, LoginCurve, ShoppingCart, User } from "iconsax-reactjs";
-import Button from "./Button";
-import ButtonIcon from "./ButtonIcon";
-import Login from "../features/authentication/Login";
-import { useUser } from "../features/authentication/useUser";
+
 import { useShopingCart } from "@/context/ShopingCartContext.js";
 import { Spinner } from "@/components/ui/spinner.js";
 import Modal from "./Modal.js";
+import { useUser } from "@/features/authentication/hooks/useUser.js";
+import Login from "@/features/authentication/components/Login.js";
+import Button from "./Button.js";
+import ButtonIcon from "./ButtonIcon.js";
 
 function HeaderButtons() {
   const navigate = useNavigate();

@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import { Filter, SortAsc, SlidersHorizontal } from "lucide-react";
-import { useCategories } from "@/features/categories/useCategories.js";
 import { ScrollArea } from "@/components/ui/scroll-area.js";
 import {
   Sheet,
@@ -24,6 +23,7 @@ import {
 } from "@/components/ui/select.js";
 import { cn } from "@/lib/utils.js";
 import Button from "./Button.js";
+import { useCategories } from "@/features/categories/hooks/useCategories.js";
 
 const filterChips = [
   { id: "sort", label: "مرتب‌سازی", icon: <SortAsc size={16} /> },

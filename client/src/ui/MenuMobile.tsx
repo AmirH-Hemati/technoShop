@@ -1,8 +1,8 @@
 import { Call, Category, Home, ShoppingCart, User } from "iconsax-reactjs";
 import { NavLink } from "react-router-dom";
 import Modal from "./Modal.js";
-import Login from "../features/authentication/Login.js";
-import { useUser } from "../features/authentication/useUser.js";
+import Login from "../features/authentication/components/Login.js";
+import { useUser } from "../features/authentication/hooks/useUser.js";
 
 const links = [
   {

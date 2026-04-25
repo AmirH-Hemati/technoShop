@@ -1,12 +1,12 @@
-import SidebarMenu from "../../ui/SidebarMenu.js";
-import MainHeader from "../../ui/MainHeader.js";
-import { Outlet } from "react-router-dom";
-import Logout from "../../ui/Logout.js";
-import Footer from "../../ui/Footer.js";
 import BreadcrumbNav from "@/ui/BreadcrumbNav.js";
 import Sidebar from "@/ui/Sidebar.js";
 import { sidebar } from "@/data/AccountSidebarItmes.js";
-import UserAvatar from "@/features/authentication/UserAvatar.js";
+import UserAvatar from "@/features/authentication/components/UserAvatar.js";
+import MainHeader from "@/ui/MainHeader.js";
+import SidebarMenu from "@/ui/SidebarMenu.js";
+import Logout from "@/ui/Logout.js";
+import { Outlet } from "react-router-dom";
+import Footer from "@/ui/Footer.js";
 
 function AccountLayout() {
   return (

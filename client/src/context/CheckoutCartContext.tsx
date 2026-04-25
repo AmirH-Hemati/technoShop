@@ -6,7 +6,7 @@ import {
   type PropsWithChildren,
 } from "react";
 
-import { useProductsByIds } from "@/features/products/useProductsByIds.js";
+import { useProductsByIds } from "@/features/products/hooks/useProductsByIds.js";
 import type { AddressType } from "@/features/addresses/types/address.js";
 import type { ProductType } from "@/features/products/types/product.js";
 
@@ -64,9 +64,7 @@ function CheckoutProvider({ children }: PropsWithChildren) {
   );
 }
 
-function 
-
-useCheckout() {
+function useCheckout() {
   const context = useContext(CheckoutContext);
 
   if (context === undefined) {

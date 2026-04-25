@@ -14,9 +14,6 @@ function MainHeader() {
           <SearchInput />
         </div>
         <HeaderButtons />
-        <div className="text-grey-600 md:hidden">
-          <Moon />
-        </div>
       </div>
       <div className="block lg:hidden">
         <SearchInput />

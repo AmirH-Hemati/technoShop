@@ -1,6 +1,6 @@
-import FormContact from "../../features/contact/FormContact";
-import InformationContact from "../../features/contact/InformationContact";
-import Questions from "../../features/contact/Questions";
+import FormContact from "@/features/contact/components/FormContact.js";
+import InformationContact from "@/features/contact/components/InformationContact.js";
+import Questions from "@/features/contact/components/Questions.js";
 
 export default function ContactUs() {
   return (

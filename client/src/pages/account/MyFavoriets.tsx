@@ -1,6 +1,6 @@
 import Heading from "@/ui/Heading.js";
-import FavorietsList from "../../features/favoriets/FavorietsList.js";
 import BackButton from "@/ui/BackButton.js";
+import FavorietsList from "@/features/favoriets/components/FavorietsList.js";
 
 function MyFavoriets() {
   return (
