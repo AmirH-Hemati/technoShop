@@ -1,22 +1,23 @@
 import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
 
-import { useProduct } from "../hooks/useProduct.js";
-
-import RelatedProducts from "./RelatedProducts.js";
-import Features from "./Features.js";
-import ProductInfo from "./ProductInfo.js";
-
-import ImageSlider from "@/ui/ImageSlider.js";
-import Heading from "@/ui/Heading.js";
-import Spinner from "@/ui/Spinner.js";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs.js";
+
+import Heading from "@/ui/Heading.js";
+import ImageSlider from "@/ui/ImageSlider.js";
+import Spinner from "@/ui/Spinner.js";
+
 import Comments from "@/features/comments/components/Comments.js";
 import Reviews from "@/features/reviews/components/Reviews.js";
+
+import { useProduct } from "../hooks/useProduct.js";
+import Features from "./Features.js";
+import ProductInfo from "./ProductInfo.js";
+import RelatedProducts from "./RelatedProducts.js";
 
 function ProductDetails() {
   const { product, isLoading } = useProduct();

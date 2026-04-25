@@ -1,7 +1,9 @@
-import DataStateHandler from "../../../ui/DataStateHandler.js";
-import ProductItem from "./ProductItem.jsx";
-import { useProducts } from "../hooks/useProducts.js";
 import { motion } from "motion/react";
+
+import DataStateHandler from "../../../ui/DataStateHandler.js";
+import { useProducts } from "../hooks/useProducts.js";
+import ProductItem from "./ProductItem.jsx";
+
 function ProductsList() {
   const { isLoading, products, error, refetch } = useProducts();
   return (

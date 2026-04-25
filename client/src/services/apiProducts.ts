@@ -1,4 +1,5 @@
 import type { FilterType } from "@/types/filter.type.js";
+
 import axiosInstance from "./axiosInstance.js";
 
 export async function getProduct(slug: string) {

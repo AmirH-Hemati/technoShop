@@ -1,13 +1,18 @@
-import { SwiperSlide } from "swiper/react";
-import { useLatestProducts } from "../hooks/useLatestProducts.js";
-import Product from "./Product.js";
-import Button from "../../../ui/Button.js";
 import { ArrowLeft2 } from "iconsax-reactjs";
+
 import { motion } from "motion/react";
-import type { ProductType } from "../types/product.js";
-import Timer from "@/ui/Timer.js";
+
+import { SwiperSlide } from "swiper/react";
+
 import { Spinner } from "@/components/ui/spinner.js";
+
 import SwiperSlider from "@/ui/SwiperSlider.js";
+import Timer from "@/ui/Timer.js";
+
+import Button from "../../../ui/Button.js";
+import { useLatestProducts } from "../hooks/useLatestProducts.js";
+import type { ProductType } from "../types/product.js";
+import Product from "./Product.js";
 
 function AmazingPriceProducts() {
   const { products, isLoading } = useLatestProducts();

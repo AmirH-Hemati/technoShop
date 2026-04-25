@@ -1,11 +1,12 @@
 import { SwiperSlide } from "swiper/react";
-import SwiperSlider from "../../../ui/SwiperSlider.js";
-import Product from "./Product.js";
+
+import DataStateHandler from "@/ui/DataStateHandler.js";
 
 import Heading from "../../../ui/Heading.js";
-import type { ProductType } from "../types/product.js";
+import SwiperSlider from "../../../ui/SwiperSlider.js";
 import { useRelatedProducts } from "../hooks/useRelatedProducts.js";
-import DataStateHandler from "@/ui/DataStateHandler.js";
+import type { ProductType } from "../types/product.js";
+import Product from "./Product.js";
 
 type Props = { product: ProductType };
 function RelatedProducts({ product }: Props) {

@@ -1,5 +1,7 @@
-import { formatToman } from "../../../utils/helper.js";
 import { Link } from "react-router-dom";
+
+import { formatToman } from "../../../utils/helper.js";
+
 export default function ProductCard({ product, onClose, setQuery }) {
   function handelClose() {
     setQuery("");

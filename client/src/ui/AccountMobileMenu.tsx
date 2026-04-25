@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
-import { sidebar } from "../data/AccountSidebarItmes.js";
 import { ArrowLeft2, Logout } from "iconsax-reactjs";
+
+import { Link } from "react-router-dom";
+
+import { sidebar } from "../data/AccountSidebarItmes.js";
 
 function AccountMobileMenu() {
   return (

@@ -1,5 +1,7 @@
 import { Call, Location, Message, Timer1 } from "iconsax-reactjs";
+
 import { motion } from "motion/react";
+
 function InformationContact() {
   return (
     <motion.div
@@ -7,7 +9,7 @@ function InformationContact() {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ ease: "easeIn", duration: 0.4 }}
       viewport={{ once: true }}
-      className="relative flex bg-grey-0 shadow-2 flex-col justify-between gap-8 rounded-xl px-6 py-10 shadow"
+      className="bg-grey-0 shadow-2 relative flex flex-col justify-between gap-8 rounded-xl px-6 py-10 shadow"
     >
       <div className="flex items-center gap-2 transition duration-300 hover:translate-x-1">
         <div className="bg-primary/30 rounded-full p-2">

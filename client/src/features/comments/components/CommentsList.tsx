@@ -1,9 +1,7 @@
-import { SwiperSlide } from "swiper/react";
 import { useState } from "react";
 
-import DataStateHandler from "@/ui/DataStateHandler.js";
-import SwiperSlider from "@/ui/SwiperSlider.js";
-import Button from "@/ui/Button.js";
+import { SwiperSlide } from "swiper/react";
+
 import {
   Dialog,
   DialogContent,
@@ -13,13 +11,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog.js";
 
-import Comment from "./Comment.js";
-import AddComment from "./AddComment.js";
+import Button from "@/ui/Button.js";
+import DataStateHandler from "@/ui/DataStateHandler.js";
+import SwiperSlider from "@/ui/SwiperSlider.js";
+
 import type { ProductType } from "@/features/products/types/product.js";
+
 import { useGetProductComments } from "../hooks/useGetProductComments.js";
 import type { CommentType } from "../types/comment.js";
-
-
+import AddComment from "./AddComment.js";
+import Comment from "./Comment.js";
 
 type Props = { product: ProductType };
 function CommentsList({ product }: Props) {
@@ -31,7 +32,11 @@ function CommentsList({ product }: Props) {
 
   return (
     <div className="mt-6 flex flex-col gap-6">
-      <DataStateHandler<CommentType> data={comments} isLoading={isLoading} emptyMessage="هنوز نظری وجود ندارد ، اولین نظر را شما وارد کنید">
+      <DataStateHandler<CommentType>
+        data={comments}
+        isLoading={isLoading}
+        emptyMessage="هنوز نظری وجود ندارد ، اولین نظر را شما وارد کنید"
+      >
         {comments?.length > 0 && (
           <ul className="hidden gap-3 p-3 md:grid">
             {comments.map((comment) => (

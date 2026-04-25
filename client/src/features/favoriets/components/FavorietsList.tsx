@@ -1,6 +1,7 @@
 import DataStateHandler from "@/ui/DataStateHandler.js";
-import FavorietItem from "./FavorietItem.js";
+
 import { useMyFavoriets } from "../hooks/useMyFavoriets.js";
+import FavorietItem from "./FavorietItem.js";
 
 function FavorietsList() {
   const { favoriets, isLoading, error, refetch } = useMyFavoriets();

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+
 import { ArrowUp2 } from "iconsax-reactjs";
+
 import { motion } from "motion/react";
 
 function ScrollToTopButton() {

@@ -1,10 +1,13 @@
-import FroalaEditorComponent from "react-froala-wysiwyg";
+import { Controller } from "react-hook-form";
+
 import "froala-editor/js/languages/fa.js";
 import "froala-editor/js/plugins.pkgd.min.js";
-import "froala-editor/css/froala_style.min.css";
-import "froala-editor/css/froala_editor.pkgd.min.css";
+import FroalaEditorComponent from "react-froala-wysiwyg";
+
 import axiosInstance from "../services/axiosInstance";
-import { Controller } from "react-hook-form";
+
+import "froala-editor/css/froala_editor.pkgd.min.css";
+import "froala-editor/css/froala_style.min.css";
 
 function Editor({ name, error, control, rules }) {
   const config = {

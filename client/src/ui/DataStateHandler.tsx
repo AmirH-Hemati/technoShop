@@ -1,7 +1,9 @@
-import Spinner from "./Spinner.js";
-import Button from "./Button.js";
 import type { PropsWithChildren } from "react";
+
 import type { AppError } from "@/types/AppError.type.js";
+
+import Button from "./Button.js";
+import Spinner from "./Spinner.js";
 
 type Props<T> = PropsWithChildren & {
   isLoading: boolean;
@@ -29,7 +31,7 @@ function DataStateHandler<T>({
 
     return (
       <div className="flex flex-col items-center gap-4 text-center">
-        <p className="text-sm text-gray-600 my-4">{message}</p>
+        <p className="my-4 text-sm text-gray-600">{message}</p>
 
         {onRetry && <Button onClick={onRetry}>دوباره تلاش کن</Button>}
       </div>
@@ -38,7 +40,9 @@ function DataStateHandler<T>({
 
   if (!data || data.length === 0) {
     return (
-      <div className="text-center text-300 text-grey-500 font-medium my-10">{emptyMessage}</div>
+      <div className="text-300 text-grey-500 my-10 text-center font-medium">
+        {emptyMessage}
+      </div>
     );
   }
 

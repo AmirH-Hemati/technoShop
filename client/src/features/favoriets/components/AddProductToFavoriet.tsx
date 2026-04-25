@@ -1,4 +1,5 @@
 import { Heart } from "iconsax-reactjs";
+
 import { useCreateFavoriet } from "../hooks/useCreateFavoriet.js";
 import { useMyFavoriets } from "../hooks/useMyFavoriets.js";
 import type { FavorietType } from "../types/favoriet.js";

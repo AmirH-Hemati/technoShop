@@ -1,8 +1,8 @@
 import {
-  useQueryStates,
   parseAsArrayOf,
-  parseAsString,
   parseAsInteger,
+  parseAsString,
+  useQueryStates,
 } from "nuqs";
 
 const parsers = {

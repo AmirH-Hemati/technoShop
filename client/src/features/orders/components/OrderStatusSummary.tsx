@@ -1,4 +1,5 @@
 import { ArrowLeft } from "iconsax-reactjs";
+
 import { Link } from "react-router-dom";
 
 const statuses = [
@@ -25,7 +26,7 @@ function OrderStatusSummary() {
         {statuses.map((status) => (
           <div
             key={status.title}
-            className="bg-grey-0 flex flex-1 py-4 flex-col items-center justify-center rounded-xl shadow-md lg:flex-row"
+            className="bg-grey-0 flex flex-1 flex-col items-center justify-center rounded-xl py-4 shadow-md lg:flex-row"
           >
             <div className="relative">
               <img src={status.img} alt={status.title} />

@@ -1,7 +1,9 @@
 import { createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
-import { useOutsideClick } from "../utils/useOutsideClick";
+
 import { More } from "iconsax-reactjs";
+
+import { useOutsideClick } from "../utils/useOutsideClick";
 
 const MenusContext = createContext();
 

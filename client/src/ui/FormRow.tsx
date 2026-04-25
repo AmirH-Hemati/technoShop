@@ -1,5 +1,6 @@
-import type { Icon } from "iconsax-reactjs";
 import type { ReactElement } from "react";
+
+import type { Icon } from "iconsax-reactjs";
 
 type Props = {
   children: ReactElement;

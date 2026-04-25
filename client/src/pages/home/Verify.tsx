@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 
-import Confetti from "react-confetti";
 import { toast } from "react-toastify";
 
+import Confetti from "react-confetti";
+
+import { useSearchParams } from "react-router-dom";
+
 import Spinner from "@/ui/Spinner.js";
-import axiosInstance from "@/services/axiosInstance.js";
-import { formatToman } from "@/utils/helper.js";
+
 import { useShopingCart } from "@/context/ShopingCartContext.js";
+
+import axiosInstance from "@/services/axiosInstance.js";
+
+import { formatToman } from "@/utils/helper.js";
 
 function Verify() {
   const { onClearCart } = useShopingCart();

@@ -1,4 +1,5 @@
 import { type ComponentProps } from "react";
+
 type Props = ComponentProps<"input">;
 function Input(props: Props) {
   return (

@@ -1,5 +1,7 @@
-import type { Color } from "@/data/colors.js";
 import type { CategoryType } from "@/features/categories/types/category.js";
+
+import type { Color } from "@/data/colors.js";
+
 import type { SelectOptionType } from "@/types/select-option-types.js";
 
 export interface ProductType {

@@ -1,4 +1,4 @@
-  import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 function Filter({ filterField, options, direction = "horizontal" }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,7 +26,7 @@ function Filter({ filterField, options, direction = "horizontal" }) {
           return (
             <label
               key={option.value}
-              className={`flex cursor-pointer items-center justify-between gap-3 text-base transition-all duration-150 hover:bg-gray-50 p-3 ${
+              className={`flex cursor-pointer items-center justify-between gap-3 p-3 text-base transition-all duration-150 hover:bg-gray-50 ${
                 active ? "text-primary font-semibold" : "text-grey-800"
               }`}
             >

@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
 import { MedalStar, TruckTime } from "iconsax-reactjs";
+
+import { Link } from "react-router-dom";
 
 import Button from "../../../ui/Button.js";
 import { formatToman } from "../../../utils/helper.js";

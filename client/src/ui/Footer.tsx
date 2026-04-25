@@ -8,8 +8,11 @@ import {
   Messages2,
   Timer1,
 } from "iconsax-reactjs";
-import Logo from "./Logo.js";
+
 import { motion } from "motion/react";
+
+import Logo from "./Logo.js";
+
 function Footer() {
   return (
     <motion.footer

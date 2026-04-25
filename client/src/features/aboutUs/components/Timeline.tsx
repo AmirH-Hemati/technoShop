@@ -1,5 +1,6 @@
+import { Cpu, Headphones, Star1, Truck, Wallet } from "iconsax-reactjs";
+
 import { motion } from "motion/react";
-import { Star1, Truck, Wallet, Headphones, Cpu } from "iconsax-reactjs";
 
 const timelineData = [
   {

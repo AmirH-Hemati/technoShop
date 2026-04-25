@@ -1,7 +1,8 @@
-import UserAvatar from "../features/authentication/userAvatar";
-import LogoutButton from "../features/authentication/LogoutButton";
-import ButtonIcon from "./ButtonIcon";
 import { Moon } from "iconsax-reactjs";
+
+import LogoutButton from "../features/authentication/LogoutButton";
+import UserAvatar from "../features/authentication/userAvatar";
+import ButtonIcon from "./ButtonIcon";
 
 function HeaderAdmin() {
   return (

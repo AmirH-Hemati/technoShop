@@ -1,5 +1,7 @@
 import { Add } from "iconsax-reactjs";
+
 import { useNavigate } from "react-router-dom";
+
 import { useUser } from "../hooks/useUser.js";
 
 function UserAvatar() {

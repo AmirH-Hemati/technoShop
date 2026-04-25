@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
+
+import Input from "@/ui/Input.js";
+
 import Button from "../../../ui/Button.js";
 import FormRow from "../../../ui/FormRow.js";
-
-import type { Address } from "../types/address.js";
-import Input from "@/ui/Input.js";
 import { useCreateAddress } from "../hooks/useCreateAddress.js";
 import { useUpdateAddress } from "../hooks/useUpdateAddress.js";
+import type { Address } from "../types/address.js";
 
 type Props = { onCloseModal?: () => void; address?: Address | {} };
 

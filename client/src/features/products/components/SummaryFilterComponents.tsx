@@ -1,8 +1,9 @@
 import { type ReactElement } from "react";
+import { useMemo } from "react";
 
 import { CloseSquare } from "iconsax-reactjs";
+
 import useProductFilter from "../../../hooks/useFiltersProducts.js";
-import { useMemo } from "react";
 
 function SummaryFilterComponents(): ReactElement | null {
   const { filters, setFilters } = useProductFilter();

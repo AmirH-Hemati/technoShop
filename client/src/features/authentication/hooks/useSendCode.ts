@@ -1,8 +1,11 @@
-import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
-import { handelSendCode } from "../../../services/apiAuth.js";
+import { useMutation } from "@tanstack/react-query";
+
 import type { AppError } from "@/types/AppError.type.js";
+
+import { handelSendCode } from "../../../services/apiAuth.js";
+
 export function useSendCode() {
   const { mutate: sendCode, isPending: isSending } = useMutation({
     mutationFn: (phoneNumber: number) => handelSendCode(phoneNumber),

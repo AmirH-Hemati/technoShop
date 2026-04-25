@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 
 import { sidebar } from "../data/AdminSidebarItmes";
-import Sidebar from "./Sidebar";
-import SidebarMenu from "./SidebarMenu";
 import HeaderAdmin from "./HeaderAdmin";
 import Logo from "./Logo";
+import Sidebar from "./Sidebar";
+import SidebarMenu from "./SidebarMenu";
 
 function AdminLayout() {
   return (

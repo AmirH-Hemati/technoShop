@@ -1,6 +1,9 @@
 import React from "react";
 
-import { useLocation, Link } from "react-router-dom";
+import { ChevronLeft } from "lucide-react";
+
+import { Link, useLocation } from "react-router-dom";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,7 +12,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb.js";
-import { ChevronLeft } from "lucide-react";
 
 const routeLabels: Record<string, string> = {
   "/": "خانه",

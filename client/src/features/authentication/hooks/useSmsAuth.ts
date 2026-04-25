@@ -1,8 +1,10 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
-import { handelSmsAuth } from "../../../services/apiAuth.js";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import type { AppError } from "@/types/AppError.type.js";
+
+import { handelSmsAuth } from "../../../services/apiAuth.js";
 
 export function useVerifySmsAuth() {
   const queryClient = useQueryClient();

@@ -1,11 +1,13 @@
-import type { Color } from "@/data/colors.js";
-import { useLocalStorageState } from "@/hooks/useLocalStorageState.js";
 import {
-  createContext,
-  useContext,
   type PropsWithChildren,
   type ReactElement,
+  createContext,
+  useContext,
 } from "react";
+
+import type { Color } from "@/data/colors.js";
+
+import { useLocalStorageState } from "@/hooks/useLocalStorageState.js";
 
 type CartItem = {
   id: string;

@@ -1,6 +1,6 @@
 import DataStateHandler from "../../../ui/DataStateHandler.js";
-import Address from "./Address.js";
 import { useMyAddresses } from "../hooks/useMyAddresses.js";
+import Address from "./Address.js";
 
 type Props = { checkBox?: boolean };
 function Addresses({ checkBox = false }: Props) {

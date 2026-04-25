@@ -1,12 +1,14 @@
-import { ArrowRight } from "iconsax-reactjs";
-
 import { useState } from "react";
 
-import Spinner from "@/ui/Spinner.js";
-import { useUser } from "@/features/authentication/hooks/useUser.js";
-import { useAddComment } from "../hooks/useAddComment.js";
-import Textarea from "@/ui/Textarea.js";
+import { ArrowRight } from "iconsax-reactjs";
+
 import Button from "@/ui/Button.js";
+import Spinner from "@/ui/Spinner.js";
+import Textarea from "@/ui/Textarea.js";
+
+import { useUser } from "@/features/authentication/hooks/useUser.js";
+
+import { useAddComment } from "../hooks/useAddComment.js";
 
 type Props<T> = {
   item: T;

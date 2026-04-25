@@ -1,9 +1,9 @@
-import DataStateHandler from "@/ui/DataStateHandler.js";
-
 import { motion } from "motion/react";
 
-import Category from "./Category.js";
+import DataStateHandler from "@/ui/DataStateHandler.js";
+
 import { useCategories } from "../hooks/useCategories.js";
+import Category from "./Category.js";
 
 function Categories() {
   const { categories, isLoading, error, refetch } = useCategories();

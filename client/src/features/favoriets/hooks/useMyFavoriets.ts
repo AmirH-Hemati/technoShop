@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { getMyFavoriets } from "@/services/apiFavoriets.js";
+
 import type { FavorietType } from "../types/favoriet.js";
 
 export function useMyFavoriets() {

@@ -5,7 +5,7 @@ function Textarea(props: Props) {
   return (
     <textarea
       {...props}
-      className="bg-grey-0 border-grey-300 text-grey-800 w-full rounded-t-md border p-3 text-300"
+      className="bg-grey-0 border-grey-300 text-grey-800 text-300 w-full rounded-t-md border p-3"
     ></textarea>
   );
 }

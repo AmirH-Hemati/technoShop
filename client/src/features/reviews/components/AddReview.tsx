@@ -1,9 +1,11 @@
 import { useState } from "react";
+
 import { ArrowRight, Star1 } from "iconsax-reactjs";
 
-import { useAddReview } from "../hooks/useAddReview.js";
-import Textarea from "@/ui/Textarea.js";
 import Button from "@/ui/Button.js";
+import Textarea from "@/ui/Textarea.js";
+
+import { useAddReview } from "../hooks/useAddReview.js";
 
 type Props<T> = {
   item: T;

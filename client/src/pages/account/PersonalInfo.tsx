@@ -1,6 +1,7 @@
-import Heading from "@/ui/Heading.js";
-import UpdateUserDataForm from "../../features/authentication/components/UpdateUserDataForm.js";
 import BackButton from "@/ui/BackButton.js";
+import Heading from "@/ui/Heading.js";
+
+import UpdateUserDataForm from "../../features/authentication/components/UpdateUserDataForm.js";
 
 function PersonalInfo() {
   return (

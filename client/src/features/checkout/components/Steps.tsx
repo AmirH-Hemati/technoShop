@@ -1,4 +1,5 @@
 import { Card, Location, ShoppingBag } from "iconsax-reactjs";
+
 import { useCheckout } from "../../../context/CheckoutCartContext.js";
 
 const steps = [

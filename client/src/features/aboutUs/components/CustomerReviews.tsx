@@ -1,5 +1,7 @@
 import { Star1 } from "iconsax-reactjs";
+
 import { motion } from "motion/react";
+
 function CustomerReviews() {
   return (
     <motion.div

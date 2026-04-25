@@ -1,8 +1,10 @@
 import { Call, Message, Message2, Send, Send2, User } from "iconsax-reactjs";
+
+import { motion } from "motion/react";
+
 import FormRow from "../../../ui/FormRow.js";
 import Input from "../../../ui/Input.js";
 import Textarea from "../../../ui/Textarea.js";
-import { motion } from "motion/react";
 
 function FormContact() {
   return (

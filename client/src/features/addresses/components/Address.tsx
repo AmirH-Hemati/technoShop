@@ -1,4 +1,5 @@
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
+
 import {
   Call,
   CloseSquare,
@@ -8,12 +9,14 @@ import {
   User,
 } from "iconsax-reactjs";
 
-import type { AddressType } from "../types/address.js";
+import { cn } from "@/lib/utils.js";
+
 import { useCheckout } from "@/context/CheckoutCartContext.js";
 
-import styles from "./address.module.css";
-import { cn } from "@/lib/utils.js";
 import { useDeleteAddress } from "../hooks/useDeleteAddress.js";
+import type { AddressType } from "../types/address.js";
+
+import styles from "./address.module.css";
 
 type Props = {
   index: number;

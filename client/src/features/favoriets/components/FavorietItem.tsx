@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
 import { Information, MedalStar, Trash, TruckTime } from "iconsax-reactjs";
 
+import { Link } from "react-router-dom";
+
 import { formatToman } from "@/utils/helper.js";
-import type { FavorietType } from "../types/favoriet.js";
+
 import { useDeleteFavoriet } from "../hooks/useDeleteFavoriet.js";
+import type { FavorietType } from "../types/favoriet.js";
 
 type Props = { favoriet: FavorietType };
 function FavorietItem({ favoriet }: Props) {

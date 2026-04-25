@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils.js";
+
 import {
   Select,
   SelectContent,
@@ -6,8 +8,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select.js";
+
 import useProductFilter from "@/hooks/useFiltersProducts.js";
-import { cn } from "@/lib/utils.js";
+
 import type { SelectOptionType } from "@/types/select-option-types.js";
 
 const options: SelectOptionType[] = [
@@ -22,7 +25,7 @@ const options: SelectOptionType[] = [
 
 export default function SortSelect() {
   const { filters, setFilters } = useProductFilter();
-  
+
   function handleChangeSort(value: string) {
     setFilters({ sort: value });
   }

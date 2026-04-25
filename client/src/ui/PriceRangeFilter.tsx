@@ -1,9 +1,12 @@
+import * as React from "react";
+
 import { Input } from "@/components/ui/input.js";
 import { Label } from "@/components/ui/label.js";
 import { Slider } from "@/components/ui/slider.js";
+
 import useProductFilter from "@/hooks/useFiltersProducts.js";
+
 import { formatPrice } from "@/utils/helper.js";
-import * as React from "react";
 
 const MIN_PRICE = 0;
 const MAX_PRICE = 100_000_000;
@@ -11,7 +14,7 @@ const STEP = 1000;
 
 export default function PriceRangeFilter({
   className,
-}: {  
+}: {
   className?: string;
 }) {
   const { filters, setFilters } = useProductFilter();

@@ -1,10 +1,11 @@
 import { CloseSquare, Colorfilter, Tag } from "iconsax-reactjs";
 
-import { formatToman } from "@/utils/helper.js";
 import { cn } from "@/lib/utils.js";
 
-import AddProductButtons from "./AddProductButtons.js";
+import { formatToman } from "@/utils/helper.js";
+
 import type { ProductType } from "../../products/types/product.js";
+import AddProductButtons from "./AddProductButtons.js";
 
 import Styles from "./cartItem.module.css";
 

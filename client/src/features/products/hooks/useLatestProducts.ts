@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { getLatestProducts } from "../../../services/apiProducts.js";
 
 export function useLatestProducts() {

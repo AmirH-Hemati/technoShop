@@ -1,6 +1,8 @@
 // components/SimpleLoginPrompt.jsx
 import { Lock1, LoginCurve } from "iconsax-reactjs";
+
 import { useNavigate } from "react-router-dom";
+
 import Login from "../features/authentication/components/Login.js";
 import Button from "./Button.js";
 import Modal from "./Modal.js";

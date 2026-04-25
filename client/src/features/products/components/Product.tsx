@@ -1,11 +1,16 @@
+import { memo } from "react";
+
 import { MedalStar, TruckTime } from "iconsax-reactjs";
+
 import { Link } from "react-router-dom";
 
-import type { ProductType } from "../types/product.js";
-import { memo } from "react";
-import AddProductToFavoriet from "@/features/favoriets/components/AddProductToFavoriet.js";
-import { formatToman } from "@/utils/helper.js";
 import Button from "@/ui/Button.js";
+
+import AddProductToFavoriet from "@/features/favoriets/components/AddProductToFavoriet.js";
+
+import { formatToman } from "@/utils/helper.js";
+
+import type { ProductType } from "../types/product.js";
 
 type Props = { product: ProductType };
 const Product = memo(function Product({ product }: Props) {

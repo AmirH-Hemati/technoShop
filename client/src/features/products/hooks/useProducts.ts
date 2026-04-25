@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { getProducts } from "../../../services/apiProducts.js";
+
 import useProductFilter from "@/hooks/useFiltersProducts.js";
+
+import { getProducts } from "../../../services/apiProducts.js";
 
 export function useProducts() {
   const { filters } = useProductFilter();

@@ -1,4 +1,5 @@
 import { LogoutCurve } from "iconsax-reactjs";
+
 import { useLogout } from "../features/authentication/hooks/useLogout.js";
 import SpinnerMini from "./SpinnerMini.js";
 

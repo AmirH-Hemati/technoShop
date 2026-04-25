@@ -1,10 +1,10 @@
 import { SwiperSlide } from "swiper/react";
 
-import { useGetProductReviews } from "../hooks/useGetProductReviews.js";
-
-import Review from "./Review.js";
-import SwiperSlider from "@/ui/SwiperSlider.js";
 import DataStateHandler from "@/ui/DataStateHandler.js";
+import SwiperSlider from "@/ui/SwiperSlider.js";
+
+import { useGetProductReviews } from "../hooks/useGetProductReviews.js";
+import Review from "./Review.js";
 
 function Reviews({ item }) {
   const { reviews, isLoading } = useGetProductReviews(item._id);

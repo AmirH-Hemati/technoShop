@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+
 import { useOutsideClick } from "../utils/useOutsideClick.js";
 
 const SearchModal = ({ open, onClose, children, extraRef }) => {

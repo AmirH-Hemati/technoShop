@@ -1,13 +1,19 @@
 import { ArrowLeft2 } from "iconsax-reactjs";
-import { Link } from "react-router-dom";
-import SwiperSlider from "../../../ui/SwiperSlider.js";
-import Product from "./Product.js";
-import { SwiperSlide } from "swiper/react";
-import { useLatestProducts } from "../hooks/useLatestProducts.js";
+
 import { motion } from "motion/react";
+
+import { SwiperSlide } from "swiper/react";
+
+import { Link } from "react-router-dom";
+
 import DataStateHandler from "@/ui/DataStateHandler.js";
 import Row from "@/ui/Row.js";
+
+import SwiperSlider from "../../../ui/SwiperSlider.js";
+import { useLatestProducts } from "../hooks/useLatestProducts.js";
 import type { ProductType } from "../types/product.js";
+import Product from "./Product.js";
+
 function BestSellerProducts() {
   const { products, isLoading, error, refetch } = useLatestProducts();
 

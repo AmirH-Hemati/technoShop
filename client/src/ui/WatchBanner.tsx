@@ -1,7 +1,11 @@
 import { ArrowLeft } from "iconsax-reactjs";
-import Button from "./Button.js";
-import { useNavigate } from "react-router-dom";
+
 import { motion } from "motion/react";
+
+import { useNavigate } from "react-router-dom";
+
+import Button from "./Button.js";
+
 function WatchBanner() {
   const navigate = useNavigate();
   return (
@@ -10,14 +14,14 @@ function WatchBanner() {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ ease: "easeIn" }}
       viewport={{ once: true }}
-      className="bg-primary shadow-xl flex flex-col items-center gap-6 overflow-hidden rounded-md px-4 py-6 sm:flex-row sm:gap-0 sm:px-12"
+      className="bg-primary flex flex-col items-center gap-6 overflow-hidden rounded-md px-4 py-6 shadow-xl sm:flex-row sm:gap-0 sm:px-12"
     >
       <div className="z-10 flex flex-1 flex-col items-center gap-5 sm:items-start">
-        <h4 className="text-grey-0 text-600 leading-[180%] font-bold ">
+        <h4 className="text-grey-0 text-600 leading-[180%] font-bold">
           ساعت های هوشمند
         </h4>
 
-        <p className="text-grey-0  leading-[180%] font-medium text-500">
+        <p className="text-grey-0 text-500 leading-[180%] font-medium">
           تجربه جذاب از آینده
         </p>
 

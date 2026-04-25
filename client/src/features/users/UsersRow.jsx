@@ -1,9 +1,10 @@
 import { Edit, Trash } from "iconsax-reactjs";
+
 import { BASE_URL } from "../../services/axiosInstance";
 import ConfirmDelete from "../../ui/ConfirmDelete";
-import Table from "../../ui/Table";
-import Modal from "../../ui/Modal";
 import Menus from "../../ui/Menus";
+import Modal from "../../ui/Modal";
+import Table from "../../ui/Table";
 import { useDeleteUser } from "./useDeleteUser";
 
 function UsersRow({ user }) {

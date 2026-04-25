@@ -1,7 +1,10 @@
 import { toast } from "react-toastify";
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteFavoriet as deleteFavorietApi } from "../../../services/apiFavoriets.js";
+
 import type { AppError } from "@/types/AppError.type.js";
+
+import { deleteFavoriet as deleteFavorietApi } from "../../../services/apiFavoriets.js";
 
 export function useDeleteFavoriet() {
   const queryClient = useQueryClient();

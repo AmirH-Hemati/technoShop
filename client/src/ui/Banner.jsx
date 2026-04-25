@@ -1,8 +1,11 @@
 import { ArrowLeft } from "iconsax-reactjs";
-import Button from "./Button";
-import Heading from "./Heading";
-import DotGridPattern from "./DotGridPattern";
+
 import { motion } from "motion/react";
+
+import Button from "./Button";
+import DotGridPattern from "./DotGridPattern";
+import Heading from "./Heading";
+
 function Banner() {
   return (
     <div className="flex h-auto flex-col items-center gap-1.5 sm:h-72 sm:flex-row md:gap-6">

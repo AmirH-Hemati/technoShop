@@ -1,12 +1,14 @@
 import { useState } from "react";
-import BottomSheet from "./BottomSheet";
+
 import { CloseSquare } from "iconsax-reactjs";
-import Button from "./Button";
-import FilterSection from "./FilterSection";
-import Filter from "./Filter";
-import { colors } from "../data/colors";
+
 import { brands } from "../data/brands";
+import { colors } from "../data/colors";
 import { useCategories } from "../features/categories/useCategories";
+import BottomSheet from "./BottomSheet";
+import Button from "./Button";
+import Filter from "./Filter";
+import FilterSection from "./FilterSection";
 import Spinner from "./Spinner";
 
 export default function FilterTest() {

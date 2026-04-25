@@ -1,19 +1,10 @@
 import * as React from "react";
 
-import { Filter, SortAsc, SlidersHorizontal } from "lucide-react";
+import { Filter, SlidersHorizontal, SortAsc } from "lucide-react";
+
+import { cn } from "@/lib/utils.js";
+
 import { ScrollArea } from "@/components/ui/scroll-area.js";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet.js";
-import PriceRangeFilter from "./PriceRangeFilter.js";
-import { Spinner } from "@/components/ui/spinner.js";
-import FilterCheckboxGroup from "./FilterCheckboxGroup.js";
-import { brands } from "@/data/brands.js";
-import { colors } from "@/data/colors.js";
 import {
   Select,
   SelectContent,
@@ -21,9 +12,23 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select.js";
-import { cn } from "@/lib/utils.js";
-import Button from "./Button.js";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet.js";
+import { Spinner } from "@/components/ui/spinner.js";
+
 import { useCategories } from "@/features/categories/hooks/useCategories.js";
+
+import { brands } from "@/data/brands.js";
+import { colors } from "@/data/colors.js";
+
+import Button from "./Button.js";
+import FilterCheckboxGroup from "./FilterCheckboxGroup.js";
+import PriceRangeFilter from "./PriceRangeFilter.js";
 
 const filterChips = [
   { id: "sort", label: "مرتب‌سازی", icon: <SortAsc size={16} /> },

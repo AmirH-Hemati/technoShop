@@ -1,18 +1,21 @@
-import { useEffect, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction, useEffect } from "react";
+
 import {
   MapContainer,
-  TileLayer,
-  useMapEvents,
   Marker,
+  TileLayer,
   useMap,
+  useMapEvents,
 } from "react-leaflet";
+
+import "leaflet/dist/leaflet.css";
+
 import { Check, X } from "lucide-react";
+
+import { Button } from "@/components/ui/button.js";
 import { DialogClose } from "@/components/ui/dialog.js";
 
 import { useGeolocation } from "@/hooks/useGeolocation.js";
-import { Button } from "@/components/ui/button.js";
-
-import "leaflet/dist/leaflet.css";
 
 type Position = { lat: number; lng: number } | null;
 type SetPosition = Dispatch<SetStateAction<Position>>;
@@ -61,7 +64,7 @@ export default function MapStep({ setPosition, position, onNext }: Props) {
         <MapContainer
           center={[35.6892, 51.389]}
           zoom={13}
-          className="h-full w-full z-[9999]"
+          className="z-[9999] h-full w-full"
         >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <ChangeView position={position} />

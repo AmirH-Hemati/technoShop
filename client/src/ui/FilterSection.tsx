@@ -1,4 +1,5 @@
-import { useState, type PropsWithChildren } from "react";
+import { type PropsWithChildren, useState } from "react";
+
 import { ArrowDown2, Size } from "iconsax-reactjs";
 
 export type Props = PropsWithChildren & {

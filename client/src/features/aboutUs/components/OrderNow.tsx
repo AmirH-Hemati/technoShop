@@ -1,5 +1,7 @@
 import { Call, Shop } from "iconsax-reactjs";
+
 import { motion } from "motion/react";
+
 function OrderNow() {
   return (
     <motion.div

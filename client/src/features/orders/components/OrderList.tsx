@@ -1,7 +1,8 @@
 import { DocumentText1 } from "iconsax-reactjs";
-import OrderItem from "./OrderItem.js";
-import { useMyOrders } from "../hooks/useMyOrders.js";
+
 import DataStateHandler from "../../../ui/DataStateHandler.js";
+import { useMyOrders } from "../hooks/useMyOrders.js";
+import OrderItem from "./OrderItem.js";
 
 function OrderList() {
   const { orders, isLoading, error, refetch } = useMyOrders();

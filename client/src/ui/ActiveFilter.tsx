@@ -1,4 +1,5 @@
 import { CloseSquare } from "iconsax-reactjs";
+
 import { useSearchParams } from "react-router-dom";
 
 function ActiveFilter() {

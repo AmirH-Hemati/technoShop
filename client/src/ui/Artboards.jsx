@@ -1,6 +1,9 @@
 import { ArrowLeft2 } from "iconsax-reactjs";
-import Button from "./Button";
+
 import { motion } from "motion/react";
+
+import Button from "./Button";
+
 function Artboards() {
   return (
     <section className="grid grid-cols-1 flex-col gap-2 lg:grid-cols-[1fr_auto]">
@@ -39,7 +42,7 @@ function Artboards() {
             className="h-full w-full object-cover object-left"
           />
 
-          <div className=" absolute inset-0 flex flex-col justify-center gap-1 px-2">
+          <div className="absolute inset-0 flex flex-col justify-center gap-1 px-2">
             <h3 className="text-200 max-w-[10ch] leading-[140%] font-extrabold sm:max-w-[20ch]">
               عین آب خوردن
             </h3>

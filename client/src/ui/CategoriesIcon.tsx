@@ -1,6 +1,3 @@
-import useProductFilter from "@/hooks/useFiltersProducts.js";
-import { cn } from "@/lib/utils.js";
-import type { SelectOptionType } from "@/types/select-option-types.js";
 import {
   Camera,
   Data,
@@ -12,6 +9,12 @@ import {
   Monitor,
   WatchStatus,
 } from "iconsax-reactjs";
+
+import { cn } from "@/lib/utils.js";
+
+import useProductFilter from "@/hooks/useFiltersProducts.js";
+
+import type { SelectOptionType } from "@/types/select-option-types.js";
 
 type Category = SelectOptionType & { icon: Icon };
 

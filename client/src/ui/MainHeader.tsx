@@ -1,9 +1,10 @@
 import { Moon } from "iconsax-reactjs";
+
 import HeaderButtons from "./HeaderButtons.jsx";
 import Logo from "./Logo.js";
 import MainHeaderMenu from "./MainHeaderMenu.jsx";
-import SearchInput from "./SearchInput.js";
 import MenuMobile from "./MenuMobile.js";
+import SearchInput from "./SearchInput.js";
 
 function MainHeader() {
   return (

@@ -1,5 +1,7 @@
-import { Briefcase, People, ShoppingBag, Like1 } from "iconsax-reactjs";
+import { Briefcase, Like1, People, ShoppingBag } from "iconsax-reactjs";
+
 import { motion } from "motion/react";
+
 const stats = [
   {
     icon: Briefcase,

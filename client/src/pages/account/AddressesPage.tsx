@@ -1,9 +1,6 @@
 import { Add } from "iconsax-reactjs";
 
-import { CheckoutProvider } from "@/context/CheckoutCartContext.js";
 import { Button } from "@/components/ui/button.js";
-import AddressPicker from "@/features/addresses/components/AddressPicker.js";
-
 import {
   Dialog,
   DialogContent,
@@ -12,8 +9,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog.js";
+
 import BackButton from "@/ui/BackButton.js";
 import Heading from "@/ui/Heading.js";
+
+import { CheckoutProvider } from "@/context/CheckoutCartContext.js";
+
+import AddressPicker from "@/features/addresses/components/AddressPicker.js";
 import Addresses from "@/features/addresses/components/Addresses.js";
 
 function AddressesPage() {

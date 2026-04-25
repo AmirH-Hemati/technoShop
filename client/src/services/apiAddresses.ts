@@ -1,4 +1,5 @@
 import type { Address } from "@/features/addresses/types/address.js";
+
 import axiosInstance from "./axiosInstance.js";
 
 export async function getMyAddresses() {

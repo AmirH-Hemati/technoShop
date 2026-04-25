@@ -1,11 +1,15 @@
+import { Candle2 } from "iconsax-reactjs";
+
+import { Spinner } from "@/components/ui/spinner.js";
+
+import FilterCheckboxGroup from "@/ui/FilterCheckboxGroup.jsx";
+import FilterSection from "@/ui/FilterSection.jsx";
+import PriceRangeFilter from "@/ui/PriceRangeFilter.js";
+
+import { useCategories } from "@/features/categories/hooks/useCategories.js";
+
 import { brands } from "@/data/brands.js";
 import { colors } from "@/data/colors.js";
-import FilterSection from "@/ui/FilterSection.jsx";
-import FilterCheckboxGroup from "@/ui/FilterCheckboxGroup.jsx";
-import { Candle2 } from "iconsax-reactjs";
-import PriceRangeFilter from "@/ui/PriceRangeFilter.js";
-import { Spinner } from "@/components/ui/spinner.js";
-import { useCategories } from "@/features/categories/hooks/useCategories.js";
 
 function ProductFilter() {
   const { categories, isLoading } = useCategories();

@@ -1,7 +1,10 @@
 import { toast } from "react-toastify";
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteAddress as deleteAddressApi } from "../../../services/apiAddresses.js";
+
 import type { AppError } from "@/types/AppError.type.js";
+
+import { deleteAddress as deleteAddressApi } from "../../../services/apiAddresses.js";
 
 export function useDeleteAddress() {
   const queryClient = useQueryClient();

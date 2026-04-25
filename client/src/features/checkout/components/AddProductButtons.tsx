@@ -1,7 +1,10 @@
-import { useShopingCart } from "@/context/ShopingCartContext.js";
-import type { Color } from "@/data/colors.js";
-import { cn } from "@/lib/utils.js";
 import { Add, Minus, Trash } from "iconsax-reactjs";
+
+import { cn } from "@/lib/utils.js";
+
+import { useShopingCart } from "@/context/ShopingCartContext.js";
+
+import type { Color } from "@/data/colors.js";
 
 type Props = { id: string; className?: string; color: Color };
 

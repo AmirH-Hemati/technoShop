@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { getMyOrders } from "../../../services/apiOrders.js";
+
 import { useSearchParams } from "react-router-dom";
+
+import { getMyOrders } from "../../../services/apiOrders.js";
 
 export function useMyOrders() {
   const [searchParams] = useSearchParams();

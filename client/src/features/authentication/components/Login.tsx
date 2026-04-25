@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-import PhoneLogin from "./PhoneLogin.js";
-
-import Logo from "@/ui/Logo.js";
 import Button from "@/ui/Button.js";
-import { useVerifySmsAuth } from "../hooks/useSmsAuth.js";
+import Logo from "@/ui/Logo.js";
+
 import { useSendCode } from "../hooks/useSendCode.js";
+import { useVerifySmsAuth } from "../hooks/useSmsAuth.js";
 import OtpInputs from "./OtpInputs.js";
+import PhoneLogin from "./PhoneLogin.js";
 
 function Login({ onCloseModal }: { onCloseModal?: () => void }) {
   const [showOtpInput, setShowOtpInput] = useState(false);

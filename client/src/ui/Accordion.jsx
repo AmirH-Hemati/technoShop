@@ -1,5 +1,6 @@
-import { Add, Minus } from "iconsax-reactjs";
 import { useState } from "react";
+
+import { Add, Minus } from "iconsax-reactjs";
 
 const Accordion = ({ title, children }) => {
   const [open, setOpen] = useState(false);

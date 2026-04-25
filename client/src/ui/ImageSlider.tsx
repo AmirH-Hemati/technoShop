@@ -1,5 +1,6 @@
+import { type ReactElement, useState } from "react";
+
 import { ArrowLeft2, ArrowRight2 } from "iconsax-reactjs";
-import { useState, type ReactElement } from "react";
 
 type Props = { images: string[] };
 
@@ -7,8 +8,7 @@ function ImageSlider({ images }: Props): ReactElement {
   const [currentIndex, setCurrentIndex] = useState(0);
   const selectImage = images[currentIndex];
 
-
-  console.log(images)
+  console.log(images);
   function nextImage() {
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }

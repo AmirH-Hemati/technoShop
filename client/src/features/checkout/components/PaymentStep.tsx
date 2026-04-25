@@ -1,6 +1,8 @@
 import { useCheckout } from "@/context/CheckoutCartContext.js";
-import Address from "../../addresses/components/Address.js";
+
 import { formatToman } from "@/utils/helper.js";
+
+import Address from "../../addresses/components/Address.js";
 
 function PaymentStep() {
   const { selectedAddress, products } = useCheckout();

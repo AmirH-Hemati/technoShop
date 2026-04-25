@@ -1,5 +1,7 @@
 import { toast } from "react-toastify";
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { deleteUser as deleteUserApi } from "../../services/apiUsers";
 
 export function useDeleteUser() {

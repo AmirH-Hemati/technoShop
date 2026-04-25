@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   ChartSquare,
   Check,
@@ -6,16 +8,23 @@ import {
   TickSquare,
   Verify,
 } from "iconsax-reactjs";
-import { formatToman } from "@/utils/helper.js";
-import Button from "@/ui/Button.js";
-import { useShopingCart } from "@/context/ShopingCartContext.js";
-import type { ProductType } from "../types/product.js";
-import { useState } from "react";
-import { cn } from "@/lib/utils.js";
-import type { Color } from "@/data/colors.js";
+
 import { CheckCheck, CheckIcon } from "lucide-react";
-import AddProductToFavoriet from "@/features/favoriets/components/AddProductToFavoriet.js";
+
+import { cn } from "@/lib/utils.js";
+
+import Button from "@/ui/Button.js";
+
+import { useShopingCart } from "@/context/ShopingCartContext.js";
+
 import AddProductButtons from "@/features/checkout/components/AddProductButtons.js";
+import AddProductToFavoriet from "@/features/favoriets/components/AddProductToFavoriet.js";
+
+import type { Color } from "@/data/colors.js";
+
+import { formatToman } from "@/utils/helper.js";
+
+import type { ProductType } from "../types/product.js";
 
 type Props = { product: ProductType };
 

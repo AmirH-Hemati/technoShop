@@ -1,5 +1,7 @@
-import Accordion from "../../../ui/Accordion.jsx";
 import { motion } from "motion/react";
+
+import Accordion from "../../../ui/Accordion.jsx";
+
 function Questions() {
   return (
     <motion.div

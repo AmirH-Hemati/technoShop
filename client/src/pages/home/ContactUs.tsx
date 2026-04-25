@@ -6,7 +6,9 @@ export default function ContactUs() {
   return (
     <div className="mt-6 flex flex-col items-center justify-center gap-12">
       <div className="flex flex-col items-center justify-center gap-6">
-        <h1 className="text-2xl font-bold text-black lg:text-4xl">تماس با ما</h1>
+        <h1 className="text-2xl font-bold text-black lg:text-4xl">
+          تماس با ما
+        </h1>
         <p className="text-grey-800 text-center md:text-right">
           سوالات، پیشنهادات و انتقادات خود را با ما در میان بگذارید. تیم
           پشتیبانی ما آماده پاسخگویی به شما است.

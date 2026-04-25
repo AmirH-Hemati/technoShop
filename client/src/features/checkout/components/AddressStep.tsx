@@ -1,6 +1,6 @@
 import { Add } from "iconsax-reactjs";
-import { useCheckout } from "@/context/CheckoutCartContext.js";
 
+import { Button } from "@/components/ui/button.js";
 import {
   Dialog,
   DialogContent,
@@ -9,9 +9,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog.js";
-import Addresses from "@/features/addresses/components/Addresses.js";
-import { Button } from "@/components/ui/button.js";
+
+import { useCheckout } from "@/context/CheckoutCartContext.js";
+
 import AddressPicker from "@/features/addresses/components/AddressPicker.js";
+import Addresses from "@/features/addresses/components/Addresses.js";
 
 function AddressStep() {
   const { selectedAddress } = useCheckout();

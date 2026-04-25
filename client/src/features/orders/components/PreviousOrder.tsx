@@ -1,9 +1,12 @@
 import { SwiperSlide } from "swiper/react";
-import { useMyOrders } from "../hooks/useMyOrders.js";
+
 import DataStateHandler from "@/ui/DataStateHandler.js";
 import Row from "@/ui/Row.js";
 import SwiperSlider from "@/ui/SwiperSlider.js";
+
 import Product from "@/features/products/components/Product.js";
+
+import { useMyOrders } from "../hooks/useMyOrders.js";
 
 function PreviousOrder() {
   const { orders, isLoading, error, refetch } = useMyOrders();

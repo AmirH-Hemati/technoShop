@@ -1,7 +1,9 @@
-import { User, Mail, CreditCard, Phone } from "lucide-react";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
+import { CreditCard, Mail, Phone, User } from "lucide-react";
+
+import { Button } from "@/components/ui/button.js";
 import {
   Form,
   FormControl,
@@ -12,16 +14,15 @@ import {
 } from "@/components/ui/form.js";
 import {
   InputGroup,
-  InputGroupInput,
   InputGroupAddon,
+  InputGroupInput,
 } from "@/components/ui/input-group.jsx";
-import { Button } from "@/components/ui/button.js";
-import { Spinner } from "@/components/ui/spinner.js";
 import { Input } from "@/components/ui/input.js";
+import { Spinner } from "@/components/ui/spinner.js";
 
-import { useUser } from "../hooks/useUser.js";
+import { type UpdateUser, updateUserSchema } from "../../users/schema/user.js";
 import { useUpdateUser } from "../hooks/useUpdateUser.js";
-import { updateUserSchema, type UpdateUser } from "../../users/schema/user.js";
+import { useUser } from "../hooks/useUser.js";
 
 export default function UpdateUserDataForm() {
   const { user, isLoading } = useUser();

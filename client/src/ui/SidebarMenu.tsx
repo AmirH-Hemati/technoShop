@@ -1,6 +1,7 @@
-import type { SidebarAccountType } from "@/data/AccountSidebarItmes.js";
 import { cn } from "@/lib/utils.js";
 import { Link, useLocation } from "react-router-dom";
+
+import type { SidebarAccountType } from "@/data/AccountSidebarItmes.js";
 
 type Props = { sidebar: SidebarAccountType[] };
 
@@ -28,7 +29,7 @@ function SidebarMenu({ sidebar }: Props) {
                     isActive && "text-primary",
                   )}
                 />
-                <span className="leading-none text-300">{item.label}</span>
+                <span className="text-300 leading-none">{item.label}</span>
               </Link>
             </li>
           );

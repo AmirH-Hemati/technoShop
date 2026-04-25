@@ -1,4 +1,5 @@
 import Categories from "@/features/categories/components/Categories.js";
+
 import AmazingPriceProducts from "../../features/products/components/AmazingPriceProducts.js";
 import BestSellerProducts from "../../features/products/components/BestSellerProducts.js";
 import LatestProducts from "../../features/products/components/LatestProducts.js";

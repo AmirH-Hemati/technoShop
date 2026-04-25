@@ -1,5 +1,6 @@
-import type { SelectOptionType } from "@/types/select-option-types.js";
 import Heading from "@/ui/Heading.js";
+
+import type { SelectOptionType } from "@/types/select-option-types.js";
 
 function Features({ features }: { features: SelectOptionType[] }) {
   return (

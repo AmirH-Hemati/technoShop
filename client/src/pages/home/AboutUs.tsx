@@ -1,9 +1,12 @@
 import { ArrowLeft, ArrowLeft2, Shop } from "iconsax-reactjs";
+
+import { motion } from "motion/react";
+
 import CustomerReviews from "../../features/aboutUs/components/CustomerReviews.js";
 import OrderNow from "../../features/aboutUs/components/OrderNow.js";
 import Stats from "../../features/aboutUs/components/Stats.js";
 import Timeline from "../../features/aboutUs/components/Timeline.js";
-import { motion } from "motion/react";
+
 function AboutUs() {
   return (
     <section className="relative mt-6 flex flex-col gap-14">

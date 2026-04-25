@@ -1,7 +1,9 @@
+import type { ReactElement } from "react";
+
 import useProductFilter from "@/hooks/useFiltersProducts.js";
+
 import type { FilterType } from "@/types/filter.type.js";
 import type { SelectOptionType } from "@/types/select-option-types.js";
-import type { ReactElement } from "react";
 
 type Props = {
   options: SelectOptionType[];

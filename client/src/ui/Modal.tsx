@@ -1,11 +1,11 @@
 import {
+  type MouseEvent,
+  type PropsWithChildren,
+  type ReactElement,
   cloneElement,
   createContext,
   useContext,
   useState,
-  type MouseEvent,
-  type PropsWithChildren,
-  type ReactElement,
 } from "react";
 import { createPortal } from "react-dom";
 
@@ -71,7 +71,7 @@ function Window({
       <div
         ref={ref}
         style={{ scrollbarWidth: "thin" }}
-        className="relative  overflow-auto rounded-xl bg-white shadow-md transition-all duration-300"
+        className="relative overflow-auto rounded-xl bg-white shadow-md transition-all duration-300"
       >
         {closeButton && (
           <button

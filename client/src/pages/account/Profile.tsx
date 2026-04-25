@@ -1,9 +1,13 @@
+import { Edit2 } from "iconsax-reactjs";
+
+import { Link } from "react-router-dom";
+
+import AccountMobileMenu from "@/ui/AccountMobileMenu.js";
+
 import UserAvatar from "@/features/authentication/components/UserAvatar.js";
 import OrderStatusSummary from "@/features/orders/components/OrderStatusSummary.js";
 import PreviousOrder from "@/features/orders/components/PreviousOrder.js";
-import AccountMobileMenu from "@/ui/AccountMobileMenu.js";
-import { Edit2 } from "iconsax-reactjs";
-import { Link } from "react-router-dom";
+
 function Profile() {
   return (
     <div className="flex flex-col gap-8">

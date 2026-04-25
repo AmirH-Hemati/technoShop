@@ -1,11 +1,18 @@
-import { lazy, Suspense } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Suspense, lazy } from "react";
+
 import { ToastContainer } from "react-toastify";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+import { NuqsAdapter } from "nuqs/adapters/react";
+
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
+import { Spinner } from "./components/ui/spinner.js";
 import { ShopingCartProvider } from "./context/ShopingCartContext.js";
-import ProtectedRoute from "./ui/ProtectedRoute.js";
-import MainLayout from "./ui/MainLayout.jsx";
 import AccountLayout from "./pages/account/AccountLayout.js";
+import MainLayout from "./ui/MainLayout.jsx";
+import ProtectedRoute from "./ui/ProtectedRoute.js";
 
 const Home = lazy(() => import("./pages/home/Home.js"));
 const AddressesPage = lazy(() => import("./pages/account/AddressesPage.js"));
@@ -19,9 +26,6 @@ const ContactUs = lazy(() => import("./pages/home/ContactUs.js"));
 const Product = lazy(() => import("./pages/home/Product.js"));
 const Products = lazy(() => import("./pages/home/Products.js"));
 const Verify = lazy(() => import("./pages/home/Verify.js"));
-
-import { NuqsAdapter } from "nuqs/adapters/react";
-import { Spinner } from "./components/ui/spinner.js";
 
 const queryClient = new QueryClient({
   defaultOptions: {

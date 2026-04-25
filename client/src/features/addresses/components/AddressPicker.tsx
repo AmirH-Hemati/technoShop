@@ -1,6 +1,7 @@
 import { useState } from "react";
-import MapStep from "./MapStep.js";
+
 import AddressForm from "./AddressForm.js";
+import MapStep from "./MapStep.js";
 
 export default function AddressPicker() {
   const [step, setStep] = useState(1);
