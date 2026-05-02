@@ -5,15 +5,15 @@ const favorietsSchema = new mongoose.Schema(
     product: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
-      required: [true, "محصول مورد علاقه الزامی است"],
+      required: true,
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: [true, "حساب کاربری  الزامی است"],
+      required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 favorietsSchema.index({ user: 1, product: 1 }, { unique: true });
