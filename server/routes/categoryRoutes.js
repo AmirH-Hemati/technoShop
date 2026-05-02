@@ -9,13 +9,21 @@ const {
   uploadCategoryImage,
   resizeCategoryImage,
 } = require("../controllers/categoryControllers");
+const createCategorySchema = require("../schema/category.schema");
+const { z } = require("zod");
+const validateZod = require("../middlewares/validateZod");
 
 const router = express.Router();
 
 router
   .route("/")
   .get(getCategories)
-  .post(uploadCategoryImage, resizeCategoryImage, createCategory);
+  .post(
+    uploadCategoryImage,
+    resizeCategoryImage,
+    validateZod(createCategorySchema),
+    createCategory,
+  );
 
 router
   .route("/:id")
