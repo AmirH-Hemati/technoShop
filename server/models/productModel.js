@@ -6,28 +6,28 @@ const productSchema = new mongoose.Schema(
     name: {
       type: String,
       unique: true,
-      required: [true, " نام محصول الزامی است"],
+      required: true,
     },
     slug: String,
 
     category: {
       type: mongoose.Schema.ObjectId,
       ref: "Category",
-      required: [true, "انتخاب دسته بندی الزامی است"],
+      required: true,
+    },
+    description: {
+      type: String,
+      trim: true,
+      required: true,
     },
     price: {
       type: Number,
-      required: [true, "A product must have a price"],
+      required: true,
     },
-      priceDiscount: {
-        type: Number,
-        validate: {
-          validator: function (val) {
-            return this.isNew ? val < this.price : true;
-          },
-          message: "  تخفیف {{VALUE}} باید کمتر از قیمت اصلی باشد",
-        },
-      },
+    priceDiscount: {
+      type: Number,
+      default: 0,
+    },
     brand: {
       type: {
         value: { type: String, required: true },
@@ -35,29 +35,33 @@ const productSchema = new mongoose.Schema(
       },
       required: true,
     },
-    colors: [
-      {
-        value: { type: String },
-        label: { type: String },
-        hex: { type: String },
-      },
-    ],
-    features: [
-      {
-        value: { type: String },
-        label: { type: String },
-      },
-    ],
-    description: {
-      type: String,
-      trim: true,
-      required: [true, "توضیحات محصول الزامی است"],
-    },
     imageCover: {
       type: String,
       required: [true, "تصویر اصلی محصول الزامی است"],
     },
-    images: [String],
+    images: {
+      type: [String],
+      required: true,
+    },
+    colors: {
+      type: [
+        {
+          value: { type: String, required: true },
+          label: { type: String, required: true },
+          hex: { type: String, required: true },
+        },
+      ],
+      required: true,
+    },
+    features: {
+      type: [
+        {
+          value: { type: String, required: true },
+          label: { type: String, required: true },
+        },
+      ],
+      required: true,
+    },
   },
   { timestamps: true },
 );

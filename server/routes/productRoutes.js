@@ -14,6 +14,8 @@ const {
 } = require("../controllers/productControllers");
 const commentRoutes = require("./commentRoutes");
 const reviewRoutes = require("./reviewRoutes");
+const validateZod = require("../middlewares/validateZod");
+const productSchema = require("../schema/product.schema");
 const router = express.Router();
 
 router.use("/:productId/comments", commentRoutes);
@@ -28,10 +30,11 @@ router
     uploadProductImage,
     resizeProductImage,
     convertStringToParse,
+    validateZod(productSchema),
     createProduct,
   );
 
-router.get("/:slug", getProductWithSlug);
+// router.get("/:slug", getProductWithSlug);
 
 router
   .route("/:id")

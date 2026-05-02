@@ -32,6 +32,13 @@ exports.uploadProductImage = upload.fields([
 ]);
 
 exports.convertStringToParse = (req, res, next) => {
+  if (
+    !req.body.brand ||
+    !req.body.colors ||
+    !req.body.features ||
+    !req.body.images
+  )
+    return next();
   if (typeof req.body.images === "string") {
     req.body.images = JSON.parse(req.body.images);
   }
