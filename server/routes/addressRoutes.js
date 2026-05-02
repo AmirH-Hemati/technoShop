@@ -7,13 +7,15 @@ const {
   getMyAddresses,
 } = require("../controllers/addressControllers");
 const { protected } = require("../controllers/authControllers");
+const validateZod = require("../middlewares/validateZod");
+const addressSchema = require("../schema/address.schema");
 
 const router = express.Router();
 
 router.use(protected);
 
 router.get("/myAddress", getMyAddresses);
-router.post("/", setAddressUserId, createAddress);
+router.post("/", setAddressUserId, validateZod(addressSchema), createAddress);
 
 router.route("/:id").patch(updateAddress).delete(deleteAddress);
 
