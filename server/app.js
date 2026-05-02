@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const morgan = require("morgan");
 
 const errorControllers = require("./controllers/errorControllers");
 const AppError = require("./utils/AppError");
@@ -21,6 +22,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
 app.use(
   cors({
     origin: [
@@ -31,7 +36,7 @@ app.use(
       "http://192.168.1.3:5173",
     ],
     credentials: true,
-  })
+  }),
 );
 
 app.use("/api/v1/users", userRoutes);
