@@ -1,17 +1,20 @@
 const mongoose = require("mongoose");
-
 const commentSchema = new mongoose.Schema(
   {
-    comment: { type: String, required: [true, "عنوان کامنت الزامی است"] },
+    comment: { 
+      type: String, 
+      required: true,
+      trim: true,
+    },
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: [true, "نویسنده  کامنت الزامی است"],
+      required: true,
     },
     product: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
-      required: [true, "محصول  کامنت الزامی است"],
+      required: true,
     },
   },
   { timestamps: true }
