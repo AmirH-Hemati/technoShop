@@ -33,6 +33,8 @@ const userSchema = new mongoose.Schema(
 
     verificationCode: String,
     verificationCodeExpires: Date,
+    refreshToken: String,
+    refreshTokenExpires: Date,
   },
   { timestamps: true },
 );
@@ -44,4 +46,5 @@ userSchema.methods.createVerificationCode = function () {
 
   return verificationCode;
 };
+
 module.exports = mongoose.model("User", userSchema);

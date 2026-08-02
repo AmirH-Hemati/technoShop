@@ -21,10 +21,11 @@ function handleJWTExpiredError() {
   return new AppError("توکن منقضی شده است , دوباره وارد شوید", 401);
 }
 function sendErrorDev(err, req, res) {
-  console.log(new Date().toTimeString(), err);
+  // console.log(new Date().toTimeString(), err);
 
   return res.status(err.statusCode).json({
     success: err.status,
+    errorCode: err.errorCode,
     message: err.message,
     stack: err.stack,
     error: err,
@@ -47,6 +48,7 @@ function sendErroProd(err, req, res) {
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
       status: err.status,
+      errorCode: err.errorCode,
       message: err.message,
     });
   }

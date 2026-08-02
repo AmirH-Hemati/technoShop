@@ -30,11 +30,11 @@ router
     uploadProductImage,
     resizeProductImage,
     convertStringToParse,
-    validateZod(productSchema),
+    // validateZod(productSchema),
     createProduct,
   );
 
-// router.get("/:slug", getProductWithSlug);
+router.get("/:slug", getProductWithSlug);
 
 router
   .route("/:id")

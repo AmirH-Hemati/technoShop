@@ -5,6 +5,7 @@ const {
   handelSmsAuth,
   protected,
   logout,
+  handleRefresh,
 } = require("../controllers/authControllers");
 
 const {
@@ -22,7 +23,8 @@ const router = express.Router();
 
 router.post("/sendCode", handelSendCode);
 router.post("/smsAuth", handelSmsAuth);
-router.get("/logout", logout);
+router.get("/refresh", handleRefresh);
+router.get("/logout",  logout);
 
 router.use(protected);
 router.get("/me", getMe, getUser);

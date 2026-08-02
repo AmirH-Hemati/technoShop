@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "development") {
 } else if (process.env.NODE_ENV === "production") {
   databaseUri = process.env.DATABASE_PRODUCTION.replace(
     "<db_password>",
-    process.env.DATABASE_PASSWORD
+    process.env.DATABASE_PASSWORD,
   );
 }
 
@@ -18,6 +18,7 @@ mongoose
   .catch((err) => {
     console.error("❌ MongoDB connection error:", err);
   });
+  
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`app listen on http://localhost:${port}`);

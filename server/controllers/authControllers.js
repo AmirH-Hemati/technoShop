@@ -3,15 +3,17 @@ const { promisify } = require("util");
 const AppError = require("../utils/AppError");
 const catchAsync = require("../utils/catchAsync");
 const User = require("../models/userModel");
+const {
+  signToken,
+  refreshTokenOptions,
+  accessTokenOptions,
+  verifyToken,
+} = require("../utils/jwt");
+const { setAuthCookies, clearAuthCookies } = require("../utils/cookies");
+const { thirtyDaysFromNow } = require("../utils/date");
 const validatePhone = (phoneNumber) => {
   const regex = new RegExp("^09\\d{9}$");
   return regex.test(phoneNumber);
-};
-
-const signToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
-  });
 };
 
 exports.handelSendCode = catchAsync(async function (req, res, next) {
@@ -36,8 +38,7 @@ exports.handelSendCode = catchAsync(async function (req, res, next) {
 
   res.status(200).json({
     message: ` کد تایید به شماره موبایل ارسال گردید. `,
-    data: { phone: phoneNumber },
-    code: verificationCode,
+    data: { phone: phoneNumber, code: verificationCode },
   });
 });
 
@@ -71,37 +72,96 @@ exports.handelSmsAuth = catchAsync(async (req, res, next) => {
     await user.save();
     return next(new AppError("کد تایید منقضی شده است", 401));
   }
+  const userId = { user: user._id };
+  const refreshToken = signToken(userId, refreshTokenOptions);
+  const accessToken = signToken(userId, accessTokenOptions);
 
-  const token = signToken(user._id);
+  user.refreshToken = refreshToken;
+  user.refreshTokenExpires = thirtyDaysFromNow();
 
-  const cookieOption = {
-    httpOnly: true,
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000,
-    ),
-    sameSite: "lax",
-    secure: false,
-  };
-  if (process.env.NODE_ENV === "production") cookieOption.secure = true;
-  if (process.env.NODE_ENV === "production") cookieOption.sameSite = "none";
-  res.cookie("jwt", token, cookieOption);
-
-  res.status(200).json({
+  await user.save();
+  return setAuthCookies({ res, accessToken, refreshToken }).status(200).json({
     status: "success",
-    token,
     data: {
       user,
     },
   });
 });
 
-exports.logout = (req, res) => {
-  res.cookie("jwt", "logout", {
-    expires: new Date(Date.now() + 5 * 1000),
-    httpOnly: true,
+exports.handleRefresh = catchAsync(async (req, res, next) => {
+  const refreshToken = req.cookies.refreshToken;
+
+  if (!refreshToken) {
+    clearAuthCookies(res);
+    throw new AppError(
+      "توکن معتبر سازی وجود ندارد",
+      401,
+      "REFRESH_TOKEN_MISSING",
+    );
+  }
+
+  let payload;
+  try {
+    payload = verifyToken(refreshToken, refreshTokenOptions);
+  } catch (err) {
+    if (err instanceof jwt.TokenExpiredError) {
+      clearAuthCookies(res);
+      throw new AppError(
+        "توکن معتبر سازی شما منقضی شده است",
+        401,
+        "REFRESH_TOKEN_EXPIRED",
+      );
+    }
+
+    if (err instanceof jwt.JsonWebTokenError) {
+      clearAuthCookies(res);
+      throw new AppError(
+        "توکن معتبر سازی شما نامعتبر است",
+        401,
+        "INVALID_REFRESH_TOKEN",
+      );
+    }
+
+    throw err;
+  }
+
+  const user = await User.findOne({
+    _id: payload.user,
+    refreshToken,
+    refreshTokenExpires: { $gt: new Date() },
   });
 
-  res.status(200).json({ status: "success" });
+  if (!user) {
+    clearAuthCookies(res);
+    throw new AppError(
+      "حساب کاربری مطابق با توکن پیدا نشد",
+      401,
+      "INVALID_REFRESH_TOKEN",
+    );
+  }
+  const userId = { user: user._id };
+  const newRefreshToken = signToken(userId, refreshTokenOptions);
+  const newAccessToken = signToken(userId, accessTokenOptions);
+
+  user.refreshToken = newRefreshToken;
+  user.refreshTokenExpires = thirtyDaysFromNow();
+  await user.save();
+
+  return setAuthCookies({
+    res,
+    accessToken: newAccessToken,
+    refreshToken: newRefreshToken,
+  })
+    .status(200)
+    .json({
+      status: "success",
+    });
+});
+
+exports.logout = (req, res) => {
+  return clearAuthCookies(res)
+    .status(200)
+    .json({ status: "success", message: "با موفقیت خارج شدید" });
 };
 
 exports.protected = catchAsync(async (req, res, next) => {
@@ -111,23 +171,48 @@ exports.protected = catchAsync(async (req, res, next) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
-  } else if (req.cookies.jwt) {
-    token = req.cookies.jwt;
+  } else if (req.cookies.accessToken) {
+    token = req.cookies.accessToken;
   }
 
   if (!token) {
     return next(
       new AppError(
         "شما لاگین نکرده اید . برای دسترسی وارد حساب کاربری شوید",
-        400,
+        401,
+        "ACCESS_TOKEN_MISSING",
       ),
     );
   }
 
-  const decode = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  const currentUser = await User.findById(decode.id);
+  let payload;
+  try {
+    payload = verifyToken(token, accessTokenOptions);
+  } catch (err) {
+    if (err instanceof jwt.TokenExpiredError) {
+      throw new AppError(
+        "توکن دسترسی شما منقضی شده است",
+        401,
+        "ACCESS_TOKEN_EXPIRED",
+      );
+    }
+
+    if (err instanceof jwt.JsonWebTokenError) {
+      throw new AppError(
+        "توکن دسترسی شما نامعتبر است",
+        401,
+        "INVALID_ACCESS_TOKEN",
+      );
+    }
+
+    throw err;
+  }
+
+  const currentUser = await User.findById(payload.user);
   if (!currentUser) {
-    return next(new AppError("حساب کاربری مطابق با توکن پیدا نشد", 401));
+    return next(
+      new AppError("حساب کاربری مطابق با توکن پیدا نشد", 401, "USER_NOT_FOUND"),
+    );
   }
 
   req.user = currentUser;

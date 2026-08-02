@@ -1,19 +1,23 @@
-import { useUser } from "../features/authentication/hooks/useUser.js";
-import LoginPrompt from "./LoginPrompt.js";
+import { useUser } from "@/features/authentication/hooks/useUser.js";
+
+import SimpleLoginPrompt from "./LoginPrompt.js";
 import Spinner from "./Spinner.js";
 
-const ProtectedRoute = ({ children }) => {
-  const { user, isLoading, isAuthenticated } = useUser();
+type Props = {
+  children: React.ReactNode;
+};
 
+function ProtectedRoute({ children }: Props) {
+  const { user, isLoading, isError } = useUser();
   if (isLoading) {
     return <Spinner />;
   }
 
-  if (!user && !isAuthenticated) {
-    return <LoginPrompt />;
+  if (isError || !user) {
+    return <SimpleLoginPrompt />;
   }
 
   return children;
-};
+}
 
 export default ProtectedRoute;

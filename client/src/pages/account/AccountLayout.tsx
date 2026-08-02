@@ -1,5 +1,7 @@
 import { Outlet } from "react-router-dom";
 
+import { AuthListener } from "@/components/AuthListener.js";
+
 import BreadcrumbNav from "@/ui/BreadcrumbNav.js";
 import Footer from "@/ui/Footer.js";
 import Logout from "@/ui/Logout.js";
@@ -13,7 +15,8 @@ import { sidebar } from "@/data/AccountSidebarItmes.js";
 
 function AccountLayout() {
   return (
-    <div>
+    <>
+      <AuthListener />
       <MainHeader />
 
       <div className="mt-6 mb-16 space-y-6">
@@ -38,7 +41,7 @@ function AccountLayout() {
       </div>
 
       <Footer />
-    </div>
+    </>
   );
 }
 
