@@ -1,18 +1,19 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 
 import { ToastContainer } from "react-toastify";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
 import { NuqsAdapter } from "nuqs/adapters/react";
 
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 
 import { Spinner } from "./components/ui/spinner.js";
 import { ShopingCartProvider } from "./context/ShopingCartContext.js";
 import AccountLayout from "./pages/account/AccountLayout.js";
+import NotFoundPage from "./pages/home/NotFoundPage.js";
+import Test from "./pages/test.js";
 import MainLayout from "./ui/MainLayout.jsx";
 import ProtectedRoute from "./ui/ProtectedRoute.js";
+import { setNavigate } from "./utils/navigate.js";
 
 const Home = lazy(() => import("./pages/home/Home.js"));
 const AddressesPage = lazy(() => import("./pages/account/AddressesPage.js"));
@@ -27,70 +28,62 @@ const Product = lazy(() => import("./pages/home/Product.js"));
 const Products = lazy(() => import("./pages/home/Products.js"));
 const Verify = lazy(() => import("./pages/home/Verify.js"));
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 0,
-    },
-  },
-});
-
 function App() {
   return (
     <ShopingCartProvider>
-      <QueryClientProvider client={queryClient}>
-        <NuqsAdapter>
-          <BrowserRouter>
-            <Suspense fallback={<Spinner />}>
-              <Routes>
-                <Route path="/" element={<MainLayout />}>
-                  <Route index element={<Home />} />
-                  <Route path="products" element={<Products />} />
-                  <Route path="products/:slug" element={<Product />} />
-                  <Route path="verify" element={<Verify />} />
-                  <Route
-                    path="cart"
-                    element={
-                      <ProtectedRoute>
-                        <Cart />
-                      </ProtectedRoute>
-                    }
-                  />
-                  <Route path="contactUs" element={<ContactUs />} />
-                  <Route path="aboutUs" element={<AboutUs />} />
-                </Route>
-                <Route
-                  path="/account"
-                  element={
-                    <ProtectedRoute>
-                      <AccountLayout />
-                    </ProtectedRoute>
-                  }
-                >
-                  <Route index element={<Navigate replace to={`profile`} />} />
-                  <Route path="profile" element={<Profile />} />
-                  <Route path="personalInfo" element={<PersonalInfo />} />
-                  <Route path="orders" element={<Orders />} />
-                  <Route path="myFavoriets" element={<MyFavoriets />} />
-                  <Route path="addresses" element={<AddressesPage />} />
-                </Route>
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
-          <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={true}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
-        </NuqsAdapter>
-      </QueryClientProvider>
+      <NuqsAdapter>
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            <Route path="/test" element={<Test />} />
+            <Route path="/" element={<MainLayout />}>
+              <Route index element={<Home />} />
+              <Route path="products" element={<Products />} />
+              <Route path="products/:slug" element={<Product />} />
+              <Route path="verify" element={<Verify />} />
+              <Route
+                path="cart"
+                element={
+                  <ProtectedRoute>
+                    <Cart />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="contactUs" element={<ContactUs />} />
+              <Route path="aboutUs" element={<AboutUs />} />
+            </Route>
+            <Route
+              path="/account"
+              element={
+                <ProtectedRoute>
+                  <AccountLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate replace to={`profile`} />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="personalInfo" element={<PersonalInfo />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="myFavoriets" element={<MyFavoriets />} />
+              <Route path="addresses" element={<AddressesPage />} />
+            </Route>
+            <Route path="/test" element={<div>this is sample page</div>} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={true}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </NuqsAdapter>
     </ShopingCartProvider>
   );
 }

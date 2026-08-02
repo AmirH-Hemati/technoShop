@@ -1,3 +1,7 @@
+import { useEffect } from "react";
+
+import axios from "axios";
+
 import CategoriesIcon from "@/ui/CategoriesIcon.js";
 import MobileFilter from "@/ui/MobileFilter.js";
 import Row from "@/ui/Row.js";
@@ -12,6 +16,7 @@ import { formatPrice } from "@/utils/helper.js";
 
 function Products() {
   const { products, isLoading } = useProducts();
+
   return (
     <div className="mt-6 space-y-6">
       <CategoriesIcon />
@@ -29,7 +34,7 @@ function Products() {
             <SortSelect />
             {!isLoading && (
               <p className="text-300 text-grey-600 hidden md:block">
-                نتایج : {formatPrice(products.length)}
+                نتایج : {formatPrice(products?.length || 0)}
               </p>
             )}
           </Row>

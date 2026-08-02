@@ -1,19 +1,18 @@
 import { Link } from "react-router-dom";
 
-import { formatToman } from "../../../utils/helper.js";
+import { formatToman } from "@/utils/helper.js";
 
-export default function ProductCard({ product, onClose, setQuery }) {
-  function handelClose() {
-    setQuery("");
-    onClose();
-  }
+import type { ProductType } from "../types/product.js";
+
+type Props = { product: ProductType };
+export default function ProductCard({ product }: Props) {
   return (
-    <Link to={`/products/${product.slug}`} onClick={handelClose}>
-      <li className="bg-grey-0 mt-2 flex items-center gap-3 rounded-xl p-3 shadow">
+    <Link to={`/products/${product.slug}`}>
+      <li className="bg-grey-0 mt-2 flex items-center gap-3 border-grey-200  p-3 border-b">
         <img
-          src={`http://localhost:3000/img/products/${product.imageCover}`}
+          src={product.imageCover}
           alt={product.name}
-          className="h-14 rounded-lg object-cover"
+          className="h-20 object-cover"
         />
 
         <div className="flex flex-col justify-center gap-1">

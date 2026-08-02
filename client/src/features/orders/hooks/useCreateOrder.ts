@@ -13,6 +13,7 @@ export function useCreateOrder() {
   } = useMutation({
     mutationFn: ({ orders, address }) => createOrderApi(orders, address),
     onSuccess: (data) => {
+      console.log(data);
       window.location.href = data.url;
       queryClient.invalidateQueries({
         queryKey: ["orders"],

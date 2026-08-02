@@ -40,7 +40,7 @@ function CartItem({ product }: { product: ProductType }) {
       </div>
 
       <div className="text-200 text-grey-600 [grid-area:category]">
-        <p> {category.label} </p>
+        <p> {category?.label} </p>
       </div>
 
       <p className="text-200 text-red-500 line-through [grid-area:price]">
@@ -54,17 +54,17 @@ function CartItem({ product }: { product: ProductType }) {
       <div className="text-200 text-grey-600 space-y-2 [grid-area:options]">
         <div className="flex items-center gap-0.5">
           <Tag size={19} />
-          <span>برند : {brand.label}</span>
+          <span>برند : {brand?.label}</span>
         </div>
 
         <div className="flex items-center gap-0.5">
           <Colorfilter size={19} />
           <div className="flex items-center">
-            <span>رنگ : {color.label}</span>
+            <span>رنگ : {color?.label}</span>
 
             <span
               className="h-4 w-4 rounded-md border border-gray-300"
-              style={{ backgroundColor: color.hex }}
+              style={{ backgroundColor: color?.hex }}
             />
           </div>
         </div>

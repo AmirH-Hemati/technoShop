@@ -1,3 +1,3 @@
 import type { AxiosError } from "axios";
 
-export type AppError = AxiosError<{ message?: string }>;
+export type AppError = Error;

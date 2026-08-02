@@ -5,14 +5,9 @@ import { useProducts } from "../hooks/useProducts.js";
 import ProductItem from "./ProductItem.jsx";
 
 function ProductsList() {
-  const { isLoading, products, error, refetch } = useProducts();
+  const { isLoading, products, error } = useProducts();
   return (
-    <DataStateHandler
-      isLoading={isLoading}
-      data={products}
-      error={error}
-      onRetry={refetch}
-    >
+    <DataStateHandler isLoading={isLoading} data={products} error={error}>
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {products?.map((product, index) => (
           <motion.div

@@ -78,6 +78,7 @@ export default function AddressForm({ position, onBack }: Props) {
 
   const onSubmit = (values: AddressSchemaType) => {
     if (!position) return;
+
     createAddress({ ...values, lat: position?.lat, lng: position?.lng });
   };
 

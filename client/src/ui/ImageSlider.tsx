@@ -8,7 +8,6 @@ function ImageSlider({ images }: Props): ReactElement {
   const [currentIndex, setCurrentIndex] = useState(0);
   const selectImage = images[currentIndex];
 
-  console.log(images);
   function nextImage() {
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   }

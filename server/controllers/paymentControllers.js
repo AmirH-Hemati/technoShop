@@ -20,11 +20,11 @@ const createSession = async (totalAmount, paymentId, req) => {
       `${process.env.ZARINPAL_URL}/v4/payment/request.json`,
       params,
     );
+    console.log("this is here for test payment controller");
     return data;
   } catch (error) {
     console.log(error.response);
-    html = error.response.data;
-    throw error;
+    throw new AppError("خطا در برقراری ارتباط با درگاه پرداخت", 400);
   }
 };
 
@@ -35,7 +35,7 @@ exports.test = (req, res) => {
 exports.createPaymentSession = catchAsync(async (req, res, next) => {
   const { orders, address } = req.body;
 
-  if (!orders) {
+  if (!orders || !orders.length === 0) {
     return next(new AppError("سبد خرید شما خالی است", 400));
   }
 
@@ -87,7 +87,7 @@ exports.createPaymentSession = catchAsync(async (req, res, next) => {
     await newPayment.save();
     await newOrder.save();
     const url = `${process.env.ZARINPAL_URL}/StartPay/${session.data.authority}`;
-    return res.status(200).json({ status: "success", url });
+    return res.status(200).json({ status: "success", data: { url } });
   }
 
   return next(

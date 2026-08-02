@@ -16,7 +16,6 @@ import Product from "./Product.js";
 
 function AmazingPriceProducts() {
   const { products, isLoading } = useLatestProducts();
-  console.log("render product");
 
   const renderProduct = (product: ProductType, index: number) => (
     <SwiperSlide key={product._id} className="py-4">

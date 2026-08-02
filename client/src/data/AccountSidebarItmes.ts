@@ -5,6 +5,7 @@ export interface SidebarAccountType {
   label: string;
   icon: Icon;
 }
+
 export const sidebar: SidebarAccountType[] = [
   {
     href: "/account/personalInfo",

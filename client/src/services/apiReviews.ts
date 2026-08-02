@@ -1,9 +1,9 @@
 import axiosInstance from "./axiosInstance.js";
 
 export async function getReviews() {
-  const { data } = await axiosInstance.get(`/reviews`);
+  const data = await axiosInstance.get(`/reviews`);
 
-  return data.data;
+  return data;
 }
 
 export async function createReview(
@@ -11,11 +11,11 @@ export async function createReview(
   rating: number,
   productId: string,
 ) {
-  const { data } = await axiosInstance.post("/reviews", {
+  const data = await axiosInstance.post("/reviews", {
     review,
     product: productId,
     rating,
   });
 
-  return data.data;
+  return data;
 }

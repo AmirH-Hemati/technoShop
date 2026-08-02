@@ -16,7 +16,7 @@ function PreviousOrder() {
     ?.map((product) => product.product);
 
   const existProducts = allProducts?.reduce((acc, currentProduct) => {
-    if (!acc?.map((item) => item._id)?.includes(currentProduct._id)) {
+    if (!acc?.map((item) => item?._id)?.includes(currentProduct?._id)) {
       return [...acc, currentProduct];
     } else {
       return acc;
@@ -40,7 +40,7 @@ function PreviousOrder() {
         <SwiperSlider
           data={existProducts}
           render={(product) => (
-            <SwiperSlide key={product._id} className="py-5">
+            <SwiperSlide key={product?._id} className="py-5">
               <Product product={product} />
             </SwiperSlide>
           )}
