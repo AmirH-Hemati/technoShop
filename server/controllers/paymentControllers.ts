@@ -1,0 +1,226 @@
+import AppError from "../utils/AppError";
+import Product from "../models/productModel";
+import Payment from "../models/paymentModel";
+import Order from "../models/orderModel";
+import axios from "axios";
+import catchAsync from "../utils/catchAsync";
+import { getAll } from "./handlerFactory";
+import { Request, Response, NextFunction } from "express";
+
+let html: string;
+
+const createSession = async (
+  totalAmount: number,
+  paymentId: string,
+  req: Request
+) => {
+  const params = {
+    merchant_id: process.env.MERCHANT_ID,
+    amount: totalAmount,
+    callback_url: `${process.env.CLIENT_URL}/verify?paymentId=${paymentId}`,
+    description: "خرید از فروشگاه",
+  };
+
+  try {
+    const { data } = await axios.post(
+      `${process.env.ZARINPAL_URL}/v4/payment/request.json`,
+      params
+    );
+    console.log("this is here for test payment controller");
+    return data;
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error) && error.response) {
+      console.log(error.response);
+    }
+    throw new AppError("خطا در برقراری ارتباط با درگاه پرداخت", 400);
+  }
+};
+
+export const test = (_req: Request, res: Response) => {
+  console.log(html);
+  res.status(200).set("Content-Type", "text/html; charset=utf-8").send(html);
+};
+
+export const createPaymentSession = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { orders, address } = req.body;
+
+    if (!orders || orders.length === 0) {
+      return next(new AppError("سبد خرید شما خالی است", 400));
+    }
+
+    if (!address) {
+      return next(new AppError("آدرس وجود ندارد", 400));
+    }
+
+    const productsIds = orders.map((order: { id: string }) => order.id);
+    const products = await Product.find({ _id: { $in: productsIds } });
+
+    if (products.length !== orders.length) {
+      return next(new AppError("برخی از محصولات موجود نیستند", 400));
+    }
+
+    const totalAmount = products.reduce((totalProduct, product) => {
+      const itemQuantity =
+        orders?.find(
+          (order: { id: string }) =>
+            order.id.toString() == product._id.toString()
+        )?.qty || 1;
+      const price = parseFloat(product.price.toString()) || 0;
+      const discount = parseFloat(product.priceDiscount.toString()) || 0;
+      return totalProduct + (price - discount) * itemQuantity;
+    }, 0);
+
+    const newOrders = orders.map((order: { id: string; qty: number; color?: unknown }) => ({
+      product: order.id,
+      quantity: order.qty,
+      color: order.color,
+    }));
+
+    const newOrder = await Order.create({
+      address,
+      orderItems: newOrders,
+      totalAmount,
+      user: req.user?._id,
+      status: "processing",
+    });
+
+    const newPayment = await Payment.create({
+      order: newOrder._id,
+      user: req.user?._id,
+      amount: totalAmount,
+      status: "pending",
+    });
+
+    const session = await createSession(totalAmount, newPayment._id.toString(), req);
+
+    if (session.data.code === 100) {
+      newPayment.transactionId = session.data.authority;
+      newOrder.payment = newPayment._id;
+      await newPayment.save();
+      await newOrder.save();
+      const url = `${process.env.ZARINPAL_URL}/StartPay/${session.data.authority}`;
+      return res.status(200).json({ status: "success", data: { url } });
+    }
+
+    return next(
+      new AppError("عملیات پرداخت ناموفق بود . لطفا بعدا دوباره تلاش کنید", 400)
+    );
+  }
+);
+
+export const verifyPayment = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { authority, status, paymentId } = req.query;
+    if (!authority || !status || !paymentId) {
+      return next(new AppError("مشخصات پرداخت کامل نیست ", 400));
+    }
+
+    const payment = await Payment.findOne({
+      transactionId: authority,
+      _id: paymentId,
+    }).populate("order");
+
+    if (!payment) {
+      return next(new AppError("مشخصات تراکنش پیدا نشد", 400));
+    }
+
+    if (status !== "OK") {
+      payment.status = "failed";
+      await payment.save();
+      return res.status(200).json({
+        status: "failed",
+        order: payment.order,
+        paymentStatus: payment.status,
+      });
+    }
+
+    const params = {
+      merchant_id: process.env.MERCHANT_ID,
+      amount: payment.amount,
+      authority: payment.transactionId,
+    };
+
+    const { data } = await axios.post(
+      `${process.env.ZARINPAL_URL}/v4/payment/verify.json`,
+      params
+    );
+
+    if (data.data.code === 100 || data.data.code === 101) {
+      payment.status = "success";
+    } else {
+      payment.status = "failed";
+    }
+    await payment.save();
+
+    return res.status(200).json({
+      status: payment.status === "success" ? "success" : "failed",
+      order: payment.order,
+      paymentStatus: payment.status,
+    });
+  }
+);
+
+export const getMonthlySales = catchAsync(
+  async (_req: Request, res: Response, _next: NextFunction) => {
+    const monthlySales = await Payment.aggregate([
+      {
+        $match: {
+          status: "success",
+        },
+      },
+      {
+        $group: {
+          _id: {
+            $month: "$createdAt",
+          },
+          totalSales: {
+            $sum: 1,
+          },
+          totalAmountSales: {
+            $sum: "$amount",
+          },
+        },
+      },
+      {
+        $project: {
+          _id: false,
+          month: "$_id",
+          totalSales: true,
+          totalAmountSales: true,
+        },
+      },
+    ]);
+    res.status(200).json({
+      status: "success",
+      data: monthlySales,
+    });
+  }
+);
+
+export const getPaymentStatusCount = catchAsync(
+  async (_req: Request, res: Response, _next: NextFunction) => {
+    const statusCount = await Payment.aggregate([
+      {
+        $group: {
+          _id: "$status",
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $project: {
+          _id: false,
+          status: "$_id",
+          count: true,
+        },
+      },
+    ]);
+
+    res.status(200).json({
+      status: "success",
+      data: statusCount,
+    });
+  }
+);
+
+export const getAllPayments = getAll(Payment);

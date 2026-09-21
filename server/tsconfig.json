@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020", "dom"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "noEmit": true,
+    "types": ["node", "express", "multer", "jsonwebtoken"]
+  },
+  "include": [
+    "controllers/**/*.ts",
+    "models/**/*.ts",
+    "routes/**/*.ts",
+    "utils/**/*.ts",
+    "middlewares/**/*.ts",
+    "schema/**/*.ts",
+    "app.ts",
+    "server.ts",
+    "main.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
+}
