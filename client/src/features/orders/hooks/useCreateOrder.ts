@@ -19,7 +19,7 @@ export function useCreateOrder() {
         queryKey: ["orders"],
       });
     },
-    onError: (err) => toast.error(err.response.data.message),
+    onError: (err: any) => toast.error(err.response.data.message),
   });
 
   return { createOrder, isCreateing, data };

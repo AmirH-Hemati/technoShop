@@ -15,8 +15,8 @@ const router = express.Router();
 router.use(protected);
 
 router.get("/myAddress", getMyAddresses);
-router.post("/", setAddressUserId, validateZod(addressSchema), createAddress);
-
+router.post("/", setAddressUserId,  createAddress);
+// validateZod(addressSchema),
 router.route("/:id").patch(updateAddress).delete(deleteAddress);
 
 module.exports = router;

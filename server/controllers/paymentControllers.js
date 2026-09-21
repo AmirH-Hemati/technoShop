@@ -81,6 +81,7 @@ exports.createPaymentSession = catchAsync(async (req, res, next) => {
   });
 
   const session = await createSession(totalAmount, newPayment._id, req);
+
   if (session.data.code === 100) {
     newPayment.transactionId = session.data.authority;
     newOrder.payment = newPayment._id;
