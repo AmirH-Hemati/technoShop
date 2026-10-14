@@ -25,6 +25,8 @@ The project demonstrates practical full-stack development skills, including fron
 - React
 - JavaScript / TypeScript, depending on the modules
 - HTML5 & CSS3
+- Tailwind CSS
+- Shadcn
 
 ### Backend
 - [Node.js](https://nodejs.org/)
